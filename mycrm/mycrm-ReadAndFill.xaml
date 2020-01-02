@@ -64,18 +64,18 @@
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt" />
     </Sequence.Variables>
-    <ou:DownloadFile DisplayName="Download MyCRM." sap2010:WorkflowViewState.IdRef="DownloadFile_2" LocalPath="%USERPROFILE%\mycrm\Documents\mycrm.exe" Overwrite="False" URL="https://github.com/open-rpa/examples-files/raw/master/mycrm.exe" />
+    <ou:DownloadFile DisplayName="Download MyCRM." sap2010:WorkflowViewState.IdRef="DownloadFile_2" LocalPath="%USERPROFILE%\Documents\mycrm\mycrm.exe" Overwrite="False" URL="https://github.com/open-rpa/examples-files/raw/master/mycrm/mycrm.exe" />
     <oa:OpenApplication Height="{x:Null}" Result="{x:Null}" Width="{x:Null}" X="{x:Null}" Y="{x:Null}" AnimateMove="False" CheckRunning="True" sap2010:WorkflowViewState.IdRef="OpenApplication_1" Selector="%[&#xA;  {&#xA;    &quot;filename&quot;: &quot;%USERPROFILE%\\Documents\\mycrm\\mycrm.exe&quot;,&#xA;    &quot;processname&quot;: &quot;MyCRM&quot;,&#xA;    &quot;arguments&quot;: &quot; &quot;,&#xA;    &quot;Selector&quot;: &quot;Windows&quot;&#xA;  },&#xA;  {&#xA;    &quot;Name&quot;: &quot;My CRM (Sample App)&quot;,&#xA;    &quot;ClassName&quot;: &quot;WindowsForms10.Window.*&quot;,&#xA;    &quot;ControlType&quot;: &quot;Window&quot;,&#xA;    &quot;AutomationId&quot;: &quot;Form1&quot;&#xA;  },&#xA;  {&#xA;    &quot;ClassName&quot;: &quot;WindowsForms10.SysTabControl32.*&quot;,&#xA;    &quot;ControlType&quot;: &quot;Tab&quot;,&#xA;    &quot;AutomationId&quot;: &quot;tabControl1&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromMilliseconds(1000)]">
       <x:Null />
     </oa:OpenApplication>
-    <ou:DownloadFile DisplayName="Download mycrm-data" sap2010:WorkflowViewState.IdRef="DownloadFile_3" LocalPath="[&quot;%USERPROFILE%\Documents\MyCRM\mycrm-data.json&quot;]" Overwrite="False" URL="https://github.com/open-rpa/examples-files/raw/master/mycrm-data.json" />
-    <ou:ReadJSON DataTable="[dt]" Filename="[&quot;%USERPROFILE%\Documents\MyCRM\mycrm-data.json&quot;]" sap2010:WorkflowViewState.IdRef="ReadJSON_1" />
-    <oa:CommentOut sap2010:WorkflowViewState.IdRef="CommentOut_6">
-      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
-        <ou:DownloadFile DisplayName="Download mycrm-data" sap2010:WorkflowViewState.IdRef="DownloadFile_4" LocalPath="%USERPROFILE%\Documents\mycrm\mycrm-data.xlsx" Overwrite="False" URL="https://github.com/open-rpa/examples-files/raw/master/mycrm-data.xlsx" />
-        <ooa:ReadRange Application="{x:Null}" Cells="{x:Null}" ReadPassword="{x:Null}" Workbook="{x:Null}" Worksheet="{x:Null}" WritePassword="{x:Null}" lastUsedColumn="{x:Null}" lastUsedRow="{x:Null}" ClearFormats="False" DataTable="[dt]" Filename="[&quot;%USERPROFILE%\Documents\MyCRM\mycrm-data.xlsx&quot;]" sap2010:WorkflowViewState.IdRef="ReadRange_1" UseHeaderRow="True" Visible="True" />
+    <oa:CommentOut sap2010:WorkflowViewState.IdRef="CommentOut_7">
+      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <ou:DownloadFile DisplayName="Download mycrm-data" sap2010:WorkflowViewState.IdRef="DownloadFile_3" LocalPath="[&quot;%USERPROFILE%\Documents\MyCRM\mycrm-data.json&quot;]" Overwrite="False" URL="https://github.com/open-rpa/examples-files/raw/master/mycrm/mycrm-data.json" />
+        <ou:ReadJSON DataTable="[dt]" Filename="[&quot;%USERPROFILE%\Documents\MyCRM\mycrm-data.json&quot;]" sap2010:WorkflowViewState.IdRef="ReadJSON_1" />
       </Sequence>
     </oa:CommentOut>
+    <ou:DownloadFile DisplayName="Download mycrm-data" sap2010:WorkflowViewState.IdRef="DownloadFile_4" LocalPath="%USERPROFILE%\Documents\mycrm\mycrm-data.xlsx" Overwrite="False" URL="https://github.com/open-rpa/examples-files/raw/master/mycrm/mycrm-data.xlsx" />
+    <ooa:ReadRange Application="{x:Null}" Cells="{x:Null}" ReadPassword="{x:Null}" Workbook="{x:Null}" Worksheet="{x:Null}" WritePassword="{x:Null}" lastUsedColumn="{x:Null}" lastUsedRow="{x:Null}" ClearFormats="False" DataTable="[dt]" Filename="[&quot;%USERPROFILE%\Documents\MyCRM\mycrm-data.xlsx&quot;]" sap2010:WorkflowViewState.IdRef="ReadRange_1" UseHeaderRow="True" Visible="True" />
     <oa:ForEachDataRow DataView="{x:Null}" DataTable="[dt]" sap2010:WorkflowViewState.IdRef="ForEachDataRow_1">
       <ActivityAction x:TypeArguments="sd:DataRowView">
         <ActivityAction.Argument>
@@ -233,18 +233,16 @@
     <sap2010:ViewStateManager>
       <sap2010:ViewStateData Id="DownloadFile_2" sap:VirtualizedContainerService.HintSize="314,70" />
       <sap2010:ViewStateData Id="OpenApplication_1" sap:VirtualizedContainerService.HintSize="314,149" />
-      <sap2010:ViewStateData Id="DownloadFile_3" sap:VirtualizedContainerService.HintSize="314,70" />
-      <sap2010:ViewStateData Id="ReadJSON_1" sap:VirtualizedContainerService.HintSize="314,70" />
-      <sap2010:ViewStateData Id="DownloadFile_4" sap:VirtualizedContainerService.HintSize="282,70" />
-      <sap2010:ViewStateData Id="ReadRange_1" sap:VirtualizedContainerService.HintSize="282,70" />
-      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="304,304">
+      <sap2010:ViewStateData Id="DownloadFile_3" sap:VirtualizedContainerService.HintSize="234,70" />
+      <sap2010:ViewStateData Id="ReadJSON_1" sap:VirtualizedContainerService.HintSize="234,70" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="256,304">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="CommentOut_6" sap:VirtualizedContainerService.HintSize="314,51">
+      <sap2010:ViewStateData Id="CommentOut_7" sap:VirtualizedContainerService.HintSize="314,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -252,6 +250,8 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DownloadFile_4" sap:VirtualizedContainerService.HintSize="314,70" />
+      <sap2010:ViewStateData Id="ReadRange_1" sap:VirtualizedContainerService.HintSize="314,70" />
       <sap2010:ViewStateData Id="Assign`1_2" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="GetElement_2" sap:VirtualizedContainerService.HintSize="278,167">
         <sap:WorkflowViewStateService.ViewState>
