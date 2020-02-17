@@ -1,0 +1,147 @@
+<Activity mc:Ignorable="sap sap2010 sads" x:Class="chucknorris" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="New Workflow6_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:osa="clr-namespace:OpenRPA.Script.Activities;assembly=OpenRPA.Script"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>OpenRPA</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>OpenRPA.IE</x:String>
+      <x:String>OpenRPA.Image</x:String>
+      <x:String>OpenRPA.Java</x:String>
+      <x:String>OpenRPA.NM</x:String>
+      <x:String>OpenRPA.Office</x:String>
+      <x:String>OpenRPA.Script</x:String>
+      <x:String>OpenRPA.Windows</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Net</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>OpenRPA</AssemblyReference>
+      <AssemblyReference>OpenRPA.Interfaces</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>OpenRPA.IE</AssemblyReference>
+      <AssemblyReference>OpenRPA.Image</AssemblyReference>
+      <AssemblyReference>OpenRPA.Java</AssemblyReference>
+      <AssemblyReference>OpenRPA.NM</AssemblyReference>
+      <AssemblyReference>OpenRPA.Office</AssemblyReference>
+      <AssemblyReference>OpenRPA.Script</AssemblyReference>
+      <AssemblyReference>OpenRPA.Windows</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="value" />
+    </Sequence.Variables>
+    <osa:InvokeCode PipelineOutput="{x:Null}" Code="using(WebClient client = new System.Net.WebClient()) {  &#xA; var response = client.DownloadString(&quot;https://api.chucknorris.io/jokes/random&quot;);&#xA; var obj = Newtonsoft.Json.Linq.JObject.Parse(response);&#xA; value = obj[&quot;value&quot;].ToString();&#xA;}    &#xA;&#xA;" DisplayName="Using C#" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="C#">
+      <osa:InvokeCode.namespaces>
+        <x:Array Type="x:String">
+          <x:String>System</x:String>
+          <x:String>System.Xml</x:String>
+          <x:String>OpenRPA</x:String>
+          <x:String>System.Data</x:String>
+          <x:String>System.Linq</x:String>
+          <x:String>Microsoft.VisualBasic</x:String>
+          <x:String>OpenRPA.IE</x:String>
+          <x:String>OpenRPA.Image</x:String>
+          <x:String>OpenRPA.Java</x:String>
+          <x:String>OpenRPA.NM</x:String>
+          <x:String>OpenRPA.Office</x:String>
+          <x:String>OpenRPA.Script</x:String>
+          <x:String>OpenRPA.Windows</x:String>
+          <x:String>System.Activities</x:String>
+          <x:String>System.Net</x:String>
+          <x:String>System.Collections</x:String>
+          <x:String>System.Collections.Generic</x:String>
+        </x:Array>
+      </osa:InvokeCode.namespaces>
+    </osa:InvokeCode>
+    <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[value]" />
+    <osa:InvokeCode PipelineOutput="{x:Null}" Code="$value = (Invoke-RestMethod -Method Get -URI https://api.chucknorris.io/jokes/random).value" DisplayName="Using PowerShell" sap2010:WorkflowViewState.IdRef="InvokeCode_2" Language="PowerShell">
+      <osa:InvokeCode.namespaces>
+        <x:Array Type="x:String">
+          <x:String>System</x:String>
+          <x:String>System.Xml</x:String>
+          <x:String>OpenRPA</x:String>
+          <x:String>System.Data</x:String>
+          <x:String>System.Linq</x:String>
+          <x:String>Microsoft.VisualBasic</x:String>
+          <x:String>OpenRPA.IE</x:String>
+          <x:String>OpenRPA.Image</x:String>
+          <x:String>OpenRPA.Java</x:String>
+          <x:String>OpenRPA.NM</x:String>
+          <x:String>OpenRPA.Office</x:String>
+          <x:String>OpenRPA.Script</x:String>
+          <x:String>OpenRPA.Windows</x:String>
+          <x:String>System.Activities</x:String>
+          <x:String>System.Net</x:String>
+          <x:String>System.Collections</x:String>
+          <x:String>System.Collections.Generic</x:String>
+        </x:Array>
+      </osa:InvokeCode.namespaces>
+    </osa:InvokeCode>
+    <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[value]" />
+    <osa:InvokeCode PipelineOutput="{x:Null}" Code="# you may need to install opensll https://slproweb.com/products/Win32OpenSSL.html&#xA;import requests&#xA;import json&#xA;&#xA;url = 'http://api.chucknorris.io/jokes/random'&#xA;json = json.loads(requests.get(url).text)&#xA;value = json['value']&#xA;" DisplayName="Using Python" sap2010:WorkflowViewState.IdRef="InvokeCode_3" Language="Python">
+      <osa:InvokeCode.namespaces>
+        <x:Array Type="x:String">
+          <x:String>System</x:String>
+          <x:String>System.Xml</x:String>
+          <x:String>OpenRPA</x:String>
+          <x:String>System.Data</x:String>
+          <x:String>System.Linq</x:String>
+          <x:String>Microsoft.VisualBasic</x:String>
+          <x:String>OpenRPA.IE</x:String>
+          <x:String>OpenRPA.Image</x:String>
+          <x:String>OpenRPA.Java</x:String>
+          <x:String>OpenRPA.NM</x:String>
+          <x:String>OpenRPA.Office</x:String>
+          <x:String>OpenRPA.Script</x:String>
+          <x:String>OpenRPA.Windows</x:String>
+          <x:String>System.Activities</x:String>
+          <x:String>System.Net</x:String>
+          <x:String>System.Collections</x:String>
+          <x:String>System.Collections.Generic</x:String>
+        </x:Array>
+      </osa:InvokeCode.namespaces>
+    </osa:InvokeCode>
+    <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[value]" />
+    <sads:DebugSymbol.Symbol>dw1DOlxFbXB0eS54YW1sAA==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="InvokeCode_1" sap:VirtualizedContainerService.HintSize="210,55" />
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="210,61" />
+      <sap2010:ViewStateData Id="InvokeCode_2" sap:VirtualizedContainerService.HintSize="210,55" />
+      <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="210,61" />
+      <sap2010:ViewStateData Id="InvokeCode_3" sap:VirtualizedContainerService.HintSize="210,55" />
+      <sap2010:ViewStateData Id="WriteLine_3" sap:VirtualizedContainerService.HintSize="210,61" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="232,672">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="New Workflow6_1" sap:VirtualizedContainerService.HintSize="272,752" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
