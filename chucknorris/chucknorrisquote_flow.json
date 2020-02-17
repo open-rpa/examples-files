@@ -1,0 +1,67 @@
+[
+    {
+        "id": "3f5e3f96.3b962",
+        "type": "workflow in",
+        "z": "bc36a03f.d05a4",
+        "queue": "chucknorrisquote",
+        "rpa": true,
+        "web": false,
+        "name": "chucknorrisquote",
+        "x": 120,
+        "y": 240,
+        "wires": [
+            [
+                "956fc236.5457d"
+            ]
+        ]
+    },
+    {
+        "id": "c23fd75c.ee6388",
+        "type": "workflow out",
+        "z": "bc36a03f.d05a4",
+        "name": "",
+        "form": "",
+        "state": "completed",
+        "x": 570,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4da4b179.78913",
+        "type": "debug",
+        "z": "bc36a03f.d05a4",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 570,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "956fc236.5457d",
+        "type": "http request",
+        "z": "bc36a03f.d05a4",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": false,
+        "url": "https://api.chucknorris.io/jokes/random",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 310,
+        "y": 240,
+        "wires": [
+            [
+                "c23fd75c.ee6388",
+                "4da4b179.78913"
+            ]
+        ]
+    }
+]
