@@ -1,0 +1,47 @@
+[
+    {
+        "id": "6d58f5ca.bc468c",
+        "type": "http in",
+        "z": "cfcc213a.bca01",
+        "name": "",
+        "url": "/rpa",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 240,
+        "wires": [
+            [
+                "6e59b2ef.ea8c0c"
+            ]
+        ]
+    },
+    {
+        "id": "5d3e22d7.bb845c",
+        "type": "http response",
+        "z": "cfcc213a.bca01",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 580,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "6e59b2ef.ea8c0c",
+        "type": "rpa workflow",
+        "z": "cfcc213a.bca01",
+        "queue": "5ce94386320b9ce0bc2c3d07",
+        "workflow": "5e6ba82cd3eecb67f3fed6a3",
+        "localqueue": "",
+        "x": 310,
+        "y": 240,
+        "wires": [
+            [
+                "5d3e22d7.bb845c"
+            ],
+            [],
+            []
+        ]
+    }
+]
