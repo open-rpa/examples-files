@@ -1,0 +1,113 @@
+<Activity mc:Ignorable="sap sap2010 sads" x:Class="GetWebColors" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="New Workflow_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:oi="clr-namespace:OpenRPA.Image;assembly=OpenRPA.Image"
+ xmlns:on="clr-namespace:OpenRPA.NM;assembly=OpenRPA.NM"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>OpenRPA</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>OpenRPA.IE</x:String>
+      <x:String>OpenRPA.Image</x:String>
+      <x:String>OpenRPA.NM</x:String>
+      <x:String>OpenRPA.Office</x:String>
+      <x:String>OpenRPA.Windows</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>OpenRPA</AssemblyReference>
+      <AssemblyReference>OpenRPA.Interfaces</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>OpenRPA.IE</AssemblyReference>
+      <AssemblyReference>OpenRPA.Image</AssemblyReference>
+      <AssemblyReference>OpenRPA.NM</AssemblyReference>
+      <AssemblyReference>OpenRPA.Office</AssemblyReference>
+      <AssemblyReference>OpenRPA.Windows</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:Color" Name="col" />
+    </Sequence.Variables>
+    <on:OpenURL Browser="{x:Null}" NewTab="{x:Null}" sap2010:WorkflowViewState.IdRef="OpenURL_1" Url="https://coolors.co/995d81-eb8258-f6f740-d8dc6a-6689a1" />
+    <on:GetElement Elements="{x:Null}" From="{x:Null}" Image="{x:Null}" LoopAction="{x:Null}" sap2010:WorkflowViewState.IdRef="GetElement_2" MaxResults="20" MinResults="1" Selector="%[&#xD;&#xA;  {&#xD;&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xD;&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xD;&#xA;    &quot;frame&quot;: &quot;-1&quot;,&#xD;&#xA;    &quot;url&quot;: &quot;https://coolors.co/995d81-eb8258-f6f740-d8dc6a-6689a1&quot;&#xD;&#xA;  },&#xD;&#xA;  {&#xD;&#xA;    &quot;xpath&quot;: &quot;//div[@id=\&quot;generator_colors\&quot;]/div/div[2]&quot;&#xD;&#xA;  }&#xD;&#xA;]" Timeout="[TimeSpan.FromSeconds(3)]" WaitForReady="True">
+      <ActivityAction x:TypeArguments="on:NMElement">
+        <ActivityAction.Argument>
+          <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+        </ActivityAction.Argument>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <oi:GetColor Element="[item]" sap2010:WorkflowViewState.IdRef="GetColor_1" OffsetX="5" OffsetY="5" Result="[col]" />
+          <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[col.ToString]" />
+        </Sequence>
+      </ActivityAction>
+    </on:GetElement>
+    <on:OpenURL Browser="{x:Null}" NewTab="{x:Null}" sap2010:WorkflowViewState.IdRef="OpenURL_2" Url="https://coolors.co/e5c2c0-8fd5a6-329f5b-0c8346-0d5d56" />
+    <on:GetElement Elements="{x:Null}" From="{x:Null}" Image="{x:Null}" LoopAction="{x:Null}" sap2010:WorkflowViewState.IdRef="GetElement_3" MaxResults="20" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;-1&quot;,&#xA;    &quot;url&quot;: &quot;https://coolors.co/995d81-eb8258-f6f740-d8dc6a-6689a1&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//div[@id=\&quot;generator_colors\&quot;]/div/div[2]&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(3)]" WaitForReady="True">
+      <ActivityAction x:TypeArguments="on:NMElement">
+        <ActivityAction.Argument>
+          <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+        </ActivityAction.Argument>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <oi:GetColor Element="[item]" sap2010:WorkflowViewState.IdRef="GetColor_2" OffsetX="5" OffsetY="5" Result="[col]" />
+          <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[col.ToString]" />
+        </Sequence>
+      </ActivityAction>
+    </on:GetElement>
+    <sads:DebugSymbol.Symbol>dw1DOlxFbXB0eS54YW1sAA==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="OpenURL_1" sap:VirtualizedContainerService.HintSize="246,55" />
+      <sap2010:ViewStateData Id="GetColor_1" sap:VirtualizedContainerService.HintSize="210,36" />
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="210,61" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="232,261">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="GetElement_2" sap:VirtualizedContainerService.HintSize="246,391" />
+      <sap2010:ViewStateData Id="OpenURL_2" sap:VirtualizedContainerService.HintSize="246,55" />
+      <sap2010:ViewStateData Id="GetColor_2" sap:VirtualizedContainerService.HintSize="210,36" />
+      <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="210,61" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="232,261">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="GetElement_3" sap:VirtualizedContainerService.HintSize="246,391" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="268,1136">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="New Workflow_1" sap:VirtualizedContainerService.HintSize="308,1216" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
