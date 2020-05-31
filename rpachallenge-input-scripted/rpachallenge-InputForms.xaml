@@ -1,0 +1,291 @@
+<Activity mc:Ignorable="sap sap2010 sads" x:Class="rpachallenge-InputForms" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="rpachallenge-InputForms_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:oa="clr-namespace:OpenRPA.Activities;assembly=OpenRPA"
+ xmlns:on="clr-namespace:OpenRPA.NM;assembly=OpenRPA.NM"
+ xmlns:ou="clr-namespace:OpenRPA.Utilities;assembly=OpenRPA.Utilities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>OpenRPA</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>OpenRPA.NM</x:String>
+      <x:String>OpenRPA.Office</x:String>
+      <x:String>OpenRPA.Windows</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>OpenRPA.Interfaces</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>OpenRPA</AssemblyReference>
+      <AssemblyReference>OpenRPA.Interfaces</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>OpenRPA.NM</AssemblyReference>
+      <AssemblyReference>OpenRPA.Office</AssemblyReference>
+      <AssemblyReference>OpenRPA.Windows</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Globalization.Extensions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Net.WebSockets.Client.Managed</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_7">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dt" />
+      <Variable x:TypeArguments="sd:DataSet" Name="ds" />
+    </Sequence.Variables>
+    <on:OpenURL Browser="{x:Null}" NewTab="{x:Null}" sap2010:WorkflowViewState.IdRef="OpenURL_1" Url="http://www.rpachallenge.com/" />
+    <on:GetElement Elements="{x:Null}" From="{x:Null}" LoopAction="{x:Null}" DisplayName="  " sap2010:WorkflowViewState.IdRef="GetElement_30" Image="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" MaxResults="5" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: null,&#xA;    &quot;url&quot;: &quot;http://www.rpachallenge.com/&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;/html/body/app-root/div[2]/app-rpa1/div/div[1]/div[6]/button&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(3)]" WaitForReady="True">
+      <ActivityAction x:TypeArguments="on:NMElement">
+        <ActivityAction.Argument>
+          <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+        </ActivityAction.Argument>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <If Condition="[item.Value.ToLower = &quot;reset&quot;]" sap2010:WorkflowViewState.IdRef="If_2">
+            <If.Then>
+              <oa:ClickElement KeyModifiers="{x:Null}" AnimateMouse="False" Button="1" DoubleClick="False" Element="[item]" sap2010:WorkflowViewState.IdRef="ClickElement_11" OffsetX="201" OffsetY="23" PostWait="00:00:00" VirtualClick="True" />
+            </If.Then>
+          </If>
+        </Sequence>
+      </ActivityAction>
+    </on:GetElement>
+    <ou:DownloadFile sap2010:WorkflowViewState.IdRef="DownloadFile_3" LocalPath="[&quot;%USERPROFILE%\Documents\challenge.xlsx&quot;]" Overwrite="False" URL="http://www.rpachallenge.com/assets/downloadFiles/challenge.xlsx" />
+    <ou:ReadExcel DataSet="[ds]" Filename="%USERPROFILE%\Documents\challenge.xlsx" sap2010:WorkflowViewState.IdRef="ReadExcel_1" UseHeaderRow="True" />
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="sd:DataTable">[dt]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="sd:DataTable">[ds.Tables(0)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <on:GetElement Elements="{x:Null}" From="{x:Null}" LoopAction="{x:Null}" DisplayName="  " sap2010:WorkflowViewState.IdRef="GetElement_21" Image="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" MaxResults="1" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: null,&#xA;    &quot;url&quot;: &quot;http://www.rpachallenge.com/&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;/html/body/app-root/div[2]/app-rpa1/div/div[1]/div[6]/button&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(3)]" WaitForReady="True">
+      <ActivityAction x:TypeArguments="on:NMElement">
+        <ActivityAction.Argument>
+          <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+        </ActivityAction.Argument>
+        <oa:ClickElement KeyModifiers="{x:Null}" AnimateMouse="False" Button="1" DoubleClick="False" Element="[item]" sap2010:WorkflowViewState.IdRef="ClickElement_7" OffsetX="201" OffsetY="23" PostWait="00:00:00" VirtualClick="True" />
+      </ActivityAction>
+    </on:GetElement>
+    <oa:ForEachDataRow DataView="{x:Null}" DataTable="[dt]" sap2010:WorkflowViewState.IdRef="ForEachDataRow_3">
+      <ActivityAction x:TypeArguments="sd:DataRowView">
+        <ActivityAction.Argument>
+          <DelegateInArgument x:TypeArguments="sd:DataRowView" Name="row" />
+        </ActivityAction.Argument>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <on:GetElement Elements="{x:Null}" From="{x:Null}" Image="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" DisplayName="labelCompanyName" sap2010:WorkflowViewState.IdRef="GetElement_22" MaxResults="1" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;&quot;,&#xA;    &quot;url&quot;: &quot;http://www.rpachallenge.com/?4ph6v=&amp;MFDbD=&amp;D8oVk=&amp;xa0PT=&amp;yp5Hc=&amp;MtTgu=&amp;Tu0dx=&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//*[@ng-reflect-name=\&quot;labelCompanyName\&quot;]&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(0)]">
+            <ActivityAction x:TypeArguments="on:NMElement">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+              </ActivityAction.Argument>
+              <Assign x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Assign`1_15" To="[item.value]" Value="[row(2).tostring()]" />
+            </ActivityAction>
+          </on:GetElement>
+          <on:GetElement Elements="{x:Null}" From="{x:Null}" Image="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" DisplayName="labelFirstName" sap2010:WorkflowViewState.IdRef="GetElement_23" MaxResults="1" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;&quot;,&#xA;    &quot;url&quot;: &quot;http://www.rpachallenge.com/?4ph6v=&amp;MFDbD=&amp;D8oVk=&amp;xa0PT=&amp;yp5Hc=&amp;MtTgu=&amp;Tu0dx=&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//*[@ng-reflect-name=\&quot;labelFirstName\&quot;]&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(0)]">
+            <ActivityAction x:TypeArguments="on:NMElement">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+              </ActivityAction.Argument>
+              <Assign x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Assign`1_16" To="[item.value]" Value="[row(0).tostring()]" />
+            </ActivityAction>
+          </on:GetElement>
+          <on:GetElement Elements="{x:Null}" From="{x:Null}" Image="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" DisplayName="labelLastName" sap2010:WorkflowViewState.IdRef="GetElement_24" MaxResults="1" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;&quot;,&#xA;    &quot;url&quot;: &quot;http://www.rpachallenge.com/?4ph6v=&amp;MFDbD=&amp;D8oVk=&amp;xa0PT=&amp;yp5Hc=&amp;MtTgu=&amp;Tu0dx=&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//*[@ng-reflect-name=\&quot;labelLastName\&quot;]&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(0)]">
+            <ActivityAction x:TypeArguments="on:NMElement">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+              </ActivityAction.Argument>
+              <Assign x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Assign`1_17" To="[item.value]" Value="[row(1).tostring()]" />
+            </ActivityAction>
+          </on:GetElement>
+          <on:GetElement Elements="{x:Null}" From="{x:Null}" Image="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" DisplayName="labelRole" sap2010:WorkflowViewState.IdRef="GetElement_25" MaxResults="1" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;&quot;,&#xA;    &quot;url&quot;: &quot;http://www.rpachallenge.com/?4ph6v=&amp;MFDbD=&amp;D8oVk=&amp;xa0PT=&amp;yp5Hc=&amp;MtTgu=&amp;Tu0dx=&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//*[@ng-reflect-name=\&quot;labelRole\&quot;]&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(0)]">
+            <ActivityAction x:TypeArguments="on:NMElement">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+              </ActivityAction.Argument>
+              <Assign x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Assign`1_18" To="[item.value]" Value="[row(3).tostring()]" />
+            </ActivityAction>
+          </on:GetElement>
+          <on:GetElement Elements="{x:Null}" From="{x:Null}" Image="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" DisplayName="labelAddress" sap2010:WorkflowViewState.IdRef="GetElement_26" MaxResults="1" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;&quot;,&#xA;    &quot;url&quot;: &quot;http://www.rpachallenge.com/?4ph6v=&amp;MFDbD=&amp;D8oVk=&amp;xa0PT=&amp;yp5Hc=&amp;MtTgu=&amp;Tu0dx=&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//*[@ng-reflect-name=\&quot;labelAddress\&quot;]&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(0)]">
+            <ActivityAction x:TypeArguments="on:NMElement">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+              </ActivityAction.Argument>
+              <Assign x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Assign`1_19" To="[item.value]" Value="[row(4).tostring()]" />
+            </ActivityAction>
+          </on:GetElement>
+          <on:GetElement Elements="{x:Null}" From="{x:Null}" Image="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" DisplayName="labelEmail" sap2010:WorkflowViewState.IdRef="GetElement_27" MaxResults="1" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;&quot;,&#xA;    &quot;url&quot;: &quot;http://www.rpachallenge.com/?4ph6v=&amp;MFDbD=&amp;D8oVk=&amp;xa0PT=&amp;yp5Hc=&amp;MtTgu=&amp;Tu0dx=&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//*[@ng-reflect-name=\&quot;labelEmail\&quot;]&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(0)]">
+            <ActivityAction x:TypeArguments="on:NMElement">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+              </ActivityAction.Argument>
+              <Assign x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Assign`1_20" To="[item.value]" Value="[row(5).tostring()]" />
+            </ActivityAction>
+          </on:GetElement>
+          <on:GetElement Elements="{x:Null}" From="{x:Null}" Image="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" DisplayName="labelPhone" sap2010:WorkflowViewState.IdRef="GetElement_28" MaxResults="1" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;&quot;,&#xA;    &quot;url&quot;: &quot;http://www.rpachallenge.com/?4ph6v=&amp;MFDbD=&amp;D8oVk=&amp;xa0PT=&amp;yp5Hc=&amp;MtTgu=&amp;Tu0dx=&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//*[@ng-reflect-name=\&quot;labelPhone\&quot;]&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(0)]">
+            <ActivityAction x:TypeArguments="on:NMElement">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+              </ActivityAction.Argument>
+              <Assign x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Assign`1_21" To="[item.value]" Value="[row(6).tostring()]" />
+            </ActivityAction>
+          </on:GetElement>
+          <on:GetElement Elements="{x:Null}" From="{x:Null}" Image="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" DisplayName=" submit " sap2010:WorkflowViewState.IdRef="GetElement_29" MaxResults="1" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: null,&#xA;    &quot;url&quot;: &quot;http://www.rpachallenge.com/?4ph6v=&amp;MFDbD=&amp;D8oVk=&amp;xa0PT=&amp;yp5Hc=&amp;MtTgu=&amp;Tu0dx=&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;/html/body/app-root/div[2]/app-rpa1/div/div[2]/form/input&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(0)]">
+            <ActivityAction x:TypeArguments="on:NMElement">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+              </ActivityAction.Argument>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <oa:ClickElement KeyModifiers="{x:Null}" PostWait="{x:Null}" AnimateMouse="False" Button="1" DoubleClick="False" Element="[item]" sap2010:WorkflowViewState.IdRef="ClickElement_8" OffsetX="68" OffsetY="11" VirtualClick="True" />
+              </Sequence>
+            </ActivityAction>
+          </on:GetElement>
+        </Sequence>
+      </ActivityAction>
+    </oa:ForEachDataRow>
+    <sads:DebugSymbol.Symbol>dw1DOlxFbXB0eS54YW1sAA==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="OpenURL_1" sap:VirtualizedContainerService.HintSize="500,55" />
+      <sap2010:ViewStateData Id="ClickElement_11" sap:VirtualizedContainerService.HintSize="200,36" />
+      <sap2010:ViewStateData Id="If_2" sap:VirtualizedContainerService.HintSize="464,208" />
+      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="486,332">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="GetElement_30" sap:VirtualizedContainerService.HintSize="500,562">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DownloadFile_3" sap:VirtualizedContainerService.HintSize="500,70">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ReadExcel_1" sap:VirtualizedContainerService.HintSize="500,70" />
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="500,60" />
+      <sap2010:ViewStateData Id="ClickElement_7" sap:VirtualizedContainerService.HintSize="200,36" />
+      <sap2010:ViewStateData Id="GetElement_21" sap:VirtualizedContainerService.HintSize="500,136">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign`1_15" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="GetElement_22" sap:VirtualizedContainerService.HintSize="236,152">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign`1_16" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="GetElement_23" sap:VirtualizedContainerService.HintSize="236,152">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign`1_17" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="GetElement_24" sap:VirtualizedContainerService.HintSize="236,152">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign`1_18" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="GetElement_25" sap:VirtualizedContainerService.HintSize="236,152">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign`1_19" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="GetElement_26" sap:VirtualizedContainerService.HintSize="236,152">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign`1_20" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="GetElement_27" sap:VirtualizedContainerService.HintSize="236,152">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign`1_21" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="GetElement_28" sap:VirtualizedContainerService.HintSize="236,152">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ClickElement_8" sap:VirtualizedContainerService.HintSize="200,36" />
+      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="222,160">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="GetElement_29" sap:VirtualizedContainerService.HintSize="236,290" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="258,1758">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachDataRow_3" sap:VirtualizedContainerService.HintSize="500,1858" />
+      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="522,3175">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="rpachallenge-InputForms_1" sap:VirtualizedContainerService.HintSize="562,3255" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

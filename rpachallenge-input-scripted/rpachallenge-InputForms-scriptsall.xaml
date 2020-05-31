@@ -1,0 +1,147 @@
+<Activity mc:Ignorable="sap sap2010 sads" x:Class="rpachallenge-InputForms-scriptsall" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="New Workflow5_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:oa="clr-namespace:OpenRPA.Activities;assembly=OpenRPA"
+ xmlns:on="clr-namespace:OpenRPA.NM;assembly=OpenRPA.NM"
+ xmlns:ou="clr-namespace:OpenRPA.Utilities;assembly=OpenRPA.Utilities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>OpenRPA</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>OpenRPA.IE</x:String>
+      <x:String>OpenRPA.Image</x:String>
+      <x:String>OpenRPA.Java</x:String>
+      <x:String>OpenRPA.NM</x:String>
+      <x:String>OpenRPA.Office</x:String>
+      <x:String>OpenRPA.SAP</x:String>
+      <x:String>OpenRPA.Script</x:String>
+      <x:String>OpenRPA.Windows</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>OpenRPA</AssemblyReference>
+      <AssemblyReference>OpenRPA.Interfaces</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>OpenRPA.IE</AssemblyReference>
+      <AssemblyReference>OpenRPA.Image</AssemblyReference>
+      <AssemblyReference>OpenRPA.Java</AssemblyReference>
+      <AssemblyReference>OpenRPA.NM</AssemblyReference>
+      <AssemblyReference>OpenRPA.Office</AssemblyReference>
+      <AssemblyReference>OpenRPA.SAP</AssemblyReference>
+      <AssemblyReference>OpenRPA.Script</AssemblyReference>
+      <AssemblyReference>OpenRPA.Windows</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Net.WebSockets.Client.Managed</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.Globalization.Extensions</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataSet" Name="ds" />
+      <Variable x:TypeArguments="x:String" Name="script" />
+    </Sequence.Variables>
+    <on:OpenURL Browser="{x:Null}" NewTab="{x:Null}" sap2010:WorkflowViewState.IdRef="OpenURL_1" Url="http://www.rpachallenge.com/" />
+    <ou:DownloadFile sap2010:WorkflowViewState.IdRef="DownloadFile_1" LocalPath="[&quot;%USERPROFILE%\Documents\challenge.xlsx&quot;]" Overwrite="False" URL="http://www.rpachallenge.com/assets/downloadFiles/challenge.xlsx" />
+    <ou:ReadExcel DataSet="[ds]" Filename="%USERPROFILE%\Documents\challenge.xlsx" sap2010:WorkflowViewState.IdRef="ReadExcel_2" UseHeaderRow="True" />
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[script]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String" xml:space="preserve">["function SetValue(name, value) {" &amp; VbCrLf &amp; _
+"	xpath = '//*[@ng-reflect-name=""' + name + '""]';" &amp; VbCrLf &amp; _
+"	var ele = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;" &amp; VbCrLf &amp; _
+"	ele.value = value;" &amp; VbCrLf &amp; _
+"}" &amp; VbCrLf &amp; _
+"function Click(xpath) {" &amp; VbCrLf &amp; _
+"	var ele = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;" &amp; VbCrLf &amp; _
+"	ele.click();" &amp; VbCrLf &amp; _
+"}" &amp; VbCrLf &amp; _
+"Click('/html/body/app-root/div[2]/app-rpa1/div/div[1]/div[6]/button');" &amp; VbCrLf]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <oa:ForEachDataRow DataView="{x:Null}" DataTable="[ds.Tables(0)]" sap2010:WorkflowViewState.IdRef="ForEachDataRow_1">
+      <ActivityAction x:TypeArguments="sd:DataRowView">
+        <ActivityAction.Argument>
+          <DelegateInArgument x:TypeArguments="sd:DataRowView" Name="row" />
+        </ActivityAction.Argument>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[script]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">[script + "SetValue('labelCompanyName', '" + row(2).tostring() + "');" &amp; VbCrLf &amp; _
+"SetValue('labelFirstName', '" + row(0).tostring() + "');" &amp; VbCrLf &amp; _
+"SetValue('labelLastName', '" + row(1).tostring() + "');" &amp; VbCrLf &amp; _
+"SetValue('labelRole', '" + row(3).tostring() + "');" &amp; VbCrLf &amp; _
+"SetValue('labelAddress', '" + row(4).tostring() + "');" &amp; VbCrLf &amp; _
+"SetValue('labelEmail', '" + row(5).tostring() + "');" &amp; VbCrLf &amp; _
+"SetValue('labelPhone', '" + row(6).tostring() + "');" &amp; VbCrLf &amp; _
+"Click('/html/body/app-root/div[2]/app-rpa1/div/div[2]/form/input');"]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </ActivityAction>
+    </oa:ForEachDataRow>
+    <on:ExecuteScript Browser="{x:Null}" FrameId="{x:Null}" Result="{x:Null}" sap2010:WorkflowViewState.IdRef="ExecuteScript_2" Script="[script]" />
+    <sads:DebugSymbol.Symbol>dw1DOlxFbXB0eS54YW1sAA==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="OpenURL_1" sap:VirtualizedContainerService.HintSize="314,55" />
+      <sap2010:ViewStateData Id="DownloadFile_1" sap:VirtualizedContainerService.HintSize="314,70">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ReadExcel_2" sap:VirtualizedContainerService.HintSize="314,70" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="314,64" />
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="242,64" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="264,188">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachDataRow_1" sap:VirtualizedContainerService.HintSize="314,288" />
+      <sap2010:ViewStateData Id="ExecuteScript_2" sap:VirtualizedContainerService.HintSize="314,36" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="336,907">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="New Workflow5_1" sap:VirtualizedContainerService.HintSize="376,987" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
