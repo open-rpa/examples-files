@@ -1,0 +1,191 @@
+<Activity mc:Ignorable="sap sap2010 sads" x:Class="Invoke_Code_Examples" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="Invoke Code_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:osa="clr-namespace:OpenRPA.Script.Activities;assembly=OpenRPA.Script"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>OpenRPA</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>OpenRPA.IE</x:String>
+      <x:String>OpenRPA.Image</x:String>
+      <x:String>OpenRPA.Java</x:String>
+      <x:String>OpenRPA.NM</x:String>
+      <x:String>OpenRPA.Office</x:String>
+      <x:String>OpenRPA.Script</x:String>
+      <x:String>OpenRPA.Windows</x:String>
+      <x:String>System.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>OpenRPA</AssemblyReference>
+      <AssemblyReference>OpenRPA.Interfaces</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>OpenRPA.IE</AssemblyReference>
+      <AssemblyReference>OpenRPA.Image</AssemblyReference>
+      <AssemblyReference>OpenRPA.Java</AssemblyReference>
+      <AssemblyReference>OpenRPA.NM</AssemblyReference>
+      <AssemblyReference>OpenRPA.Office</AssemblyReference>
+      <AssemblyReference>OpenRPA.Script</AssemblyReference>
+      <AssemblyReference>OpenRPA.Windows</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Net.WebSockets.Client.Managed</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.Globalization.Extensions</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Default="Can VB Read this?" Name="vbvariable" />
+      <Variable x:TypeArguments="x:String" Default="Can C# Read this?" Name="csharpvariable" />
+      <Variable x:TypeArguments="x:String" Default="Can AutoHotkey Read this?" Name="ahkvariable" />
+      <Variable x:TypeArguments="x:String" Default="Can PowerShell Read this?" Name="psvariable" />
+      <Variable x:TypeArguments="x:String" Default="Can Python Read this?" Name="pythonvariable" />
+    </Sequence.Variables>
+    <osa:InvokeCode PipelineOutput="{x:Null}" Code="Console.WriteLine(vbvariable)&#xA;vbvariable = &quot;Hello from VB&quot;&#xA;" DisplayName="VB" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="VB">
+      <osa:InvokeCode.namespaces>
+        <x:Array Type="x:String">
+          <x:String>System</x:String>
+          <x:String>System.Xml</x:String>
+          <x:String>OpenRPA</x:String>
+          <x:String>System.Data</x:String>
+          <x:String>System.Linq</x:String>
+          <x:String>Microsoft.VisualBasic</x:String>
+          <x:String>OpenRPA.IE</x:String>
+          <x:String>OpenRPA.Image</x:String>
+          <x:String>OpenRPA.Java</x:String>
+          <x:String>OpenRPA.NM</x:String>
+          <x:String>OpenRPA.Office</x:String>
+          <x:String>OpenRPA.Script</x:String>
+          <x:String>OpenRPA.Windows</x:String>
+          <x:String>System.Collections</x:String>
+          <x:String>System.Collections.Generic</x:String>
+        </x:Array>
+      </osa:InvokeCode.namespaces>
+    </osa:InvokeCode>
+    <osa:InvokeCode PipelineOutput="{x:Null}" Code="Console.WriteLine(csharpvariable);&#xA;csharpvariable = &quot;Hello from C#&quot;;&#xA;" DisplayName="C#" sap2010:WorkflowViewState.IdRef="InvokeCode_2" Language="C#">
+      <osa:InvokeCode.namespaces>
+        <x:Array Type="x:String">
+          <x:String>System</x:String>
+          <x:String>System.Xml</x:String>
+          <x:String>OpenRPA</x:String>
+          <x:String>System.Data</x:String>
+          <x:String>System.Linq</x:String>
+          <x:String>Microsoft.VisualBasic</x:String>
+          <x:String>OpenRPA.IE</x:String>
+          <x:String>OpenRPA.Image</x:String>
+          <x:String>OpenRPA.Java</x:String>
+          <x:String>OpenRPA.NM</x:String>
+          <x:String>OpenRPA.Office</x:String>
+          <x:String>OpenRPA.Script</x:String>
+          <x:String>OpenRPA.Windows</x:String>
+          <x:String>System.Collections</x:String>
+          <x:String>System.Collections.Generic</x:String>
+        </x:Array>
+      </osa:InvokeCode.namespaces>
+    </osa:InvokeCode>
+    <osa:InvokeCode PipelineOutput="{x:Null}" Code="; MsgBox, Parameter1 is %Parameter1%&#xA;ahkvariable = Hello back rom AHK" DisplayName="AutoHotkey" sap2010:WorkflowViewState.IdRef="InvokeCode_3" Language="AutoHotkey">
+      <osa:InvokeCode.namespaces>
+        <x:Array Type="x:String">
+          <x:String>System</x:String>
+          <x:String>System.Xml</x:String>
+          <x:String>OpenRPA</x:String>
+          <x:String>System.Data</x:String>
+          <x:String>System.Linq</x:String>
+          <x:String>Microsoft.VisualBasic</x:String>
+          <x:String>OpenRPA.IE</x:String>
+          <x:String>OpenRPA.Image</x:String>
+          <x:String>OpenRPA.Java</x:String>
+          <x:String>OpenRPA.NM</x:String>
+          <x:String>OpenRPA.Office</x:String>
+          <x:String>OpenRPA.Script</x:String>
+          <x:String>OpenRPA.Windows</x:String>
+          <x:String>System.Collections</x:String>
+          <x:String>System.Collections.Generic</x:String>
+        </x:Array>
+      </osa:InvokeCode.namespaces>
+    </osa:InvokeCode>
+    <osa:InvokeCode PipelineOutput="{x:Null}" Code="$psvariable | Out-String&#xA;$psvariable = &quot;Hello back from PowerShell&quot;" DisplayName="PowerShell" sap2010:WorkflowViewState.IdRef="InvokeCode_5" Language="PowerShell">
+      <osa:InvokeCode.namespaces>
+        <x:Array Type="x:String">
+          <x:String>System</x:String>
+          <x:String>System.Xml</x:String>
+          <x:String>OpenRPA</x:String>
+          <x:String>System.Data</x:String>
+          <x:String>System.Linq</x:String>
+          <x:String>Microsoft.VisualBasic</x:String>
+          <x:String>OpenRPA.IE</x:String>
+          <x:String>OpenRPA.Image</x:String>
+          <x:String>OpenRPA.Java</x:String>
+          <x:String>OpenRPA.NM</x:String>
+          <x:String>OpenRPA.Office</x:String>
+          <x:String>OpenRPA.Script</x:String>
+          <x:String>OpenRPA.Windows</x:String>
+          <x:String>System.Collections</x:String>
+          <x:String>System.Collections.Generic</x:String>
+        </x:Array>
+      </osa:InvokeCode.namespaces>
+    </osa:InvokeCode>
+    <osa:InvokeCode PipelineOutput="{x:Null}" Code="print(pythonvariable)&#xA;pythonvariable = &quot;Hello back from Python&quot;" DisplayName="Python" sap2010:WorkflowViewState.IdRef="InvokeCode_4" Language="Python">
+      <osa:InvokeCode.namespaces>
+        <x:Array Type="x:String">
+          <x:String>System</x:String>
+          <x:String>System.Xml</x:String>
+          <x:String>OpenRPA</x:String>
+          <x:String>System.Data</x:String>
+          <x:String>System.Linq</x:String>
+          <x:String>Microsoft.VisualBasic</x:String>
+          <x:String>OpenRPA.IE</x:String>
+          <x:String>OpenRPA.Image</x:String>
+          <x:String>OpenRPA.Java</x:String>
+          <x:String>OpenRPA.NM</x:String>
+          <x:String>OpenRPA.Office</x:String>
+          <x:String>OpenRPA.Script</x:String>
+          <x:String>OpenRPA.Windows</x:String>
+          <x:String>System.Collections</x:String>
+          <x:String>System.Collections.Generic</x:String>
+        </x:Array>
+      </osa:InvokeCode.namespaces>
+    </osa:InvokeCode>
+    <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[VbCrLf &amp; &quot;vbvariable: &quot; &amp; vbvariable &amp; VbCrLf &amp; _&#xD;&#xA;&quot;csharpvariable: &quot; &amp; csharpvariable &amp; VbCrLf &amp; _&#xD;&#xA;&quot;ahkvariable: &quot; &amp; ahkvariable &amp; VbCrLf &amp; _&#xD;&#xA;&quot;psvariable: &quot; &amp; psvariable &amp; VbCrLf &amp; _&#xD;&#xA;&quot;pythonvariable: &quot; &amp; pythonvariable]" />
+    <sads:DebugSymbol.Symbol>dw1DOlxFbXB0eS54YW1sAA==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="InvokeCode_1" sap:VirtualizedContainerService.HintSize="210,55" />
+      <sap2010:ViewStateData Id="InvokeCode_2" sap:VirtualizedContainerService.HintSize="210,55" />
+      <sap2010:ViewStateData Id="InvokeCode_3" sap:VirtualizedContainerService.HintSize="210,55" />
+      <sap2010:ViewStateData Id="InvokeCode_5" sap:VirtualizedContainerService.HintSize="210,55" />
+      <sap2010:ViewStateData Id="InvokeCode_4" sap:VirtualizedContainerService.HintSize="210,55" />
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="210,64" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="232,663">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Invoke Code_1" sap:VirtualizedContainerService.HintSize="272,743" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

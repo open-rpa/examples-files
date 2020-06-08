@@ -97,34 +97,15 @@
         </ActivityAction.Argument>
         <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
           <Sequence.Variables>
-            <Variable x:TypeArguments="x:String" Name="script" />
+            <Variable x:TypeArguments="x:String" Default="[row(2).tostring()]" Name="labelCompanyName" />
+            <Variable x:TypeArguments="x:String" Default="[row(1).tostring()]" Name="labelLastName" />
+            <Variable x:TypeArguments="x:String" Default="[row(3).tostring()]" Name="labelRole" />
+            <Variable x:TypeArguments="x:String" Default="[row(4).tostring()]" Name="labelAddress" />
+            <Variable x:TypeArguments="x:String" Default="[row(5).tostring()]" Name="labelEmail" />
+            <Variable x:TypeArguments="x:String" Default="[row(6).tostring()]" Name="labelPhone" />
+            <Variable x:TypeArguments="x:String" Default="[row(0).tostring()]" Name="labelFirstName" />
           </Sequence.Variables>
-          <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[script]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String" xml:space="preserve">["function SetValue(name, value) {" &amp; VbCrLf &amp; _
-"	xpath = '//*[@ng-reflect-name=""' + name + '""]';" &amp; VbCrLf &amp; _
-"	var ele = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;" &amp; VbCrLf &amp; _
-"	ele.value = value;" &amp; VbCrLf &amp; _
-"}" &amp; VbCrLf &amp; _
-"function Submit() {" &amp; VbCrLf &amp; _
-"	xpath = '/html/body/app-root/div[2]/app-rpa1/div/div[2]/form/input';" &amp; VbCrLf &amp; _
-"	var ele = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;" &amp; VbCrLf &amp; _
-"	ele.click();" &amp; VbCrLf &amp; _
-"}" &amp; VbCrLf &amp; _
-"SetValue('labelCompanyName', '" + row(2).tostring() + "');" &amp; VbCrLf &amp; _
-"SetValue('labelFirstName', '" + row(0).tostring() + "');" &amp; VbCrLf &amp; _
-"SetValue('labelLastName', '" + row(1).tostring() + "');" &amp; VbCrLf &amp; _
-"SetValue('labelRole', '" + row(3).tostring() + "');" &amp; VbCrLf &amp; _
-"SetValue('labelAddress', '" + row(4).tostring() + "');" &amp; VbCrLf &amp; _
-"SetValue('labelEmail', '" + row(5).tostring() + "');" &amp; VbCrLf &amp; _
-"SetValue('labelPhone', '" + row(6).tostring() + "');" &amp; VbCrLf &amp; _
-"Submit();"]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <on:ExecuteScript Browser="{x:Null}" FrameId="{x:Null}" Result="{x:Null}" sap2010:WorkflowViewState.IdRef="ExecuteScript_1" Script="[script]" />
+          <on:ExecuteScript Browser="{x:Null}" FrameId="{x:Null}" Result="{x:Null}" sap2010:WorkflowViewState.IdRef="ExecuteScript_1" Script="function SetValue(name, value) {&#xA; xpath = '//*[@ng-reflect-name=&quot;' + name + '&quot;]';&#xA; var ele = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;&#xA; ele.value = value;&#xA;}&#xA;function Submit() {&#xA; xpath = '/html/body/app-root/div[2]/app-rpa1/div/div[2]/form/input';&#xA; var ele = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;&#xA; ele.click();&#xA;}&#xA;SetValue('labelCompanyName', '{{labelCompanyName}}');&#xA;SetValue('labelFirstName', '{{labelFirstName}}');&#xA;SetValue('labelLastName', '{{labelLastName}}');&#xA;SetValue('labelRole', '{{labelRole}}');&#xA;SetValue('labelAddress', '{{labelAddress}}');&#xA;SetValue('labelEmail', '{{labelEmail}}');&#xA;SetValue('labelPhone', '{{labelPhone}}');&#xA;Submit();" />
         </Sequence>
       </ActivityAction>
     </oa:ForEachDataRow>
@@ -168,24 +149,23 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="242,64" />
-      <sap2010:ViewStateData Id="ExecuteScript_1" sap:VirtualizedContainerService.HintSize="242,36" />
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="264,264">
+      <sap2010:ViewStateData Id="ExecuteScript_1" sap:VirtualizedContainerService.HintSize="200,55" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="222,179">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="ForEachDataRow_1" sap:VirtualizedContainerService.HintSize="314,364" />
-      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="336,1395">
+      <sap2010:ViewStateData Id="ForEachDataRow_1" sap:VirtualizedContainerService.HintSize="314,279" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="336,1310">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="New Workflow5_1" sap:VirtualizedContainerService.HintSize="376,1755" />
+      <sap2010:ViewStateData Id="New Workflow5_1" sap:VirtualizedContainerService.HintSize="376,1470" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>
