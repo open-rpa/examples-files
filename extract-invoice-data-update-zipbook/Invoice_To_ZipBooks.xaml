@@ -1,0 +1,839 @@
+<Activity mc:Ignorable="sap sap2010 sads" x:Class="Invoice_To_ZipBooks" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="New Workflow_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:oa="clr-namespace:OpenRPA.Activities;assembly=OpenRPA"
+ xmlns:oi="clr-namespace:OpenRPA.Interfaces;assembly=OpenRPA.Interfaces"
+ xmlns:on="clr-namespace:OpenRPA.NM;assembly=OpenRPA.NM"
+ xmlns:ou="clr-namespace:OpenRPA.Utilities;assembly=OpenRPA.Utilities"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:si="clr-namespace:System.IO;assembly=mscorlib"
+ xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>OpenRPA</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>OpenRPA.IE</x:String>
+      <x:String>OpenRPA.Image</x:String>
+      <x:String>OpenRPA.Java</x:String>
+      <x:String>OpenRPA.NM</x:String>
+      <x:String>OpenRPA.Office</x:String>
+      <x:String>OpenRPA.Script</x:String>
+      <x:String>OpenRPA.Windows</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Collections.Generic</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>OpenRPA</AssemblyReference>
+      <AssemblyReference>OpenRPA.Interfaces</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>OpenRPA.IE</AssemblyReference>
+      <AssemblyReference>OpenRPA.Image</AssemblyReference>
+      <AssemblyReference>OpenRPA.Java</AssemblyReference>
+      <AssemblyReference>OpenRPA.NM</AssemblyReference>
+      <AssemblyReference>OpenRPA.Office</AssemblyReference>
+      <AssemblyReference>OpenRPA.Script</AssemblyReference>
+      <AssemblyReference>OpenRPA.Windows</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Net.WebSockets.Client.Managed</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Globalization.Extensions</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Invoice To ZipBook" sap2010:WorkflowViewState.IdRef="Sequence_12">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Name="count" />
+      <Variable x:TypeArguments="x:Int32" Name="inc_count" />
+      <Variable x:TypeArguments="si:DirectoryInfo" Name="Files" />
+      <Variable x:TypeArguments="x:String" Name="folder_path" />
+      <Variable x:TypeArguments="x:String" Name="dir_info" />
+      <Variable x:TypeArguments="sd:DataTable" Name="DT_Table" />
+      <Variable x:TypeArguments="x:String" Name="UserName" />
+      <Variable x:TypeArguments="x:String" Name="Password" />
+      <Variable x:TypeArguments="x:String" Name="InputFilePath" />
+      <Variable x:TypeArguments="x:String" Name="OutputFilePath" />
+    </Sequence.Variables>
+    <Assign DisplayName="Assign UserName" sap2010:WorkflowViewState.IdRef="Assign_80">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[UserName]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign Password" sap2010:WorkflowViewState.IdRef="Assign_81">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[Password]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign Input File Path" sap2010:WorkflowViewState.IdRef="Assign_82">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[InputFilePath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign Output File Path" sap2010:WorkflowViewState.IdRef="Assign_83">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[OutputFilePath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <Sequence DisplayName="Login to Zip Books" sap2010:WorkflowViewState.IdRef="Sequence_30">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="oi:IElement" Name="item1" />
+        <Variable x:TypeArguments="on:NMElement[]" Name="Login" />
+      </Sequence.Variables>
+      <on:OpenURL Browser="{x:Null}" DisplayName="Open URL- ZipBook" sap2010:WorkflowViewState.IdRef="OpenURL_5" NewTab="True" Url="https://app.zipbooks.com/" />
+      <on:GetElement From="{x:Null}" Image="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" DisplayName="check login" Elements="[Login]" sap2010:WorkflowViewState.IdRef="GetElement_17" MaxResults="1" MinResults="0" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;-1&quot;,&#xA;    &quot;url&quot;: &quot;https://app.zipbooks.com/login&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//button[@class='btn btn-depressable btn-yoyo btn-purple']&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(3)]">
+        <ActivityAction x:TypeArguments="on:NMElement">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+          </ActivityAction.Argument>
+        </ActivityAction>
+      </on:GetElement>
+      <If Condition="[login.count=1]" DisplayName="To check Login" sap2010:WorkflowViewState.IdRef="If_7">
+        <If.Then>
+          <Sequence DisplayName="Sign in" sap2010:WorkflowViewState.IdRef="Sequence_29">
+            <on:GetElement Elements="{x:Null}" From="{x:Null}" LoopAction="{x:Null}" DisplayName="Get Element--signin user name" sap2010:WorkflowViewState.IdRef="GetElement_18" Image="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" MaxResults="1" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;-1&quot;,&#xA;    &quot;url&quot;: &quot;https://app.zipbooks.com/login&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//input[@title='Email']&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(3)]" WaitForReady="True">
+              <ActivityAction x:TypeArguments="on:NMElement">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+                </ActivityAction.Argument>
+                <Assign sap2010:WorkflowViewState.IdRef="Assign_70">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[item.value]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[UserName]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </ActivityAction>
+            </on:GetElement>
+            <on:GetElement Elements="{x:Null}" From="{x:Null}" LoopAction="{x:Null}" DisplayName="Get Element--signin Password" sap2010:WorkflowViewState.IdRef="GetElement_19" Image="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" MaxResults="1" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;-1&quot;,&#xA;    &quot;url&quot;: &quot;https://app.zipbooks.com/login&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//input[@title='Password']&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(3)]" WaitForReady="True">
+              <ActivityAction x:TypeArguments="on:NMElement">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+                </ActivityAction.Argument>
+                <Assign sap2010:WorkflowViewState.IdRef="Assign_71">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[item.value]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">demorpa4u</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </ActivityAction>
+            </on:GetElement>
+            <on:GetElement Elements="{x:Null}" From="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" DisplayName=" Login Button" sap2010:WorkflowViewState.IdRef="GetElement_20" Image="/9j/4AAQSkZJRgABAQEAYABgAAD/4QBORXhpZgAATU0AKgAAAAgABAMBAAUAAAABAAAAPlEQAAEAAAABAQAAAFERAAQAAAABAAAOw1ESAAQAAAABAAAOwwAAAAAAAYagAACxj//bAEMACAYGBwYFCAcHBwkJCAoMFA0MCwsMGRITDxQdGh8eHRocHCAkLicgIiwjHBwoNyksMDE0NDQfJzk9ODI8LjM0Mv/bAEMBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/AABEIAB4ALgMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/APeaKKKYBRRRQAUUUUAFFFFABRRRQAUUUUAf/9k=" MaxResults="1" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;-1&quot;,&#xA;    &quot;url&quot;: &quot;https://app.zipbooks.com/login&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//button[@class='btn btn-depressable btn-yoyo btn-purple']&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(3)]">
+              <ActivityAction x:TypeArguments="on:NMElement">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+                </ActivityAction.Argument>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_28">
+                  <oa:ClickElement KeyModifiers="{x:Null}" AnimateMouse="False" Button="1" DoubleClick="False" Element="[item]" sap2010:WorkflowViewState.IdRef="ClickElement_9" OffsetX="0" OffsetY="0" PostWait="00:00:00" VirtualClick="True" />
+                  <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_30" Text="Signed in" />
+                </Sequence>
+              </ActivityAction>
+            </on:GetElement>
+          </Sequence>
+        </If.Then>
+      </If>
+    </Sequence>
+    <Assign DisplayName="Assign- folder path" sap2010:WorkflowViewState.IdRef="Assign_78">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[folder_path]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[InputFilePath]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign file information" sap2010:WorkflowViewState.IdRef="Assign_77">
+      <Assign.To>
+        <OutArgument x:TypeArguments="si:DirectoryInfo">[Files]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="si:DirectoryInfo">[new DirectoryInfo(folder_path)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ForEach x:TypeArguments="si:FileSystemInfo" DisplayName="ForEach&lt;FileSystemInfo&gt;" sap2010:WorkflowViewState.IdRef="ForEach`1_9" Values="[Files.GetFileSystemInfos(&quot;*.pdf&quot;)]">
+      <ActivityAction x:TypeArguments="si:FileSystemInfo">
+        <ActivityAction.Argument>
+          <DelegateInArgument x:TypeArguments="si:FileSystemInfo" Name="file" />
+        </ActivityAction.Argument>
+        <Sequence DisplayName="Reading each pdf in the folder and extracting data." sap2010:WorkflowViewState.IdRef="Sequence_34">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="Str_PDF" />
+            <Variable x:TypeArguments="x:String" Name="Invoice_Number" />
+            <Variable x:TypeArguments="str:Match[]" Name="Matches" />
+            <Variable x:TypeArguments="x:String" Name="Bill_To" />
+            <Variable x:TypeArguments="x:String" Name="Start_Date" />
+            <Variable x:TypeArguments="x:String" Name="Table_Content" />
+            <Variable x:TypeArguments="s:String[]" Name="Str_Array" />
+            <Variable x:TypeArguments="x:String" Name="out_new" />
+            <Variable x:TypeArguments="x:Int32" Name="outer_count" />
+            <Variable x:TypeArguments="x:Int32" Name="inner_count" />
+            <Variable x:TypeArguments="sd:DataRow" Name="dtrow" />
+            <Variable x:TypeArguments="s:Object[]" Name="row_Array" />
+            <Variable x:TypeArguments="s:String[]" Name="char_Array" />
+            <Variable x:TypeArguments="x:String" Name="Invoice_Total" />
+            <Variable x:TypeArguments="x:String" Name="Amount_Due" />
+            <Variable x:TypeArguments="x:String" Name="find_Str" />
+            <Variable x:TypeArguments="x:Int32" Name="Start" />
+            <Variable x:TypeArguments="sd:DataRow[]" Name="Filtered_DT" />
+            <Variable x:TypeArguments="sd:DataTable" Name="New_DT" />
+          </Sequence.Variables>
+          <ou:ReadPDF Result="{x:Null}" AllText="[Str_PDF]" Filename="[file.FullName]" sap2010:WorkflowViewState.IdRef="ReadPDF_3" />
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_46">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[Invoice_Number]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(Str_PDF,"(?&lt;=(Invoice)|(INVOICE No)|(Invoice #:)|(Invoice#:)).*").Value]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_47">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[Bill_To]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(Str_PDF,"(?&lt;=BILL TO)([\S\s]*)(?=DATE:)").Value.Trim]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_48">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[Start_Date]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(Str_PDF,"(?&lt;=DATE:)([\S\s]*)(?=TERMS:)").Value.Trim]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_49">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[find_Str]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">TAX (0%)</InArgument>
+            </Assign.Value>
+          </Assign>
+          <If Condition="[Str_PDF.Contains(find_Str)]" DisplayName="To extract data" sap2010:WorkflowViewState.IdRef="If_5">
+            <If.Then>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_25">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="Invoice_Total_check" />
+                </Sequence.Variables>
+                <Assign sap2010:WorkflowViewState.IdRef="Assign_50">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[Start]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">[Str_PDF.IndexOf(find_Str) + find_Str.Length]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign sap2010:WorkflowViewState.IdRef="Assign_51">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[Invoice_Total_check]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[Str_PDF.Substring(Start).split(" "c)(0).tostring.Trim]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign sap2010:WorkflowViewState.IdRef="Assign_52">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[Invoice_Total]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(Invoice_Total_Check,"(?&lt;=TOTAL)([\S\s]*)(?=BALANCE)").Value.Trim]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </If.Then>
+          </If>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_53">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[inner_count]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">0</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_54">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[outer_count]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">0</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_55">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[Amount_Due]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(Str_PDF,"(?&lt;=(DUE)).*([\S\s]*)").Value.ToString.Trim]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_56">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[Table_Content]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(Str_PDF,"(?&lt;=DESCRIPTION RATE QTY AMOUNT)([\S\s]*)(?=SUBTOTAL)").Value.ToString.Trim]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_57">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[Table_Content]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(Table_Content, “[^\w\d.$,]+”, “ ”)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_58">
+            <Assign.To>
+              <OutArgument x:TypeArguments="s:String[]">[Str_Array]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="s:String[]">[Table_Content.Split((" "C))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ou:CreateDataTable ColumnNames="[{&quot;DESCRIPTION&quot;,&quot;RATE&quot;,&quot;QUANTITY&quot;,&quot;AMOUNT&quot;,&quot;INVOICE NO&quot;,&quot;DATE&quot;,&quot;BILL TO&quot;,&quot;VENDOR&quot;}]" DataTable="[DT_Table]" sap2010:WorkflowViewState.IdRef="CreateDataTable_2" />
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_59">
+            <Assign.To>
+              <OutArgument x:TypeArguments="sd:DataRow">[dtrow]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="sd:DataRow">[DT_Table.NewRow]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_60">
+            <Assign.To>
+              <OutArgument x:TypeArguments="sd:DataRow">[dtrow]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="sd:DataRow">[DT_Table.Rows.Add()]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ForEach x:TypeArguments="x:String" DisplayName="ForEach&lt;String&gt;" sap2010:WorkflowViewState.IdRef="ForEach`1_7" Values="[Str_Array]">
+            <ActivityAction x:TypeArguments="x:String">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:String" Name="item" />
+              </ActivityAction.Argument>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_27">
+                <Assign sap2010:WorkflowViewState.IdRef="Assign_61">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[DT_Table.Rows(outer_count).item(inner_count)]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">[item]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_28" Text="[&quot;row count====&gt;&quot;+DT_Table.Rows.Count.ToString]" />
+                <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_29" Text="[item]" />
+                <Assign sap2010:WorkflowViewState.IdRef="Assign_62">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[inner_count]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">[inner_count+1]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <If Condition="[inner_count=4]" sap2010:WorkflowViewState.IdRef="If_6">
+                  <If.Then>
+                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_26">
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_63">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[DT_Table.Rows(outer_count).item(4)]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[Invoice_Number]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_64">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[DT_Table.Rows(outer_count).item(5)]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[Start_Date]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_65">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[DT_Table.Rows(outer_count).item(6)]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[Bill_To]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_66">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[DT_Table.Rows(outer_count).item(7)]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">["Innomatiq"]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_67">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="sd:DataRow">[dtrow]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="sd:DataRow">[DT_Table.Rows.Add()]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_68">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Int32">[inner_count]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_69">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Int32">[outer_count]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Int32">[outer_count+1]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                </If>
+              </Sequence>
+            </ActivityAction>
+          </ForEach>
+          <InvokeMethod sap2010:WorkflowViewState.IdRef="InvokeMethod_2" MethodName="SetOrdinal">
+            <InvokeMethod.TargetObject>
+              <InArgument x:TypeArguments="sd:DataColumn">[DT_Table.Columns("VENDOR")]</InArgument>
+            </InvokeMethod.TargetObject>
+            <InArgument x:TypeArguments="x:Int32">0</InArgument>
+          </InvokeMethod>
+          <ou:WriteExcel DataSet="{x:Null}" DataTable="[DT_Table]" Filename="[OutputFilePath + &quot;\&quot;+file.name+&quot;.xlsx&quot;]" sap2010:WorkflowViewState.IdRef="WriteExcel_2" Theme="None" includeHeader="True" />
+          <Sequence DisplayName="Navigate to Add Item window" sap2010:WorkflowViewState.IdRef="Sequence_31">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="on:NMElement[]" Name="Item1" />
+            </Sequence.Variables>
+            <on:GetElement Elements="{x:Null}" From="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" DisplayName="Get Element--Invoices main" sap2010:WorkflowViewState.IdRef="GetElement_27" Image="/9j/4AAQSkZJRgABAQEAYABgAAD/4QBORXhpZgAATU0AKgAAAAgABAMBAAUAAAABAAAAPlEQAAEAAAABAQAAAFERAAQAAAABAAAOw1ESAAQAAAABAAAOwwAAAAAAAYagAACxj//bAEMACAYGBwYFCAcHBwkJCAoMFA0MCwsMGRITDxQdGh8eHRocHCAkLicgIiwjHBwoNyksMDE0NDQfJzk9ODI8LjM0Mv/bAEMBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/AABEIACwAYgMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/APTaKv8A2DSf+gQn/gvb/wCJo+waT/0CE/8ABe3/AMTQBQoq/wDYNJ/6BCf+C9v/AImj7BpP/QIT/wAF7f8AxNAFCir/ANg0n/oEJ/4L2/8AiaPsGk/9AhP/AAXt/wDE0AUKKv8A2DSf+gQn/gvb/wCJo+waT/0CE/8ABe3/AMTQBQoq/wDYNJ/6BCf+C9v/AImj7BpP/QIT/wAF7f8AxNAFCpLf/j5i/wB8fzq39g0n/oEJ/wCC9v8A4mj7BpP/AECE/wDBe3/xNAGpRWX9g0n/AKBCf+C9v/iaKAOjooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/2Q==" MaxResults="1" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;-1&quot;,&#xA;    &quot;url&quot;: &quot;https://app.zipbooks.com/invoices&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//ul[@class='box-list nav-list']//i[@class='icon-dollar-sign-circle green']&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(3)]">
+              <ActivityAction x:TypeArguments="on:NMElement">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+                </ActivityAction.Argument>
+                <oa:ClickElement KeyModifiers="{x:Null}" AnimateMouse="False" Button="1" DoubleClick="False" Element="[item]" sap2010:WorkflowViewState.IdRef="ClickElement_14" OffsetX="82" OffsetY="19" PostWait="00:00:00" VirtualClick="True" />
+              </ActivityAction>
+            </on:GetElement>
+            <on:GetElement Elements="{x:Null}" From="{x:Null}" Image="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" DisplayName="Get Element--Side Item" sap2010:WorkflowViewState.IdRef="GetElement_22" MaxResults="1" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;-1&quot;,&#xA;    &quot;url&quot;: &quot;https://app.zipbooks.com/items&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//a[text()='Items']&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(3)]">
+              <ActivityAction x:TypeArguments="on:NMElement">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+                </ActivityAction.Argument>
+                <oa:ClickElement KeyModifiers="{x:Null}" AnimateMouse="False" Button="1" DoubleClick="False" Element="[item]" sap2010:WorkflowViewState.IdRef="ClickElement_11" OffsetX="82" OffsetY="19" PostWait="00:00:00" VirtualClick="True" />
+              </ActivityAction>
+            </on:GetElement>
+          </Sequence>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_72">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[count]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[DT_Table.Rows.Count]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_73">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[inc_count]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">0</InArgument>
+            </Assign.Value>
+          </Assign>
+          <oa:ForEachDataRow DataView="{x:Null}" DataTable="[DT_Table]" sap2010:WorkflowViewState.IdRef="ForEachDataRow_2">
+            <ActivityAction x:TypeArguments="sd:DataRowView">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="sd:DataRowView" Name="row" />
+              </ActivityAction.Argument>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_33">
+                <If Condition="[count&lt;&gt;inc_count+1]" sap2010:WorkflowViewState.IdRef="If_8">
+                  <If.Then>
+                    <Sequence DisplayName="Filling form with details" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                      <on:GetElement Elements="{x:Null}" From="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" DisplayName="Get Element--+ symbol" sap2010:WorkflowViewState.IdRef="GetElement_23" Image="/9j/4AAQSkZJRgABAQEAYABgAAD/4QBORXhpZgAATU0AKgAAAAgABAMBAAUAAAABAAAAPlEQAAEAAAABAQAAAFERAAQAAAABAAAOw1ESAAQAAAABAAAOwwAAAAAAAYagAACxj//bAEMACAYGBwYFCAcHBwkJCAoMFA0MCwsMGRITDxQdGh8eHRocHCAkLicgIiwjHBwoNyksMDE0NDQfJzk9ODI8LjM0Mv/bAEMBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/AABEIACwAUwMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/APXD4dCTxyi6+5qTXwHl+sZTZ1985/SuR17Rb3T7mEW8+6FLe9kmka3JUiSdH2Zz8rcnByfunj06az1q4tru9tdYubSZ7eWOJLi0geNXdkL+WULPhgADnd0YdO/P3ms6ndaev9oC0+z6lYtd2ywRsrQAFDscliHO2RfmAXlTxyKcd9On+QdD0ofdH0paQfdFLSAKKKKACiiigAooooAKKKKAOY07RtUsrdbSa/077Mjg7LPTmh3Kd29W3SvksSDuGDkHOc1zuqeF5bbSib+/F3DYW/kWKJEYiiblI8whjvb5EGcKODxzW9Z63cW11e2us3NpM9vLHElxaQPGruyF/LKFnwwABzu6MOnfn7zWdTutPX+0BafZ9SsWu7ZYI2VoACh2OSxDnbIvzALyp45FNasWx6UPuj6UtIPuilpDCiiigAooooAKKKKACiiigDmNO0fVbK3Wzm1DTvsyODss9OaHcp3b1bdK+SxIO4YOQc5zXO6p4XlttKJv78XcNhb+RYokRiKJuUjzCGO9vkQZwo4PHNeiydK53xP/AMgS7/3KOoHSj7o+lLSD7opaACiiigAooooAKKKKACiiigD/2Q==" MaxResults="1" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;-1&quot;,&#xA;    &quot;url&quot;: &quot;https://app.zipbooks.com/items&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//button[@class='btn btn-add btn-depressable']&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(3)]">
+                        <ActivityAction x:TypeArguments="on:NMElement">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+                          </ActivityAction.Argument>
+                          <oa:ClickElement KeyModifiers="{x:Null}" AnimateMouse="False" Button="1" DoubleClick="False" Element="[item]" sap2010:WorkflowViewState.IdRef="ClickElement_12" OffsetX="82" OffsetY="19" PostWait="00:00:00" VirtualClick="True" />
+                        </ActivityAction>
+                      </on:GetElement>
+                      <on:GetElement Elements="{x:Null}" From="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" DisplayName="Get Element--+ Display name" sap2010:WorkflowViewState.IdRef="GetElement_24" Image="/9j/4AAQSkZJRgABAQEAYABgAAD/4QBORXhpZgAATU0AKgAAAAgABAMBAAUAAAABAAAAPlEQAAEAAAABAQAAAFERAAQAAAABAAAOw1ESAAQAAAABAAAOwwAAAAAAAYagAACxj//bAEMACAYGBwYFCAcHBwkJCAoMFA0MCwsMGRITDxQdGh8eHRocHCAkLicgIiwjHBwoNyksMDE0NDQfJzk9ODI8LjM0Mv/bAEMBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/AABEIACwAUwMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/APXD4dCTxyi6+5qTXwHl+sZTZ1985/SuR17Rb3T7mEW8+6FLe9kmka3JUiSdH2Zz8rcnByfunj06az1q4tru9tdYubSZ7eWOJLi0geNXdkL+WULPhgADnd0YdO/P3ms6ndaev9oC0+z6lYtd2ywRsrQAFDscliHO2RfmAXlTxyKcd9On+QdD0ofdH0paQfdFLSAKKKKACiiigAooooAKKKKAOY07RtUsrdbSa/077Mjg7LPTmh3Kd29W3SvksSDuGDkHOc1zuqeF5bbSib+/F3DYW/kWKJEYiiblI8whjvb5EGcKODxzW9Z63cW11e2us3NpM9vLHElxaQPGruyF/LKFnwwABzu6MOnfn7zWdTutPX+0BafZ9SsWu7ZYI2VoACh2OSxDnbIvzALyp45FNasWx6UPuj6UtIPuilpDCiiigAooooAKKKKACiiigDmNO0fVbK3Wzm1DTvsyODss9OaHcp3b1bdK+SxIO4YOQc5zXO6p4XlttKJv78XcNhb+RYokRiKJuUjzCGO9vkQZwo4PHNeiydK53xP/AMgS7/3KOoHSj7o+lLSD7opaACiiigAooooAKKKKACiiigD/2Q==" MaxResults="1" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;-1&quot;,&#xA;    &quot;url&quot;: &quot;https://app.zipbooks.com/items?drawer=item&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//input[@placeholder='Display Name']&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(3)]">
+                        <ActivityAction x:TypeArguments="on:NMElement">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+                          </ActivityAction.Argument>
+                          <Assign sap2010:WorkflowViewState.IdRef="Assign_74">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[item.Value]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[row("DESCRIPTION").ToString]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </ActivityAction>
+                      </on:GetElement>
+                      <on:GetElement Elements="{x:Null}" From="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" DisplayName="Get Element--Price" sap2010:WorkflowViewState.IdRef="GetElement_25" Image="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" MaxResults="1" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;-1&quot;,&#xA;    &quot;url&quot;: &quot;https://app.zipbooks.com/items?drawer=item&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//input[@placeholder='Price']&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(3)]">
+                        <ActivityAction x:TypeArguments="on:NMElement">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+                          </ActivityAction.Argument>
+                          <Assign sap2010:WorkflowViewState.IdRef="Assign_75">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[item.Value]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[row("RATE").ToString]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </ActivityAction>
+                      </on:GetElement>
+                      <on:GetElement Elements="{x:Null}" From="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" DisplayName="Get Element--+ Save" sap2010:WorkflowViewState.IdRef="GetElement_26" Image="/9j/4AAQSkZJRgABAQEAYABgAAD/4QBORXhpZgAATU0AKgAAAAgABAMBAAUAAAABAAAAPlEQAAEAAAABAQAAAFERAAQAAAABAAAOw1ESAAQAAAABAAAOwwAAAAAAAYagAACxj//bAEMACAYGBwYFCAcHBwkJCAoMFA0MCwsMGRITDxQdGh8eHRocHCAkLicgIiwjHBwoNyksMDE0NDQfJzk9ODI8LjM0Mv/bAEMBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/AABEIACwAUwMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/APXD4dCTxyi6+5qTXwHl+sZTZ1985/SuR17Rb3T7mEW8+6FLe9kmka3JUiSdH2Zz8rcnByfunj06az1q4tru9tdYubSZ7eWOJLi0geNXdkL+WULPhgADnd0YdO/P3ms6ndaev9oC0+z6lYtd2ywRsrQAFDscliHO2RfmAXlTxyKcd9On+QdD0ofdH0paQfdFLSAKKKKACiiigAooooAKKKKAOY07RtUsrdbSa/077Mjg7LPTmh3Kd29W3SvksSDuGDkHOc1zuqeF5bbSib+/F3DYW/kWKJEYiiblI8whjvb5EGcKODxzW9Z63cW11e2us3NpM9vLHElxaQPGruyF/LKFnwwABzu6MOnfn7zWdTutPX+0BafZ9SsWu7ZYI2VoACh2OSxDnbIvzALyp45FNasWx6UPuj6UtIPuilpDCiiigAooooAKKKKACiiigDmNO0fVbK3Wzm1DTvsyODss9OaHcp3b1bdK+SxIO4YOQc5zXO6p4XlttKJv78XcNhb+RYokRiKJuUjzCGO9vkQZwo4PHNeiydK53xP/AMgS7/3KOoHSj7o+lLSD7opaACiiigAooooAKKKKACiiigD/2Q==" MaxResults="1" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;-1&quot;,&#xA;    &quot;url&quot;: &quot;https://app.zipbooks.com/items?drawer=item&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//button[@class='btn btn-full btn-blue btn-depressable']&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(3)]">
+                        <ActivityAction x:TypeArguments="on:NMElement">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+                          </ActivityAction.Argument>
+                          <oa:ClickElement KeyModifiers="{x:Null}" AnimateMouse="False" Button="1" DoubleClick="False" Element="[item]" sap2010:WorkflowViewState.IdRef="ClickElement_13" OffsetX="0" OffsetY="19" PostWait="00:00:00" VirtualClick="True" />
+                        </ActivityAction>
+                      </on:GetElement>
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_76">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Int32">[inc_count]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Int32">[inc_count+1]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Delay DisplayName="Delay 3 seconds" Duration="00:00:03" sap2010:WorkflowViewState.IdRef="Delay_2" />
+                    </Sequence>
+                  </If.Then>
+                </If>
+              </Sequence>
+            </ActivityAction>
+          </oa:ForEachDataRow>
+          <Assign DisplayName="Reset Data Table" sap2010:WorkflowViewState.IdRef="Assign_79">
+            <Assign.To>
+              <OutArgument x:TypeArguments="sd:DataTable">[DT_Table]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="sd:DataTable">[nothing]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </ActivityAction>
+    </ForEach>
+    <sads:DebugSymbol.Symbol>dw1DOlxFbXB0eS54YW1sAA==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Assign_80" sap:VirtualizedContainerService.HintSize="568,60" />
+      <sap2010:ViewStateData Id="Assign_81" sap:VirtualizedContainerService.HintSize="568,60" />
+      <sap2010:ViewStateData Id="Assign_82" sap:VirtualizedContainerService.HintSize="568,60" />
+      <sap2010:ViewStateData Id="Assign_83" sap:VirtualizedContainerService.HintSize="568,60" />
+      <sap2010:ViewStateData Id="OpenURL_5" sap:VirtualizedContainerService.HintSize="464,55" />
+      <sap2010:ViewStateData Id="GetElement_17" sap:VirtualizedContainerService.HintSize="464,145">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_70" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="GetElement_18" sap:VirtualizedContainerService.HintSize="314,290">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_71" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="GetElement_19" sap:VirtualizedContainerService.HintSize="314,136">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ClickElement_9" sap:VirtualizedContainerService.HintSize="210,36">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteLine_30" sap:VirtualizedContainerService.HintSize="210,61" />
+      <sap2010:ViewStateData Id="Sequence_28" sap:VirtualizedContainerService.HintSize="232,261">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="GetElement_20" sap:VirtualizedContainerService.HintSize="314,421">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_29" sap:VirtualizedContainerService.HintSize="336,1051">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_7" sap:VirtualizedContainerService.HintSize="464,1199">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_30" sap:VirtualizedContainerService.HintSize="568,1603">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_78" sap:VirtualizedContainerService.HintSize="568,60" />
+      <sap2010:ViewStateData Id="Assign_77" sap:VirtualizedContainerService.HintSize="568,60" />
+      <sap2010:ViewStateData Id="ReadPDF_3" sap:VirtualizedContainerService.HintSize="516,70">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_46" sap:VirtualizedContainerService.HintSize="516,60" />
+      <sap2010:ViewStateData Id="Assign_47" sap:VirtualizedContainerService.HintSize="516,60" />
+      <sap2010:ViewStateData Id="Assign_48" sap:VirtualizedContainerService.HintSize="516,60" />
+      <sap2010:ViewStateData Id="Assign_49" sap:VirtualizedContainerService.HintSize="516,60" />
+      <sap2010:ViewStateData Id="Assign_50" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_51" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_52" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Sequence_25" sap:VirtualizedContainerService.HintSize="264,384">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_5" sap:VirtualizedContainerService.HintSize="516,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_53" sap:VirtualizedContainerService.HintSize="516,60" />
+      <sap2010:ViewStateData Id="Assign_54" sap:VirtualizedContainerService.HintSize="516,60" />
+      <sap2010:ViewStateData Id="Assign_55" sap:VirtualizedContainerService.HintSize="516,60" />
+      <sap2010:ViewStateData Id="Assign_56" sap:VirtualizedContainerService.HintSize="516,60" />
+      <sap2010:ViewStateData Id="Assign_57" sap:VirtualizedContainerService.HintSize="516,60" />
+      <sap2010:ViewStateData Id="Assign_58" sap:VirtualizedContainerService.HintSize="516,60" />
+      <sap2010:ViewStateData Id="CreateDataTable_2" sap:VirtualizedContainerService.HintSize="516,104" />
+      <sap2010:ViewStateData Id="Assign_59" sap:VirtualizedContainerService.HintSize="516,60" />
+      <sap2010:ViewStateData Id="Assign_60" sap:VirtualizedContainerService.HintSize="516,60" />
+      <sap2010:ViewStateData Id="Assign_61" sap:VirtualizedContainerService.HintSize="464,60" />
+      <sap2010:ViewStateData Id="WriteLine_28" sap:VirtualizedContainerService.HintSize="464,61" />
+      <sap2010:ViewStateData Id="WriteLine_29" sap:VirtualizedContainerService.HintSize="464,61" />
+      <sap2010:ViewStateData Id="Assign_62" sap:VirtualizedContainerService.HintSize="464,60" />
+      <sap2010:ViewStateData Id="Assign_63" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_64" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_65" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_66" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_67" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_68" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_69" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Sequence_26" sap:VirtualizedContainerService.HintSize="264,784">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_6" sap:VirtualizedContainerService.HintSize="464,932" />
+      <sap2010:ViewStateData Id="Sequence_27" sap:VirtualizedContainerService.HintSize="486,1458">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_7" sap:VirtualizedContainerService.HintSize="516,1606" />
+      <sap2010:ViewStateData Id="InvokeMethod_2" sap:VirtualizedContainerService.HintSize="516,128" />
+      <sap2010:ViewStateData Id="WriteExcel_2" sap:VirtualizedContainerService.HintSize="516,70" />
+      <sap2010:ViewStateData Id="ClickElement_14" sap:VirtualizedContainerService.HintSize="200,36" />
+      <sap2010:ViewStateData Id="GetElement_27" sap:VirtualizedContainerService.HintSize="214,210">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ClickElement_11" sap:VirtualizedContainerService.HintSize="200,36" />
+      <sap2010:ViewStateData Id="GetElement_22" sap:VirtualizedContainerService.HintSize="214,166">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_31" sap:VirtualizedContainerService.HintSize="516,540">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_72" sap:VirtualizedContainerService.HintSize="516,60" />
+      <sap2010:ViewStateData Id="Assign_73" sap:VirtualizedContainerService.HintSize="516,60" />
+      <sap2010:ViewStateData Id="ClickElement_12" sap:VirtualizedContainerService.HintSize="200,36" />
+      <sap2010:ViewStateData Id="GetElement_23" sap:VirtualizedContainerService.HintSize="256,210">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_74" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="GetElement_24" sap:VirtualizedContainerService.HintSize="256,234">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_75" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="GetElement_25" sap:VirtualizedContainerService.HintSize="256,264">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ClickElement_13" sap:VirtualizedContainerService.HintSize="200,36" />
+      <sap2010:ViewStateData Id="GetElement_26" sap:VirtualizedContainerService.HintSize="256,80">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_76" sap:VirtualizedContainerService.HintSize="256,60" />
+      <sap2010:ViewStateData Id="Delay_2" sap:VirtualizedContainerService.HintSize="256,22" />
+      <sap2010:ViewStateData Id="Sequence_32" sap:VirtualizedContainerService.HintSize="278,1194">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_8" sap:VirtualizedContainerService.HintSize="464,1342">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_33" sap:VirtualizedContainerService.HintSize="486,1466">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachDataRow_2" sap:VirtualizedContainerService.HintSize="516,1566">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_79" sap:VirtualizedContainerService.HintSize="516,60" />
+      <sap2010:ViewStateData Id="Sequence_34" sap:VirtualizedContainerService.HintSize="538,6039">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_9" sap:VirtualizedContainerService.HintSize="568,6187" />
+      <sap2010:ViewStateData Id="Sequence_12" sap:VirtualizedContainerService.HintSize="590,8554">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="New Workflow_1" sap:VirtualizedContainerService.HintSize="630,8674" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
