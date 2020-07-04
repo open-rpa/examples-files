@@ -1,0 +1,344 @@
+[
+    {
+        "id": "584092c4.71933c",
+        "type": "tab",
+        "label": "EmailAttachment",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "cee30405.a458d8",
+        "type": "inject",
+        "z": "584092c4.71933c",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 160,
+        "y": 260,
+        "wires": [
+            [
+                "d79fc6ac.48e6b8"
+            ]
+        ]
+    },
+    {
+        "id": "4f6cc139.e00c4",
+        "type": "e-mail",
+        "z": "584092c4.71933c",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": true,
+        "name": "allan@openrpa.dk",
+        "dname": "",
+        "x": 490,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "d79fc6ac.48e6b8",
+        "type": "function",
+        "z": "584092c4.71933c",
+        "name": "",
+        "func": "msg.payload = \"Hi handsome\"\nmsg.topic = \"Hi handsome\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 310,
+        "y": 260,
+        "wires": [
+            [
+                "4f6cc139.e00c4"
+            ]
+        ]
+    },
+    {
+        "id": "d6213a9d.cec148",
+        "type": "fileinject",
+        "z": "584092c4.71933c",
+        "name": "",
+        "x": 160,
+        "y": 200,
+        "wires": [
+            [
+                "abd35f55.2f73b"
+            ]
+        ]
+    },
+    {
+        "id": "abd35f55.2f73b",
+        "type": "function",
+        "z": "584092c4.71933c",
+        "name": "",
+        "func": "msg.attachments = [{\n    filename: \"sap3.xlsx\",\n    content: msg.payload\n}];\nmsg.payload \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 320,
+        "y": 200,
+        "wires": [
+            [
+                "d79fc6ac.48e6b8"
+            ]
+        ]
+    },
+    {
+        "id": "34936493.8debac",
+        "type": "api download file",
+        "z": "584092c4.71933c",
+        "fileid": "",
+        "filename": "test.xlsx",
+        "name": "",
+        "x": 350,
+        "y": 140,
+        "wires": [
+            [
+                "84cd94bd.573e98"
+            ]
+        ]
+    },
+    {
+        "id": "80f3de3f.e660c",
+        "type": "inject",
+        "z": "584092c4.71933c",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 160,
+        "y": 140,
+        "wires": [
+            [
+                "34936493.8debac"
+            ]
+        ]
+    },
+    {
+        "id": "5a5021dd.0732a",
+        "type": "comment",
+        "z": "584092c4.71933c",
+        "name": "Send email with File Attachment",
+        "info": "",
+        "x": 210,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "84cd94bd.573e98",
+        "type": "function",
+        "z": "584092c4.71933c",
+        "name": "",
+        "func": "msg.payload = Buffer.from(msg.payload, 'base64')\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 530,
+        "y": 140,
+        "wires": [
+            [
+                "abd35f55.2f73b"
+            ]
+        ]
+    },
+    {
+        "id": "8d4e7cd9.9ebca",
+        "type": "comment",
+        "z": "584092c4.71933c",
+        "name": "Send email with File Attachment",
+        "info": "",
+        "x": 210,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "237fbfbd.82227",
+        "type": "e-mail in",
+        "z": "584092c4.71933c",
+        "name": "",
+        "protocol": "IMAP",
+        "server": "imap.gmail.com",
+        "useSSL": true,
+        "port": "993",
+        "box": "INBOX",
+        "disposition": "None",
+        "criteria": "UNSEEN",
+        "repeat": "300",
+        "fetch": "auto",
+        "inputs": 0,
+        "x": 140,
+        "y": 380,
+        "wires": [
+            [
+                "3fcd9b3b.d38d74"
+            ]
+        ]
+    },
+    {
+        "id": "e7ad8ab5.4947a8",
+        "type": "array-loop",
+        "z": "584092c4.71933c",
+        "name": "Loop each attachment",
+        "key": "key",
+        "keyType": "msg",
+        "reset": true,
+        "resetValue": "value-null",
+        "array": "attachments",
+        "arrayType": "msg",
+        "x": 500,
+        "y": 380,
+        "wires": [
+            [
+                "19e174b1.614c2b"
+            ],
+            [
+                "cfbb8400.b85f78"
+            ]
+        ]
+    },
+    {
+        "id": "dc937ad2.c27888",
+        "type": "debug",
+        "z": "584092c4.71933c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 770,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "972dfe3d.5742a",
+        "type": "api upload file",
+        "z": "584092c4.71933c",
+        "filename": "",
+        "mimeType": "",
+        "name": "",
+        "x": 440,
+        "y": 440,
+        "wires": [
+            [
+                "e7ad8ab5.4947a8"
+            ]
+        ]
+    },
+    {
+        "id": "cfbb8400.b85f78",
+        "type": "function",
+        "z": "584092c4.71933c",
+        "name": "prepare for upload of file",
+        "func": "msg.filename = msg.payload.filename;\nmsg.payload = msg.payload.content;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 230,
+        "y": 440,
+        "wires": [
+            [
+                "972dfe3d.5742a"
+            ]
+        ]
+    },
+    {
+        "id": "3fcd9b3b.d38d74",
+        "type": "function",
+        "z": "584092c4.71933c",
+        "name": "save email body",
+        "func": "msg.body = msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 300,
+        "y": 380,
+        "wires": [
+            [
+                "e7ad8ab5.4947a8"
+            ]
+        ]
+    },
+    {
+        "id": "19e174b1.614c2b",
+        "type": "function",
+        "z": "584092c4.71933c",
+        "name": "Prepare for robot",
+        "func": "msg.payload = {};\nmsg.payload.subject = msg.topic;\nmsg.payload.body = msg.body;\nmsg.payload.from = msg.from;\nmsg.payload.attachments = [];\nmsg.attachments.forEach(x=> {\n    msg.payload.attachments.push(x.filename);\n});\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 730,
+        "y": 360,
+        "wires": [
+            [
+                "ae9fa989.0ccbe8"
+            ]
+        ]
+    },
+    {
+        "id": "2d17c9f0.f80656",
+        "type": "comment",
+        "z": "584092c4.71933c",
+        "name": "requires node-red-contrib-loop-processing",
+        "info": "",
+        "x": 520,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "ae9fa989.0ccbe8",
+        "type": "rpa workflow",
+        "z": "584092c4.71933c",
+        "queue": "5ce94386320b9ce0bc2c3d07",
+        "workflow": "5f0046c10e65fac3d1ee5c2d",
+        "localqueue": "",
+        "name": "",
+        "x": 730,
+        "y": 420,
+        "wires": [
+            [
+                "dc937ad2.c27888"
+            ],
+            [
+                "5085325b.7706cc"
+            ],
+            [
+                "bc27db6.4a81728"
+            ]
+        ]
+    },
+    {
+        "id": "5085325b.7706cc",
+        "type": "debug",
+        "z": "584092c4.71933c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 753,
+        "y": 556,
+        "wires": []
+    },
+    {
+        "id": "bc27db6.4a81728",
+        "type": "debug",
+        "z": "584092c4.71933c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "error",
+        "targetType": "msg",
+        "x": 760,
+        "y": 600,
+        "wires": []
+    }
+]

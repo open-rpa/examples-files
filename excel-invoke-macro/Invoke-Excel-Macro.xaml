@@ -1,0 +1,96 @@
+<Activity mc:Ignorable="sap sap2010 sads" x:Class="Invoke-Excel-Macro" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="Invoke-Excel-Macro_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:ooa="clr-namespace:OpenRPA.Office.Activities;assembly=OpenRPA.Office"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>OpenRPA</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>OpenRPA.IE</x:String>
+      <x:String>OpenRPA.Image</x:String>
+      <x:String>OpenRPA.Java</x:String>
+      <x:String>OpenRPA.NM</x:String>
+      <x:String>OpenRPA.Office</x:String>
+      <x:String>OpenRPA.SAP</x:String>
+      <x:String>OpenRPA.Script</x:String>
+      <x:String>OpenRPA.Windows</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>OpenRPA</AssemblyReference>
+      <AssemblyReference>OpenRPA.Interfaces</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>OpenRPA.IE</AssemblyReference>
+      <AssemblyReference>OpenRPA.Image</AssemblyReference>
+      <AssemblyReference>OpenRPA.Java</AssemblyReference>
+      <AssemblyReference>OpenRPA.NM</AssemblyReference>
+      <AssemblyReference>OpenRPA.Office</AssemblyReference>
+      <AssemblyReference>OpenRPA.SAP</AssemblyReference>
+      <AssemblyReference>OpenRPA.Script</AssemblyReference>
+      <AssemblyReference>OpenRPA.Windows</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Net.WebSockets.Client.Managed</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.Globalization.Extensions</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="result" />
+    </Sequence.Variables>
+    <ooa:RunExcelMacro x:TypeArguments="x:String" Application="{x:Null}" Workbook="{x:Null}" Worksheet="{x:Null}" sap2010:Annotation.AnnotationText="Use Alt+F11" Filename="[&quot;%USERPROFILE%\Documents\macrotest.xlsm&quot;]" sap2010:WorkflowViewState.IdRef="RunExcelMacro`1_1" Name="HelloWorld" Parameters="[{&quot;Allan&quot;}]" Visible="True" />
+    <ooa:RunExcelMacro x:TypeArguments="x:String" Application="{x:Null}" Parameters="{x:Null}" Workbook="{x:Null}" Worksheet="{x:Null}" Filename="[&quot;%USERPROFILE%\Documents\macrotest.xlsm&quot;]" sap2010:WorkflowViewState.IdRef="RunExcelMacro`1_2" Name="HelloWorld2" Result="[result]" Visible="True" />
+    <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[result]" />
+    <ooa:RunExcelMacro x:TypeArguments="x:String" Application="{x:Null}" Workbook="{x:Null}" Worksheet="{x:Null}" Filename="[&quot;%USERPROFILE%\Documents\macrotest.xlsm&quot;]" sap2010:WorkflowViewState.IdRef="RunExcelMacro`1_3" Name="HelloWorld3" Parameters="[{&quot;Allan&quot;}]" Result="[result]" Visible="True" />
+    <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[result]" />
+    <ooa:CloseWorkbook Workbook="{x:Null}" Filename="%USERPROFILE%\Documents\macrotest.xlsm" sap2010:WorkflowViewState.IdRef="CloseWorkbook_1" SaveChanges="True" />
+    <sads:DebugSymbol.Symbol>dw1DOlxFbXB0eS54YW1sAA==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="RunExcelMacro`1_1" sap:VirtualizedContainerService.HintSize="282,104">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RunExcelMacro`1_2" sap:VirtualizedContainerService.HintSize="282,104" />
+      <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="282,61" />
+      <sap2010:ViewStateData Id="RunExcelMacro`1_3" sap:VirtualizedContainerService.HintSize="282,104" />
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="282,61" />
+      <sap2010:ViewStateData Id="CloseWorkbook_1" sap:VirtualizedContainerService.HintSize="282,89" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="304,847">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Invoke-Excel-Macro_1" sap:VirtualizedContainerService.HintSize="344,927" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

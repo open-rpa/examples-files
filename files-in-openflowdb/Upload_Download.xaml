@@ -1,0 +1,132 @@
+<Activity mc:Ignorable="sap sap2010 sads" x:Class="Upload_Download" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="Upload_Download_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:oa="clr-namespace:OpenRPA.Activities;assembly=OpenRPA"
+ xmlns:oo="clr-namespace:OpenRPA.OpenFlowDB;assembly=OpenRPA.OpenFlowDB"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>OpenRPA</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>OpenRPA.IE</x:String>
+      <x:String>OpenRPA.Image</x:String>
+      <x:String>OpenRPA.Java</x:String>
+      <x:String>OpenRPA.NM</x:String>
+      <x:String>OpenRPA.Office</x:String>
+      <x:String>OpenRPA.SAP</x:String>
+      <x:String>OpenRPA.Script</x:String>
+      <x:String>OpenRPA.Windows</x:String>
+      <x:String>System.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>OpenRPA</AssemblyReference>
+      <AssemblyReference>OpenRPA.Interfaces</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>OpenRPA.IE</AssemblyReference>
+      <AssemblyReference>OpenRPA.Image</AssemblyReference>
+      <AssemblyReference>OpenRPA.Java</AssemblyReference>
+      <AssemblyReference>OpenRPA.NM</AssemblyReference>
+      <AssemblyReference>OpenRPA.Office</AssemblyReference>
+      <AssemblyReference>OpenRPA.SAP</AssemblyReference>
+      <AssemblyReference>OpenRPA.Script</AssemblyReference>
+      <AssemblyReference>OpenRPA.Windows</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="fileid" />
+    </Sequence.Variables>
+    <oo:SaveFile Path="{x:Null}" sap2010:Annotation.AnnotationText="Save file will upload the select file. If a file with the same name and path exists, it will not overwrite the old one. Path is optional, but is handy for differentiating between multiple files with the same name" Filename="[&quot;%USERPROFILE%\Documents\test.xlsx&quot;]" sap2010:WorkflowViewState.IdRef="SaveFile_1" Result="[fileid]" />
+    <WriteLine sap2010:Annotation.AnnotationText="Save file returns the ID of the uploaded file. This id will never change, so even if you or someone else uploads a file with same name, this id wil get YOUR uploaded file. So try and ALWAYS use ID and not filename when possible" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[fileid]" />
+    <oo:GetFile Filename="{x:Null}" sap2010:Annotation.AnnotationText="Using the ID when can download the file again to a different folder" sap2010:WorkflowViewState.IdRef="GetFile_1" IgnorePath="False" LocalPath="[&quot;%USERPROFILE%\Downloads&quot;]" _id="[fileid]" />
+    <oo:GetFile _id="{x:Null}" sap2010:Annotation.AnnotationText="Using filename you can get the LATEST version of the file" Filename="test.xlsx" sap2010:WorkflowViewState.IdRef="GetFile_2" IgnorePath="False" LocalPath="[&quot;%USERPROFILE%\Downloads&quot;]" />
+    <oa:CommentOut>
+      <Sequence>
+        <oo:DeleteFile Filename="{x:Null}" IgnoreErrors="{x:Null}" sap2010:Annotation.AnnotationText="If files a saved temporarily always rememeber to delete them when done, so you are not filling the database." sap2010:WorkflowViewState.IdRef="DeleteFile_1" _id="[fileid]" />
+        <oo:DeleteFile IgnoreErrors="{x:Null}" _id="{x:Null}" sap2010:Annotation.AnnotationText="If you delete by filename you will be deleting ALL VERSIONS of that file. So be carefull with this" Filename="test.xlsx" sap2010:WorkflowViewState.IdRef="DeleteFile_2" />
+        <sap2010:WorkflowViewState.IdRef>Sequence_2</sap2010:WorkflowViewState.IdRef>
+      </Sequence>
+      <sap2010:WorkflowViewState.IdRef>CommentOut_1</sap2010:WorkflowViewState.IdRef>
+    </oa:CommentOut>
+    <sads:DebugSymbol.Symbol>dw1DOlxFbXB0eS54YW1sAA==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="SaveFile_1" sap:VirtualizedContainerService.HintSize="244,85">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="244,61">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="GetFile_1" sap:VirtualizedContainerService.HintSize="244,85">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="GetFile_2" sap:VirtualizedContainerService.HintSize="244,85">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DeleteFile_1" sap:VirtualizedContainerService.HintSize="200,36">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DeleteFile_2" sap:VirtualizedContainerService.HintSize="200,36">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="222,236">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CommentOut_1" sap:VirtualizedContainerService.HintSize="244,312" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="266,912">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Upload_Download_1" sap:VirtualizedContainerService.HintSize="306,992" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
