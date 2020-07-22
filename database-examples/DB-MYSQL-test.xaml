@@ -1,0 +1,133 @@
+<Activity mc:Ignorable="sap sap2010 sads" x:Class="DB-MYSQL-test" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="New Workflow2_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:oa="clr-namespace:OpenRPA.Activities;assembly=OpenRPA"
+ xmlns:od="clr-namespace:OpenRPA.Database;assembly=OpenRPA.Database"
+ xmlns:ou="clr-namespace:OpenRPA.Utilities;assembly=OpenRPA.Utilities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>OpenRPA</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>OpenRPA.IE</x:String>
+      <x:String>OpenRPA.Image</x:String>
+      <x:String>OpenRPA.Java</x:String>
+      <x:String>OpenRPA.NM</x:String>
+      <x:String>OpenRPA.Office</x:String>
+      <x:String>OpenRPA.Script</x:String>
+      <x:String>OpenRPA.Windows</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>OpenRPA</AssemblyReference>
+      <AssemblyReference>OpenRPA.Interfaces</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>OpenRPA.IE</AssemblyReference>
+      <AssemblyReference>OpenRPA.Image</AssemblyReference>
+      <AssemblyReference>OpenRPA.Java</AssemblyReference>
+      <AssemblyReference>OpenRPA.NM</AssemblyReference>
+      <AssemblyReference>OpenRPA.Office</AssemblyReference>
+      <AssemblyReference>OpenRPA.Script</AssemblyReference>
+      <AssemblyReference>OpenRPA.Windows</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Net.WebSockets.Client.Managed</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <od:DatabaseScope Timeout="{x:Null}" ConnectionString="Server=localhost;Port=3306;Database=test;Uid=allan;Pwd=password;" DataProvider="MySql.Data.MySqlClient" DisplayName="Database Scope2" sap2010:WorkflowViewState.IdRef="DatabaseScope_1">
+      <od:DatabaseScope.DataSource>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </od:DatabaseScope.DataSource>
+      <ActivityAction x:TypeArguments="od:Connection">
+        <ActivityAction.Argument>
+          <DelegateInArgument x:TypeArguments="od:Connection" Name="conn" />
+        </ActivityAction.Argument>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:Int32" Name="result" />
+            <Variable x:TypeArguments="sd:DataTable" Name="dt" />
+            <Variable x:TypeArguments="x:String" Name="str" />
+            <Variable x:TypeArguments="x:Int64" Name="intres" />
+          </Sequence.Variables>
+          <od:ExecuteScalar x:TypeArguments="x:Int64" CommandType="{x:Null}" DisplayName="ExecuteScalar&lt;Int64&gt;" sap2010:WorkflowViewState.IdRef="ExecuteScalar`1_6" Query="select count(*) as antal from users" Result="[intres]" />
+          <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;users has &quot; &amp; intres &amp; &quot; rows&quot;]" />
+          <od:ExecuteQuery CommandType="Text" DataTable="[dt]" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Query="select * from users" />
+          <ou:DeleteAllRows DataTable="[dt]" sap2010:WorkflowViewState.IdRef="DeleteAllRows_1" />
+          <ou:AddDataRow DataTable="[dt]" sap2010:WorkflowViewState.IdRef="AddDataRow_1" RowData="[{7, &quot;Allan&quot;, 42}]" />
+          <ou:AddDataRow DataTable="[dt]" sap2010:WorkflowViewState.IdRef="AddDataRow_2" RowData="[{8, &quot;Bettina&quot;, 45}]" />
+          <ou:AddDataRow DataTable="[dt]" sap2010:WorkflowViewState.IdRef="AddDataRow_3" RowData="[{9, &quot;Mette&quot;, 4}]" />
+          <od:UpdateFromDataTable DataTable="[dt]" sap2010:WorkflowViewState.IdRef="UpdateFromDataTable_1" Result="[result]" TableName="users" />
+          <oa:CommentOut sap2010:WorkflowViewState.IdRef="CommentOut_1">
+            <od:ExecuteNonQuery CommandType="{x:Null}" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_1" Query="insert into users (name, age) values ('Mette', 4)" Result="[result]" />
+          </oa:CommentOut>
+          <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[result.ToString]" />
+        </Sequence>
+      </ActivityAction>
+    </od:DatabaseScope>
+    <sads:DebugSymbol.Symbol>dw1DOlxFbXB0eS54YW1sAA==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="ExecuteScalar`1_6" sap:VirtualizedContainerService.HintSize="250,104" />
+      <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="250,61" />
+      <sap2010:ViewStateData Id="ExecuteQuery_1" sap:VirtualizedContainerService.HintSize="250,104" />
+      <sap2010:ViewStateData Id="DeleteAllRows_1" sap:VirtualizedContainerService.HintSize="250,70" />
+      <sap2010:ViewStateData Id="AddDataRow_1" sap:VirtualizedContainerService.HintSize="250,104" />
+      <sap2010:ViewStateData Id="AddDataRow_2" sap:VirtualizedContainerService.HintSize="250,104" />
+      <sap2010:ViewStateData Id="AddDataRow_3" sap:VirtualizedContainerService.HintSize="250,104" />
+      <sap2010:ViewStateData Id="UpdateFromDataTable_1" sap:VirtualizedContainerService.HintSize="250,104" />
+      <sap2010:ViewStateData Id="ExecuteNonQuery_1" sap:VirtualizedContainerService.HintSize="236,70" />
+      <sap2010:ViewStateData Id="CommentOut_1" sap:VirtualizedContainerService.HintSize="250,146">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="250,61" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="272,1446">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DatabaseScope_1" sap:VirtualizedContainerService.HintSize="286,1541" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="308,1665">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="New Workflow2_1" sap:VirtualizedContainerService.HintSize="348,1985" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
