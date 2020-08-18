@@ -1,0 +1,102 @@
+[
+    {
+        "id": "71c019b0.13b048",
+        "type": "inject",
+        "z": "3df9a97d.f168c6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 800,
+        "wires": [
+            [
+                "e4e5c5b0.c8d328"
+            ]
+        ]
+    },
+    {
+        "id": "e4e5c5b0.c8d328",
+        "type": "function",
+        "z": "3df9a97d.f168c6",
+        "name": "",
+        "func": "msg.payload = {\n    \"arg1\": \"A value from nodered\", \n    \"arg2\": 22,\n    \"arg3\": true,\n    \"arg4\": \"will not work\",\n    \"arg5\": \"another value from nodered\"\n    \n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 300,
+        "y": 800,
+        "wires": [
+            [
+                "4e4945d0.714bfc"
+            ]
+        ]
+    },
+    {
+        "id": "4e4945d0.714bfc",
+        "type": "rpa workflow",
+        "z": "3df9a97d.f168c6",
+        "queue": "5ce94386320b9ce0bc2c3d07",
+        "workflow": "5f3b91958fe785568d25f396",
+        "localqueue": "",
+        "name": "",
+        "x": 470,
+        "y": 800,
+        "wires": [
+            [
+                "5a3465e1.d72d4c"
+            ],
+            [],
+            [
+                "963d5ed5.f5f2a"
+            ]
+        ]
+    },
+    {
+        "id": "5a3465e1.d72d4c",
+        "type": "debug",
+        "z": "3df9a97d.f168c6",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "963d5ed5.f5f2a",
+        "type": "debug",
+        "z": "3df9a97d.f168c6",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "error",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 820,
+        "wires": []
+    }
+]
