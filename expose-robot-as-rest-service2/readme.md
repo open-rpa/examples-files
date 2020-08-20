@@ -26,7 +26,7 @@ double click rpa workflow
 
 and select your username and select the workflow you imported to the robot before
 
-![image-20200818110926071](image-20200818110926071.png)
+![image-20200820093536567](image-20200820093536567.png)
 
 Now you can call the robot using your nodered endpoint
 
