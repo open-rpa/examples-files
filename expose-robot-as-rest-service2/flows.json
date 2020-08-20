@@ -1,0 +1,58 @@
+[
+    {
+        "id": "ac6b8f0a.0db6e",
+        "type": "http in",
+        "z": "3df9a97d.f168c6",
+        "name": "",
+        "url": "/robot",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 280,
+        "wires": [
+            [
+                "e8cd627f.65dcb"
+            ]
+        ]
+    },
+    {
+        "id": "ece81e38.39ff1",
+        "type": "http response",
+        "z": "3df9a97d.f168c6",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 470,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "e8cd627f.65dcb",
+        "type": "rpa workflow",
+        "z": "3df9a97d.f168c6",
+        "queue": "5ce94386320b9ce0bc2c3d07",
+        "workflow": "5f3e25b18fe78546dc26031f",
+        "localqueue": "",
+        "name": "",
+        "x": 330,
+        "y": 280,
+        "wires": [
+            [
+                "ece81e38.39ff1"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "b8d97764.a7fa68",
+        "type": "comment",
+        "z": "3df9a97d.f168c6",
+        "name": "please read !",
+        "info": "Double click the rpa workflow node and select your robot and then select the workflow you imported before ( REST-response )",
+        "x": 290,
+        "y": 220,
+        "wires": []
+    }
+]
