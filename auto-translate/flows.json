@@ -1,0 +1,172 @@
+[
+    {
+        "id": "f9eba1e9.f2e95",
+        "type": "workflow in",
+        "z": "f014cdcd.e11d7",
+        "queue": "translationservice",
+        "rpa": true,
+        "web": false,
+        "name": "translation service",
+        "x": 190,
+        "y": 760,
+        "wires": [
+            [
+                "24e41c6a.6d87e4",
+                "887d3e06.7d595"
+            ]
+        ]
+    },
+    {
+        "id": "24e41c6a.6d87e4",
+        "type": "function",
+        "z": "f014cdcd.e11d7",
+        "name": "",
+        "func": "msg.text = msg.payload.text;\nmsg.payload = msg.payload.text;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 380,
+        "y": 760,
+        "wires": [
+            [
+                "99d6844a.4bc108"
+            ]
+        ]
+    },
+    {
+        "id": "99d6844a.4bc108",
+        "type": "function",
+        "z": "f014cdcd.e11d7",
+        "name": "UPDATE ME",
+        "func": "// Get API key https://cloud.google.com/translate/docs/setup\nvar googleapikey = \"\";\nmsg.url = \"https://translation.googleapis.com/language/translate/v2?key=\" + googleapikey;\nmsg.payload = {\n  \"q\": msg.payload,\n  \"target\": \"en\"\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 570,
+        "y": 760,
+        "wires": [
+            [
+                "6d42c3bf.f8677c"
+            ]
+        ]
+    },
+    {
+        "id": "74f16a62.48e024",
+        "type": "inject",
+        "z": "f014cdcd.e11d7",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 820,
+        "wires": [
+            [
+                "807c3c53.67d09"
+            ]
+        ]
+    },
+    {
+        "id": "807c3c53.67d09",
+        "type": "function",
+        "z": "f014cdcd.e11d7",
+        "name": "",
+        "func": "msg.text = \"Hvad skal vi have at spise idag?\"\nmsg.payload = msg.text\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 340,
+        "y": 820,
+        "wires": [
+            [
+                "99d6844a.4bc108"
+            ]
+        ]
+    },
+    {
+        "id": "887d3e06.7d595",
+        "type": "debug",
+        "z": "f014cdcd.e11d7",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 390,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "6d42c3bf.f8677c",
+        "type": "http request",
+        "z": "f014cdcd.e11d7",
+        "name": "labelAnnotations",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": false,
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 770,
+        "y": 760,
+        "wires": [
+            [
+                "9c0d2e6a.b88cb"
+            ]
+        ]
+    },
+    {
+        "id": "9c0d2e6a.b88cb",
+        "type": "function",
+        "z": "f014cdcd.e11d7",
+        "name": "",
+        "func": "msg.payload = {result: msg.payload.data.translations[0].translatedText, language: msg.payload.data.translations[0].detectedSourceLanguage}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 600,
+        "y": 840,
+        "wires": [
+            [
+                "6f1585df.244c4c",
+                "38b1bc2e.5f8594"
+            ]
+        ]
+    },
+    {
+        "id": "6f1585df.244c4c",
+        "type": "debug",
+        "z": "f014cdcd.e11d7",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 770,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "38b1bc2e.5f8594",
+        "type": "workflow out",
+        "z": "f014cdcd.e11d7",
+        "name": "",
+        "form": "",
+        "state": "completed",
+        "x": 770,
+        "y": 820,
+        "wires": [
+            []
+        ]
+    }
+]
