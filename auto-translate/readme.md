@@ -5,4 +5,4 @@ Start an nodered instance in openflow and import the flows.json, update the "upd
 
 Then op then robot and import auto-translation.xaml and select "translationservice" in the "Invoke Openflow" activity 
 
-( a more "how to" guide on how to generate the api key can be [found here](https://translatepress.com/docs/automatic-translation/generate-google-api-key/) )
+( a more "how to" guide on how to generate the api key can be [found here](https://translatepress.com/docs/automatic-translation/generate-google-api-key/) just skip the "restrict" key part while testing. )
