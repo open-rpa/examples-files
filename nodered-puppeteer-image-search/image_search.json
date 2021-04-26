@@ -1,0 +1,96 @@
+[
+    {
+        "id": "291466b5.01080a",
+        "type": "tab",
+        "label": "Google Image Search",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "535786d4.0136a8",
+        "type": "inject",
+        "z": "291466b5.01080a",
+        "name": "Start search",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 60,
+        "wires": [
+            [
+                "92f9a4af.b84bd8"
+            ]
+        ]
+    },
+    {
+        "id": "92f9a4af.b84bd8",
+        "type": "function",
+        "z": "291466b5.01080a",
+        "name": "Search google images",
+        "func": "(async () => {\n    var hasError = false;\n    var browser\n    try {\n        \n        node.warn(\"puppeteer.launch\");\n        browser = await puppeteer.launch({ headless: true, defaultViewport: null });\n        const page = await browser.newPage();\n        node.warn(\"go to google.com\");\n        await page.goto('https://www.google.dk/imghp?hl=en&ogbl');\n        node.warn(\"Type search string\");\n        await page.type('input[name=q]', 'cute kitten', { delay: 100 });\n        page.keyboard.press('Enter');\n        node.warn(\"Wait for image\");\n        await page.waitForXPath('//div[@data-ri=\"0\"]', { timeout: 5000 });\n        // Wait a second, or we sometimess get an picture of the cookie warning too\n        await new Promise(r => setTimeout(r, 1000));\n        let element = await page.$x('//div[@data-ri=\"0\"]');\n        node.warn(\"Download first image found\");\n        const screenshot = await element[0].screenshot({ path: `/tmp/kitten2.png` });\n  \n    } catch (error ) {\n        hasError = true;\n        node.error(error, msg);\n    }\n    try {\n        if(browser!=null) await browser.close();\n    } catch (error ) {\n        hasError = true;\n        node.error(error, msg);\n    }\n    if(!hasError) node.send(msg);\n    node.done();\n})();\nreturn;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "puppeteer",
+                "module": "puppeteer"
+            }
+        ],
+        "x": 320,
+        "y": 60,
+        "wires": [
+            [
+                "d2877026.7fdde"
+            ]
+        ]
+    },
+    {
+        "id": "d2877026.7fdde",
+        "type": "file in",
+        "z": "291466b5.01080a",
+        "name": "Load downloaded image",
+        "filename": "/tmp/kitten2.png",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "x": 150,
+        "y": 120,
+        "wires": [
+            [
+                "6e8eea5e.71aec4"
+            ]
+        ]
+    },
+    {
+        "id": "6e8eea5e.71aec4",
+        "type": "image",
+        "z": "291466b5.01080a",
+        "name": "Kittens",
+        "width": "300",
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": false,
+        "outputs": 0,
+        "x": 330,
+        "y": 120,
+        "wires": []
+    }
+]
