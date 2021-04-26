@@ -1,9 +1,9 @@
-**Using puppeteer in nodered**
+**Using TagUI in nodered**
 
-Select the "Latest Puppeteer Nodered" image
+Select the "Latest TagUI Nodered" image
 Enable function external modules
 install node-red-contrib-image-output
 Then import image_search.json
 Click inject and enjoy the cute kitten picture
 
-![puppeteer](puppeteer.png)
+![puppeteer](tagui.png)

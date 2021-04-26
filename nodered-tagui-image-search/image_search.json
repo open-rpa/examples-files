@@ -1,0 +1,302 @@
+[
+    {
+        "id": "1d07f154.be2ecf",
+        "type": "tab",
+        "label": "Google Image Search",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "b6d490b7.dc158",
+        "type": "inject",
+        "z": "1d07f154.be2ecf",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 80,
+        "wires": [
+            [
+                "e39bf6a7.25aa78"
+            ]
+        ]
+    },
+    {
+        "id": "ba5b4039.3e059",
+        "type": "function",
+        "z": "1d07f154.be2ecf",
+        "name": "",
+        "func": "PythonShell.PythonShell.runString(msg.payload, null, function (err, output) {\n    if (err) { node.error(err, msg); return; }\n    msg.payload = output;\n    node.send(msg);\n    node.done();\n});\nreturn;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "puppeteer",
+                "module": "puppeteer"
+            },
+            {
+                "var": "PythonShell",
+                "module": "python-shell"
+            }
+        ],
+        "x": 420,
+        "y": 80,
+        "wires": [
+            [
+                "d6a0204.be3fbe",
+                "40c78aa1.7ae3e4"
+            ]
+        ]
+    },
+    {
+        "id": "d6a0204.be3fbe",
+        "type": "debug",
+        "z": "1d07f154.be2ecf",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "1df05556.64a98b",
+        "type": "image",
+        "z": "1d07f154.be2ecf",
+        "name": "",
+        "width": "250",
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": false,
+        "outputs": 0,
+        "x": 340,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "40c78aa1.7ae3e4",
+        "type": "file in",
+        "z": "1d07f154.be2ecf",
+        "name": "",
+        "filename": "c:\\temp\\kitten.png",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "x": 150,
+        "y": 120,
+        "wires": [
+            [
+                "1df05556.64a98b"
+            ]
+        ]
+    },
+    {
+        "id": "e39bf6a7.25aa78",
+        "type": "template",
+        "z": "1d07f154.be2ecf",
+        "name": "Python code",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "python",
+        "syntax": "plain",
+        "template": "import rpa as r\nr.init()\nr.url('https://www.google.dk/imghp?hl=en&ogbl')\nr.type('//*[@name=\"q\"]', 'cute kitten[enter]')\nr.wait(2)\nif r.exist('//div[@data-ri=\"0\"]') :\n    r.snap('//div[@data-ri=\"0\"]', ' c:\\\\temp\\\\kitten.png')\nr.close()",
+        "output": "str",
+        "x": 270,
+        "y": 80,
+        "wires": [
+            [
+                "ba5b4039.3e059"
+            ]
+        ]
+    },
+    {
+        "id": "33bf81af.3999ae",
+        "type": "inject",
+        "z": "1d07f154.be2ecf",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 300,
+        "wires": [
+            [
+                "1b53d394.0cc0fc"
+            ]
+        ]
+    },
+    {
+        "id": "154f376b.cb3d99",
+        "type": "exec",
+        "z": "1d07f154.be2ecf",
+        "command": "~/tagui/src/tagui",
+        "addpay": "",
+        "append": "/tmp/robot.tag -headless",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 140,
+        "y": 360,
+        "wires": [
+            [
+                "ddfd0d9a.d16d"
+            ],
+            [
+                "ddfd0d9a.d16d"
+            ],
+            [
+                "c9a0b54e.be9248"
+            ]
+        ]
+    },
+    {
+        "id": "c78887c3.28bc68",
+        "type": "file",
+        "z": "1d07f154.be2ecf",
+        "name": "",
+        "filename": "/tmp/robot.tag",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 460,
+        "y": 300,
+        "wires": [
+            [
+                "154f376b.cb3d99"
+            ]
+        ]
+    },
+    {
+        "id": "1b53d394.0cc0fc",
+        "type": "template",
+        "z": "1d07f154.be2ecf",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "python",
+        "syntax": "plain",
+        "template": "https://www.google.dk/imghp?hl=en&ogbl\ntype q as cute kitten[enter]\nwait 5 sec\nif exist('//div[@data-ri=\"0\"]')\n  snap //div[@data-ri=\"0\"] to /tmp/kitten.png\n  ",
+        "output": "str",
+        "x": 280,
+        "y": 300,
+        "wires": [
+            [
+                "c78887c3.28bc68"
+            ]
+        ]
+    },
+    {
+        "id": "a3b326ff.2c8658",
+        "type": "file in",
+        "z": "1d07f154.be2ecf",
+        "name": "",
+        "filename": "/tmp/kitten.png",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "x": 160,
+        "y": 420,
+        "wires": [
+            [
+                "b3199618.3f64a8"
+            ]
+        ]
+    },
+    {
+        "id": "b3199618.3f64a8",
+        "type": "image",
+        "z": "1d07f154.be2ecf",
+        "name": "",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": false,
+        "outputs": 0,
+        "x": 360,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "ddfd0d9a.d16d",
+        "type": "debug",
+        "z": "1d07f154.be2ecf",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 350,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "c9a0b54e.be9248",
+        "type": "switch",
+        "z": "1d07f154.be2ecf",
+        "name": "Success?",
+        "property": "payload.code",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 340,
+        "y": 380,
+        "wires": [
+            [
+                "a3b326ff.2c8658"
+            ]
+        ]
+    }
+]
