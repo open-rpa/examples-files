@@ -2,8 +2,8 @@
 
 Select the "Latest TagUI Nodered" image
 Enable function external modules
-install node-red-contrib-image-output
+install node-red-contrib-image-output and node-red-contrib-tagui
 Then import image_search.json
-Click inject and enjoy the cute kitten picture
+Click one one of the inject button and enjoy the cute kitten picture
 
-![puppeteer](tagui.png)
+![puppeteer](example.png)

@@ -1,12 +1,5 @@
 [
     {
-        "id": "1d07f154.be2ecf",
-        "type": "tab",
-        "label": "Google Image Search",
-        "disabled": false,
-        "info": ""
-    },
-    {
         "id": "b6d490b7.dc158",
         "type": "inject",
         "z": "1d07f154.be2ecf",
@@ -85,7 +78,7 @@
         "type": "image",
         "z": "1d07f154.be2ecf",
         "name": "",
-        "width": "250",
+        "width": "160",
         "data": "payload",
         "dataType": "msg",
         "thumbnail": false,
@@ -101,12 +94,12 @@
         "type": "file in",
         "z": "1d07f154.be2ecf",
         "name": "",
-        "filename": "c:\\temp\\kitten.png",
+        "filename": "kitten2.png",
         "format": "",
         "chunk": false,
         "sendError": false,
         "encoding": "none",
-        "x": 150,
+        "x": 130,
         "y": 120,
         "wires": [
             [
@@ -123,7 +116,7 @@
         "fieldType": "msg",
         "format": "python",
         "syntax": "plain",
-        "template": "import rpa as r\nr.init()\nr.url('https://www.google.dk/imghp?hl=en&ogbl')\nr.type('//*[@name=\"q\"]', 'cute kitten[enter]')\nr.wait(2)\nif r.exist('//div[@data-ri=\"0\"]') :\n    r.snap('//div[@data-ri=\"0\"]', ' c:\\\\temp\\\\kitten.png')\nr.close()",
+        "template": "import rpa as r\nr.init()\nr.url('https://www.google.dk/imghp?hl=en&ogbl')\nr.type('//*[@name=\"q\"]', 'cute kitten[enter]')\nr.wait(2)\nr.snap('//div[@data-ri=\"0\"]', ' kitten2.png')\nr.close()",
         "output": "str",
         "x": 270,
         "y": 80,
@@ -134,7 +127,17 @@
         ]
     },
     {
-        "id": "33bf81af.3999ae",
+        "id": "6c9ee265.2474fc",
+        "type": "comment",
+        "z": "1d07f154.be2ecf",
+        "name": "TagUI Python version",
+        "info": "This requires the functionExternalModules to be set to true \n\nIn vanilla Nodered, your ~/.nodered/settings.json \nIn OpenFlow Nodered\nAdd function_external_modules=true in your .env file or docker-compose file.\nIf using openflow provisioning Nodereds, Check the functionExternalModules on the Nodered tab.",
+        "x": 160,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "f3af1605.ec32f8",
         "type": "inject",
         "z": "1d07f154.be2ecf",
         "name": "",
@@ -152,151 +155,107 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 120,
-        "y": 300,
-        "wires": [
-            [
-                "1b53d394.0cc0fc"
-            ]
-        ]
-    },
-    {
-        "id": "154f376b.cb3d99",
-        "type": "exec",
-        "z": "1d07f154.be2ecf",
-        "command": "~/tagui/src/tagui",
-        "addpay": "",
-        "append": "/tmp/robot.tag -headless",
-        "useSpawn": "false",
-        "timer": "",
-        "oldrc": false,
-        "name": "",
-        "x": 140,
-        "y": 360,
-        "wires": [
-            [
-                "ddfd0d9a.d16d"
-            ],
-            [
-                "ddfd0d9a.d16d"
-            ],
-            [
-                "c9a0b54e.be9248"
-            ]
-        ]
-    },
-    {
-        "id": "c78887c3.28bc68",
-        "type": "file",
-        "z": "1d07f154.be2ecf",
-        "name": "",
-        "filename": "/tmp/robot.tag",
-        "appendNewline": true,
-        "createDir": false,
-        "overwriteFile": "true",
-        "encoding": "none",
-        "x": 460,
-        "y": 300,
-        "wires": [
-            [
-                "154f376b.cb3d99"
-            ]
-        ]
-    },
-    {
-        "id": "1b53d394.0cc0fc",
-        "type": "template",
-        "z": "1d07f154.be2ecf",
-        "name": "",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "python",
-        "syntax": "plain",
-        "template": "https://www.google.dk/imghp?hl=en&ogbl\ntype q as cute kitten[enter]\nwait 5 sec\nif exist('//div[@data-ri=\"0\"]')\n  snap //div[@data-ri=\"0\"] to /tmp/kitten.png\n  ",
-        "output": "str",
-        "x": 280,
-        "y": 300,
-        "wires": [
-            [
-                "c78887c3.28bc68"
-            ]
-        ]
-    },
-    {
-        "id": "a3b326ff.2c8658",
-        "type": "file in",
-        "z": "1d07f154.be2ecf",
-        "name": "",
-        "filename": "/tmp/kitten.png",
-        "format": "",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "none",
+        "payload": "cute kitten",
+        "payloadType": "str",
         "x": 160,
-        "y": 420,
+        "y": 220,
         "wires": [
             [
-                "b3199618.3f64a8"
+                "7dd22cb.07c64d4"
             ]
         ]
     },
     {
-        "id": "b3199618.3f64a8",
+        "id": "7dd22cb.07c64d4",
+        "type": "tagui tagui",
+        "z": "1d07f154.be2ecf",
+        "name": "",
+        "headless": false,
+        "nobrowser": false,
+        "param": true,
+        "quiet": true,
+        "script": "https://www.google.dk/imghp?hl=en&ogbl\ntype q as `p1`[enter]\nwait 2 sec\nif present('//div[@data-ri=\"0\"]')\n    snap //div[@data-ri=\"0\"] to data/kitten.png\nelse if present('//table//img')\n    snap //table//img to data/kitten.png",
+        "x": 310,
+        "y": 240,
+        "wires": [
+            [
+                "b70aac26.17577"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "db71650e.26fae8",
         "type": "image",
         "z": "1d07f154.be2ecf",
         "name": "",
-        "width": 160,
+        "width": "160",
         "data": "payload",
         "dataType": "msg",
         "thumbnail": false,
         "active": true,
         "pass": false,
         "outputs": 0,
-        "x": 360,
-        "y": 420,
+        "x": 480,
+        "y": 260,
         "wires": []
     },
     {
-        "id": "ddfd0d9a.d16d",
-        "type": "debug",
+        "id": "b70aac26.17577",
+        "type": "file in",
         "z": "1d07f154.be2ecf",
         "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 350,
-        "y": 340,
-        "wires": []
-    },
-    {
-        "id": "c9a0b54e.be9248",
-        "type": "switch",
-        "z": "1d07f154.be2ecf",
-        "name": "Success?",
-        "property": "payload.code",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 340,
-        "y": 380,
+        "filename": "data/kitten.png",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "x": 480,
+        "y": 220,
         "wires": [
             [
-                "a3b326ff.2c8658"
+                "db71650e.26fae8"
             ]
         ]
+    },
+    {
+        "id": "8f0c45bc.efe9e8",
+        "type": "inject",
+        "z": "1d07f154.be2ecf",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "2 cute puppies",
+        "payloadType": "str",
+        "x": 140,
+        "y": 260,
+        "wires": [
+            [
+                "7dd22cb.07c64d4"
+            ]
+        ]
+    },
+    {
+        "id": "da8f73d9.56c67",
+        "type": "comment",
+        "z": "1d07f154.be2ecf",
+        "name": "TagUI version",
+        "info": "requires chrome to be preinstalled.",
+        "x": 130,
+        "y": 180,
+        "wires": []
     }
 ]
