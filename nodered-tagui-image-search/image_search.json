@@ -40,10 +40,6 @@
         "finalize": "",
         "libs": [
             {
-                "var": "puppeteer",
-                "module": "puppeteer"
-            },
-            {
                 "var": "PythonShell",
                 "module": "python-shell"
             }
