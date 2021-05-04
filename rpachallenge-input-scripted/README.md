@@ -9,4 +9,4 @@ so that is what rpachallenge-InputForms-scriptsall does.
 
 Se video presentation of that here
 
-[<img src="https://img.youtube.com/vi/xFpyIt3ixvw/0.jpg" alt="Scripted Challenge" style="zoom: 67%;" />](https://youtu.be/xFpyIt3ixvw)
+[<img src="https://img.youtube.com/vi/aaHaGwm9EHc/0.jpg" alt="Scripted Challenge" style="zoom: 67%;" />](https://youtu.be/aaHaGwm9EHc)
