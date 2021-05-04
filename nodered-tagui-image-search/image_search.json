@@ -2,7 +2,7 @@
     {
         "id": "b6d490b7.dc158",
         "type": "inject",
-        "z": "1d07f154.be2ecf",
+        "z": "ab369aa2.7b9b88",
         "name": "",
         "props": [
             {
@@ -21,7 +21,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 120,
-        "y": 80,
+        "y": 120,
         "wires": [
             [
                 "e39bf6a7.25aa78"
@@ -31,7 +31,7 @@
     {
         "id": "ba5b4039.3e059",
         "type": "function",
-        "z": "1d07f154.be2ecf",
+        "z": "ab369aa2.7b9b88",
         "name": "",
         "func": "PythonShell.PythonShell.runString(msg.payload, null, function (err, output) {\n    if (err) { node.error(err, msg); return; }\n    msg.payload = output;\n    node.send(msg);\n    node.done();\n});\nreturn;",
         "outputs": 1,
@@ -49,7 +49,7 @@
             }
         ],
         "x": 420,
-        "y": 80,
+        "y": 120,
         "wires": [
             [
                 "d6a0204.be3fbe",
@@ -60,7 +60,7 @@
     {
         "id": "d6a0204.be3fbe",
         "type": "debug",
-        "z": "1d07f154.be2ecf",
+        "z": "ab369aa2.7b9b88",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -70,13 +70,13 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 590,
-        "y": 80,
+        "y": 120,
         "wires": []
     },
     {
         "id": "1df05556.64a98b",
         "type": "image",
-        "z": "1d07f154.be2ecf",
+        "z": "ab369aa2.7b9b88",
         "name": "",
         "width": "160",
         "data": "payload",
@@ -86,13 +86,13 @@
         "pass": false,
         "outputs": 0,
         "x": 340,
-        "y": 120,
+        "y": 160,
         "wires": []
     },
     {
         "id": "40c78aa1.7ae3e4",
         "type": "file in",
-        "z": "1d07f154.be2ecf",
+        "z": "ab369aa2.7b9b88",
         "name": "",
         "filename": "kitten2.png",
         "format": "",
@@ -100,7 +100,7 @@
         "sendError": false,
         "encoding": "none",
         "x": 130,
-        "y": 120,
+        "y": 160,
         "wires": [
             [
                 "1df05556.64a98b"
@@ -110,7 +110,7 @@
     {
         "id": "e39bf6a7.25aa78",
         "type": "template",
-        "z": "1d07f154.be2ecf",
+        "z": "ab369aa2.7b9b88",
         "name": "Python code",
         "field": "payload",
         "fieldType": "msg",
@@ -119,7 +119,7 @@
         "template": "import rpa as r\nr.init()\nr.url('https://www.google.dk/imghp?hl=en&ogbl')\nr.type('//*[@name=\"q\"]', 'cute kitten[enter]')\nr.wait(2)\nr.snap('//div[@data-ri=\"0\"]', ' kitten2.png')\nr.close()",
         "output": "str",
         "x": 270,
-        "y": 80,
+        "y": 120,
         "wires": [
             [
                 "ba5b4039.3e059"
@@ -129,17 +129,17 @@
     {
         "id": "6c9ee265.2474fc",
         "type": "comment",
-        "z": "1d07f154.be2ecf",
+        "z": "ab369aa2.7b9b88",
         "name": "TagUI Python version",
         "info": "This requires the functionExternalModules to be set to true \n\nIn vanilla Nodered, your ~/.nodered/settings.json \nIn OpenFlow Nodered\nAdd function_external_modules=true in your .env file or docker-compose file.\nIf using openflow provisioning Nodereds, Check the functionExternalModules on the Nodered tab.",
         "x": 160,
-        "y": 40,
+        "y": 80,
         "wires": []
     },
     {
         "id": "f3af1605.ec32f8",
         "type": "inject",
-        "z": "1d07f154.be2ecf",
+        "z": "ab369aa2.7b9b88",
         "name": "",
         "props": [
             {
@@ -155,10 +155,10 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "cute kitten",
+        "payload": "kitten",
         "payloadType": "str",
-        "x": 160,
-        "y": 220,
+        "x": 150,
+        "y": 260,
         "wires": [
             [
                 "7dd22cb.07c64d4"
@@ -168,7 +168,7 @@
     {
         "id": "7dd22cb.07c64d4",
         "type": "tagui tagui",
-        "z": "1d07f154.be2ecf",
+        "z": "ab369aa2.7b9b88",
         "name": "",
         "headless": false,
         "nobrowser": false,
@@ -176,7 +176,7 @@
         "quiet": true,
         "script": "https://www.google.dk/imghp?hl=en&ogbl\ntype q as `p1`[enter]\nwait 2 sec\nif present('//div[@data-ri=\"0\"]')\n    snap //div[@data-ri=\"0\"] to data/kitten.png\nelse if present('//table//img')\n    snap //table//img to data/kitten.png",
         "x": 310,
-        "y": 240,
+        "y": 280,
         "wires": [
             [
                 "b70aac26.17577"
@@ -188,7 +188,7 @@
     {
         "id": "db71650e.26fae8",
         "type": "image",
-        "z": "1d07f154.be2ecf",
+        "z": "ab369aa2.7b9b88",
         "name": "",
         "width": "160",
         "data": "payload",
@@ -198,13 +198,13 @@
         "pass": false,
         "outputs": 0,
         "x": 480,
-        "y": 260,
+        "y": 300,
         "wires": []
     },
     {
         "id": "b70aac26.17577",
         "type": "file in",
-        "z": "1d07f154.be2ecf",
+        "z": "ab369aa2.7b9b88",
         "name": "",
         "filename": "data/kitten.png",
         "format": "",
@@ -212,7 +212,7 @@
         "sendError": false,
         "encoding": "none",
         "x": 480,
-        "y": 220,
+        "y": 260,
         "wires": [
             [
                 "db71650e.26fae8"
@@ -222,7 +222,7 @@
     {
         "id": "8f0c45bc.efe9e8",
         "type": "inject",
-        "z": "1d07f154.be2ecf",
+        "z": "ab369aa2.7b9b88",
         "name": "",
         "props": [
             {
@@ -238,10 +238,10 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "2 cute puppies",
+        "payload": "puppies",
         "payloadType": "str",
-        "x": 140,
-        "y": 260,
+        "x": 110,
+        "y": 300,
         "wires": [
             [
                 "7dd22cb.07c64d4"
@@ -251,11 +251,11 @@
     {
         "id": "da8f73d9.56c67",
         "type": "comment",
-        "z": "1d07f154.be2ecf",
+        "z": "ab369aa2.7b9b88",
         "name": "TagUI version",
         "info": "requires chrome to be preinstalled.",
         "x": 130,
-        "y": 180,
+        "y": 220,
         "wires": []
     }
 ]
