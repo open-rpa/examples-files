@@ -6,14 +6,24 @@ I made a normal recording filling out the form.
 
 I then made a scripted version to see if I could speed it up, but turn out with my hardware, its about the same either way.
 
+
+
+**botwars week2**
+
+![automationanywhere2](BotWars2.png)
+
+
+
+**botwars week1**
+
 Enjoy
 
 [![Exposing a robot workflow as a rest service](https://img.youtube.com/vi/CC-lmOpRpzs/2.jpg)](https://youtu.be/CC-lmOpRpzs)
 
 Scripted
 
-![automationanywhere2](automationanywhere2.png)
+![automationanywhere2](BotWars1b.png)
 
 Normal
 
-![automationanywhere1](automationanywhere1.png)
+![automationanywhere1](BotWars1a.png)
