@@ -1,0 +1,873 @@
+<Activity mc1:Ignorable="sads sap sap2010" x:Class="BotWars2alt" sap2010:WorkflowViewState.IdRef="New_Workflow_1" mva1:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:m="clr-namespace:ManagedSSPI;assembly=System.Net.WebSockets.Client.Managed"
+ xmlns:mc="clr-namespace:Microsoft.CSharp;assembly=System"
+ xmlns:mc1="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:mss="clr-namespace:Microsoft.SqlServer.Server;assembly=System.Data"
+ xmlns:mv="clr-namespace:Microsoft.VisualBasic;assembly=System"
+ xmlns:mv1="clr-namespace:Microsoft.VisualBasic;assembly=Microsoft.VisualBasic"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.ApplicationServices;assembly=Microsoft.VisualBasic"
+ xmlns:mva1="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:mvax="clr-namespace:Microsoft.VisualBasic.Activities.XamlIntegration;assembly=System.Activities"
+ xmlns:mvc="clr-namespace:Microsoft.VisualBasic.CompilerServices;assembly=Microsoft.VisualBasic"
+ xmlns:mvd="clr-namespace:Microsoft.VisualBasic.Devices;assembly=Microsoft.VisualBasic"
+ xmlns:mvf="clr-namespace:Microsoft.VisualBasic.FileIO;assembly=Microsoft.VisualBasic"
+ xmlns:mvl="clr-namespace:Microsoft.VisualBasic.Logging;assembly=Microsoft.VisualBasic"
+ xmlns:mvm="clr-namespace:Microsoft.VisualBasic.MyServices;assembly=Microsoft.VisualBasic"
+ xmlns:mvmi="clr-namespace:Microsoft.VisualBasic.MyServices.Internal;assembly=Microsoft.VisualBasic"
+ xmlns:mw="clr-namespace:Microsoft.Win32;assembly=mscorlib"
+ xmlns:mw1="clr-namespace:Microsoft.Win32;assembly=System"
+ xmlns:mws="clr-namespace:Microsoft.Win32.SafeHandles;assembly=mscorlib"
+ xmlns:mws1="clr-namespace:Microsoft.Win32.SafeHandles;assembly=System.Core"
+ xmlns:mws2="clr-namespace:Microsoft.Win32.SafeHandles;assembly=System"
+ xmlns:o="clr-namespace:OpenRPA;assembly=OpenRPA"
+ xmlns:o1="clr-namespace:OpenRPA;assembly=OpenRPA.Interfaces"
+ xmlns:oa="clr-namespace:OpenRPA.Activities;assembly=OpenRPA"
+ xmlns:oi="clr-namespace:OpenRPA.Input;assembly=OpenRPA.Interfaces"
+ xmlns:oi1="clr-namespace:OpenRPA.Interfaces;assembly=OpenRPA.Interfaces"
+ xmlns:oie="clr-namespace:OpenRPA.Interfaces.entity;assembly=OpenRPA.Interfaces"
+ xmlns:oii="clr-namespace:OpenRPA.Interfaces.IPCService;assembly=OpenRPA.Interfaces"
+ xmlns:oii1="clr-namespace:OpenRPA.Interfaces.Input;assembly=OpenRPA.Interfaces"
+ xmlns:oii2="clr-namespace:OpenRPA.Interfaces.Image;assembly=OpenRPA.Interfaces"
+ xmlns:oim="clr-namespace:OpenRPA.Interfaces.mq;assembly=OpenRPA.Interfaces"
+ xmlns:oio="clr-namespace:OpenRPA.Interfaces.Overlay;assembly=OpenRPA.Interfaces"
+ xmlns:oir="clr-namespace:OpenRPA.Interfaces.Resources;assembly=OpenRPA.Interfaces"
+ xmlns:ois="clr-namespace:OpenRPA.Interfaces.Selector;assembly=OpenRPA.Interfaces"
+ xmlns:oiv="clr-namespace:OpenRPA.Interfaces.Views;assembly=OpenRPA.Interfaces"
+ xmlns:oiw="clr-namespace:OpenRPA.Interfaces.win32;assembly=OpenRPA.Interfaces"
+ xmlns:on="clr-namespace:OpenRPA.NM;assembly=OpenRPA.NM"
+ xmlns:ona="clr-namespace:OpenRPA.NM.Activities;assembly=OpenRPA.NM"
+ xmlns:onp="clr-namespace:OpenRPA.NM.pipe;assembly=OpenRPA.NM"
+ xmlns:onr="clr-namespace:OpenRPA.NM.Resources;assembly=OpenRPA.NM"
+ xmlns:ons="clr-namespace:OpenRPA.NM.Snippets;assembly=OpenRPA.NM"
+ xmlns:onv="clr-namespace:OpenRPA.NM.Views;assembly=OpenRPA.NM"
+ xmlns:ooa="clr-namespace:OpenRPA.Office.Activities;assembly=OpenRPA.Office"
+ xmlns:or="clr-namespace:OpenRPA.Resources;assembly=OpenRPA"
+ xmlns:os="clr-namespace:OpenRPA.Store;assembly=OpenRPA"
+ xmlns:ou="clr-namespace:OpenRPA.Utilities;assembly=OpenRPA.Utilities"
+ xmlns:ov="clr-namespace:OpenRPA.Views;assembly=OpenRPA"
+ xmlns:ov1="clr-namespace:OpenRPA.ViewModel;assembly=OpenRPA"
+ xmlns:ow="clr-namespace:OpenRPA.Windows;assembly=OpenRPA.Windows"
+ xmlns:owr="clr-namespace:OpenRPA.Windows.Resources;assembly=OpenRPA.Windows"
+ xmlns:owv="clr-namespace:OpenRPA.Windows.Views;assembly=OpenRPA.Windows"
+ xmlns:p="clr-namespace:XamlGeneratedNamespace;assembly=OpenRPA"
+ xmlns:p1="clr-namespace:XamlGeneratedNamespace;assembly=OpenRPA.Interfaces"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:s1="clr-namespace:System;assembly=System.Core"
+ xmlns:s2="clr-namespace:System;assembly=System"
+ xmlns:s3="clr-namespace:System;assembly=System.Memory"
+ xmlns:s4="clr-namespace:System;assembly=System.ValueTuple"
+ xmlns:s5="clr-namespace:System;assembly=System.ServiceModel"
+ xmlns:s6="clr-namespace:System;assembly=System.ComponentModel.Composition"
+ xmlns:s7="clr-namespace:System;assembly=System.Net.WebSockets.Client.Managed"
+ xmlns:s8="clr-namespace:System;assembly=System.Runtime.WindowsRuntime"
+ xmlns:s9="clr-namespace:System;assembly=System.Globalization.Extensions"
+ xmlns:sa="clr-namespace:System.Activities;assembly=System.Activities"
+ xmlns:sad="clr-namespace:System.Activities.DynamicUpdate;assembly=System.Activities"
+ xmlns:sad1="clr-namespace:System.Activities.Debugger;assembly=System.Activities"
+ xmlns:sad2="clr-namespace:System.Activities.DurableInstancing;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sads1="clr-namespace:System.Activities.Debugger.Symbol;assembly=System.Activities"
+ xmlns:sae="clr-namespace:System.Activities.Expressions;assembly=System.Activities"
+ xmlns:sae1="clr-namespace:System.Activities.ExpressionParser;assembly=System.Activities"
+ xmlns:sah="clr-namespace:System.Activities.Hosting;assembly=System.Activities"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap1="clr-namespace:System.Activities.Persistence;assembly=System.Activities"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:sas="clr-namespace:System.Activities.Statements;assembly=System.Activities"
+ xmlns:sast="clr-namespace:System.Activities.Statements.Tracking;assembly=System.Activities"
+ xmlns:sat="clr-namespace:System.Activities.Tracking;assembly=System.Activities"
+ xmlns:sav="clr-namespace:System.Activities.Validation;assembly=System.Activities"
+ xmlns:sax="clr-namespace:System.Activities.XamlIntegration;assembly=System.Activities"
+ xmlns:sb="clr-namespace:System.Buffers;assembly=System.Memory"
+ xmlns:sbb="clr-namespace:System.Buffers.Binary;assembly=System.Memory"
+ xmlns:sbt="clr-namespace:System.Buffers.Text;assembly=System.Memory"
+ xmlns:sc="clr-namespace:System.Collections;assembly=mscorlib"
+ xmlns:sc1="clr-namespace:System.Configuration;assembly=System"
+ xmlns:sc2="clr-namespace:System.ComponentModel;assembly=System"
+ xmlns:sc3="clr-namespace:System.CodeDom;assembly=System"
+ xmlns:sca="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib"
+ xmlns:scc="clr-namespace:System.Collections.Concurrent;assembly=mscorlib"
+ xmlns:scc1="clr-namespace:System.Collections.Concurrent;assembly=System"
+ xmlns:scc2="clr-namespace:System.CodeDom.Compiler;assembly=System"
+ xmlns:scc3="clr-namespace:System.ComponentModel.Composition;assembly=System.ComponentModel.Composition"
+ xmlns:scch="clr-namespace:System.ComponentModel.Composition.Hosting;assembly=System.ComponentModel.Composition"
+ xmlns:sccp="clr-namespace:System.ComponentModel.Composition.Primitives;assembly=System.ComponentModel.Composition"
+ xmlns:sccr="clr-namespace:System.ComponentModel.Composition.ReflectionModel;assembly=System.ComponentModel.Composition"
+ xmlns:scd="clr-namespace:System.ComponentModel.Design;assembly=System"
+ xmlns:scds="clr-namespace:System.ComponentModel.Design.Serialization;assembly=System"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:scg1="clr-namespace:System.Collections.Generic;assembly=System.Core"
+ xmlns:scg2="clr-namespace:System.Collections.Generic;assembly=System"
+ xmlns:scg3="clr-namespace:System.Collections.Generic;assembly=System.ServiceModel"
+ xmlns:sci="clr-namespace:System.Collections.Immutable;assembly=System.Collections.Immutable"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sco1="clr-namespace:System.Collections.ObjectModel;assembly=System"
+ xmlns:scs="clr-namespace:System.Collections.Specialized;assembly=System"
+ xmlns:sd="clr-namespace:System.Diagnostics;assembly=mscorlib"
+ xmlns:sd1="clr-namespace:System.Dynamic;assembly=System.Core"
+ xmlns:sd2="clr-namespace:System.Diagnostics;assembly=System.Core"
+ xmlns:sd3="clr-namespace:System.Diagnostics;assembly=System"
+ xmlns:sd4="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:sdc="clr-namespace:System.Diagnostics.Contracts;assembly=mscorlib"
+ xmlns:sdc1="clr-namespace:System.Diagnostics.CodeAnalysis;assembly=mscorlib"
+ xmlns:sdc2="clr-namespace:System.Diagnostics.CodeAnalysis;assembly=System"
+ xmlns:sdc3="clr-namespace:System.Data.Common;assembly=System.Data"
+ xmlns:sdci="clr-namespace:System.Diagnostics.Contracts.Internal;assembly=mscorlib"
+ xmlns:sde="clr-namespace:System.Diagnostics.Eventing;assembly=System.Core"
+ xmlns:sder="clr-namespace:System.Diagnostics.Eventing.Reader;assembly=System.Core"
+ xmlns:sdi="clr-namespace:System.Deployment.Internal;assembly=mscorlib"
+ xmlns:sdo="clr-namespace:System.Data.OleDb;assembly=System.Data"
+ xmlns:sdo1="clr-namespace:System.Data.Odbc;assembly=System.Data"
+ xmlns:sdp="clr-namespace:System.Diagnostics.PerformanceData;assembly=System.Core"
+ xmlns:sds="clr-namespace:System.Diagnostics.SymbolStore;assembly=mscorlib"
+ xmlns:sds1="clr-namespace:System.Data.Sql;assembly=System.Data"
+ xmlns:sds2="clr-namespace:System.Data.SqlTypes;assembly=System.Data"
+ xmlns:sds3="clr-namespace:System.Data.SqlClient;assembly=System.Data"
+ xmlns:sdt="clr-namespace:System.Diagnostics.Tracing;assembly=mscorlib"
+ xmlns:sg="clr-namespace:System.Globalization;assembly=mscorlib"
+ xmlns:sg1="clr-namespace:System.Globalization;assembly=System.Globalization.Extensions"
+ xmlns:si="clr-namespace:System.IO;assembly=mscorlib"
+ xmlns:si1="clr-namespace:System.IO;assembly=System.Core"
+ xmlns:si2="clr-namespace:System.IO;assembly=System"
+ xmlns:si3="clr-namespace:System.IO;assembly=System.ServiceModel"
+ xmlns:si4="clr-namespace:System.IO;assembly=System.Runtime.WindowsRuntime"
+ xmlns:sic="clr-namespace:System.IO.Compression;assembly=System"
+ xmlns:sii="clr-namespace:System.IO.IsolatedStorage;assembly=mscorlib"
+ xmlns:sim="clr-namespace:System.IO.MemoryMappedFiles;assembly=System.Core"
+ xmlns:sip="clr-namespace:System.IO.Pipes;assembly=System.Core"
+ xmlns:sip1="clr-namespace:System.IO.Ports;assembly=System"
+ xmlns:sl="clr-namespace:System.Linq;assembly=System.Core"
+ xmlns:sl1="clr-namespace:System.Linq;assembly=System.Collections.Immutable"
+ xmlns:sle="clr-namespace:System.Linq.Expressions;assembly=System.Core"
+ xmlns:sm="clr-namespace:System.Media;assembly=System"
+ xmlns:smi="clr-namespace:System.Management.Instrumentation;assembly=System.Core"
+ xmlns:sn="clr-namespace:System.Net;assembly=System"
+ xmlns:snc="clr-namespace:System.Net.Cache;assembly=System"
+ xmlns:snc1="clr-namespace:System.Net.Configuration;assembly=System"
+ xmlns:snm="clr-namespace:System.Net.Mime;assembly=System"
+ xmlns:snm1="clr-namespace:System.Net.Mail;assembly=System"
+ xmlns:snn="clr-namespace:System.Net.NetworkInformation;assembly=System"
+ xmlns:sns="clr-namespace:System.Net.Security;assembly=System"
+ xmlns:sns1="clr-namespace:System.Net.Sockets;assembly=System"
+ xmlns:snw="clr-namespace:System.Net.WebSockets;assembly=System"
+ xmlns:snw1="clr-namespace:System.Net.WebSockets;assembly=System.Net.WebSockets.Client.Managed"
+ xmlns:snwm="clr-namespace:System.Net.WebSockets.Managed;assembly=System.Net.WebSockets.Client.Managed"
+ xmlns:sr="clr-namespace:System.Resources;assembly=mscorlib"
+ xmlns:sr1="clr-namespace:System.Reflection;assembly=mscorlib"
+ xmlns:sr2="clr-namespace:System.Runtime;assembly=mscorlib"
+ xmlns:sr3="clr-namespace:System.Reflection;assembly=System"
+ xmlns:src="clr-namespace:System.Runtime.ConstrainedExecution;assembly=mscorlib"
+ xmlns:src1="clr-namespace:System.Runtime.CompilerServices;assembly=mscorlib"
+ xmlns:src2="clr-namespace:System.Runtime.CompilerServices;assembly=System.Core"
+ xmlns:src3="clr-namespace:System.Runtime.CompilerServices;assembly=System.ValueTuple"
+ xmlns:srd="clr-namespace:System.Runtime.DesignerServices;assembly=mscorlib"
+ xmlns:sre="clr-namespace:System.Reflection.Emit;assembly=mscorlib"
+ xmlns:sre1="clr-namespace:System.Runtime.ExceptionServices;assembly=mscorlib"
+ xmlns:srh="clr-namespace:System.Runtime.Hosting;assembly=mscorlib"
+ xmlns:sri="clr-namespace:System.Runtime.InteropServices;assembly=mscorlib"
+ xmlns:sri1="clr-namespace:System.Runtime.InteropServices;assembly=System.Core"
+ xmlns:sri2="clr-namespace:System.Runtime.InteropServices;assembly=System"
+ xmlns:sri3="clr-namespace:System.Runtime.InteropServices;assembly=System.Memory"
+ xmlns:sric="clr-namespace:System.Runtime.InteropServices.ComTypes;assembly=mscorlib"
+ xmlns:sric1="clr-namespace:System.Runtime.InteropServices.ComTypes;assembly=System"
+ xmlns:srie="clr-namespace:System.Runtime.InteropServices.Expando;assembly=mscorlib"
+ xmlns:sriw="clr-namespace:System.Runtime.InteropServices.WindowsRuntime;assembly=mscorlib"
+ xmlns:sriw1="clr-namespace:System.Runtime.InteropServices.WindowsRuntime;assembly=System.Runtime.WindowsRuntime"
+ xmlns:srr="clr-namespace:System.Runtime.Remoting;assembly=mscorlib"
+ xmlns:srra="clr-namespace:System.Runtime.Remoting.Activation;assembly=mscorlib"
+ xmlns:srrc="clr-namespace:System.Runtime.Remoting.Contexts;assembly=mscorlib"
+ xmlns:srrc1="clr-namespace:System.Runtime.Remoting.Channels;assembly=mscorlib"
+ xmlns:srrl="clr-namespace:System.Runtime.Remoting.Lifetime;assembly=mscorlib"
+ xmlns:srrm="clr-namespace:System.Runtime.Remoting.Metadata;assembly=mscorlib"
+ xmlns:srrm1="clr-namespace:System.Runtime.Remoting.Messaging;assembly=mscorlib"
+ xmlns:srrmw="clr-namespace:System.Runtime.Remoting.Metadata.W3cXsd2001;assembly=mscorlib"
+ xmlns:srrp="clr-namespace:System.Runtime.Remoting.Proxies;assembly=mscorlib"
+ xmlns:srrs="clr-namespace:System.Runtime.Remoting.Services;assembly=mscorlib"
+ xmlns:srs="clr-namespace:System.Runtime.Serialization;assembly=mscorlib"
+ xmlns:srs1="clr-namespace:System.Runtime.Serialization;assembly=System.Runtime.Serialization"
+ xmlns:srsc="clr-namespace:System.Runtime.Serialization.Configuration;assembly=System.Runtime.Serialization"
+ xmlns:srsf="clr-namespace:System.Runtime.Serialization.Formatters;assembly=mscorlib"
+ xmlns:srsfb="clr-namespace:System.Runtime.Serialization.Formatters.Binary;assembly=mscorlib"
+ xmlns:srsj="clr-namespace:System.Runtime.Serialization.Json;assembly=System.Runtime.Serialization"
+ xmlns:srv="clr-namespace:System.Runtime.Versioning;assembly=mscorlib"
+ xmlns:srv1="clr-namespace:System.Runtime.Versioning;assembly=System"
+ xmlns:ss="clr-namespace:System.Security;assembly=mscorlib"
+ xmlns:ss1="clr-namespace:System.Security;assembly=System.Core"
+ xmlns:ss2="clr-namespace:System.Security;assembly=System"
+ xmlns:ss3="clr-namespace:System.ServiceModel;assembly=System.ServiceModel"
+ xmlns:ssa="clr-namespace:System.Security.AccessControl;assembly=mscorlib"
+ xmlns:ssa1="clr-namespace:System.Security.Authentication;assembly=System"
+ xmlns:ssa2="clr-namespace:System.Security.AccessControl;assembly=System"
+ xmlns:ssa3="clr-namespace:System.ServiceModel.Activation;assembly=System.ServiceModel"
+ xmlns:ssac="clr-namespace:System.ServiceModel.Activation.Configuration;assembly=System.ServiceModel"
+ xmlns:ssae="clr-namespace:System.Security.Authentication.ExtendedProtection;assembly=System"
+ xmlns:ssaec="clr-namespace:System.Security.Authentication.ExtendedProtection.Configuration;assembly=System"
+ xmlns:ssc="clr-namespace:System.Security.Cryptography;assembly=mscorlib"
+ xmlns:ssc1="clr-namespace:System.Security.Claims;assembly=mscorlib"
+ xmlns:ssc2="clr-namespace:System.Security.Cryptography;assembly=System.Core"
+ xmlns:ssc3="clr-namespace:System.Security.Claims;assembly=System"
+ xmlns:ssc4="clr-namespace:System.Security.Cryptography;assembly=System"
+ xmlns:ssc5="clr-namespace:System.ServiceModel.ComIntegration;assembly=System.ServiceModel"
+ xmlns:ssc6="clr-namespace:System.ServiceModel.Configuration;assembly=System.ServiceModel"
+ xmlns:ssc7="clr-namespace:System.ServiceModel.Channels;assembly=System.ServiceModel"
+ xmlns:sscx="clr-namespace:System.Security.Cryptography.X509Certificates;assembly=mscorlib"
+ xmlns:sscx1="clr-namespace:System.Security.Cryptography.X509Certificates;assembly=System.Core"
+ xmlns:sscx2="clr-namespace:System.Security.Cryptography.X509Certificates;assembly=System"
+ xmlns:ssd="clr-namespace:System.ServiceModel.Description;assembly=System.ServiceModel"
+ xmlns:ssd1="clr-namespace:System.ServiceModel.Dispatcher;assembly=System.ServiceModel"
+ xmlns:ssd2="clr-namespace:System.ServiceModel.Diagnostics;assembly=System.ServiceModel"
+ xmlns:ssm="clr-namespace:System.ServiceModel.MsmqIntegration;assembly=System.ServiceModel"
+ xmlns:ssp="clr-namespace:System.Security.Permissions;assembly=mscorlib"
+ xmlns:ssp1="clr-namespace:System.Security.Principal;assembly=mscorlib"
+ xmlns:ssp2="clr-namespace:System.Security.Policy;assembly=mscorlib"
+ xmlns:ssp3="clr-namespace:System.Security.Permissions;assembly=System"
+ xmlns:ssp4="clr-namespace:System.ServiceModel.PeerResolvers;assembly=System.ServiceModel"
+ xmlns:sss="clr-namespace:System.ServiceModel.Syndication;assembly=System.ServiceModel"
+ xmlns:sss1="clr-namespace:System.ServiceModel.Security;assembly=System.ServiceModel"
+ xmlns:ssst="clr-namespace:System.ServiceModel.Security.Tokens;assembly=System.ServiceModel"
+ xmlns:ssx="clr-namespace:System.ServiceModel.XamlIntegration;assembly=System.ServiceModel"
+ xmlns:st="clr-namespace:System.Threading;assembly=mscorlib"
+ xmlns:st1="clr-namespace:System.Text;assembly=mscorlib"
+ xmlns:st2="clr-namespace:System.Threading;assembly=System.Core"
+ xmlns:st3="clr-namespace:System.Timers;assembly=System"
+ xmlns:st4="clr-namespace:System.Threading;assembly=System"
+ xmlns:st5="clr-namespace:System.Threading;assembly=System.Runtime.WindowsRuntime"
+ xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System"
+ xmlns:stt="clr-namespace:System.Threading.Tasks;assembly=mscorlib"
+ xmlns:stt1="clr-namespace:System.Threading.Tasks;assembly=System.Core"
+ xmlns:sw="clr-namespace:System.Web;assembly=System"
+ xmlns:swi="clr-namespace:System.Windows.Input;assembly=System"
+ xmlns:swm="clr-namespace:System.Windows.Markup;assembly=System"
+ xmlns:sx="clr-namespace:System.Xml;assembly=System.Xml"
+ xmlns:sx1="clr-namespace:System.Xml;assembly=System.Runtime.Serialization"
+ xmlns:sx2="clr-namespace:System.Xml;assembly=System.Data"
+ xmlns:sxr="clr-namespace:System.Xml.Resolvers;assembly=System.Xml"
+ xmlns:sxs="clr-namespace:System.Xml.Serialization;assembly=System.Xml"
+ xmlns:sxs1="clr-namespace:System.Xml.Schema;assembly=System.Xml"
+ xmlns:sxsa="clr-namespace:System.Xml.Serialization.Advanced;assembly=System.Xml"
+ xmlns:sxsc="clr-namespace:System.Xml.Serialization.Configuration;assembly=System.Xml"
+ xmlns:sxx="clr-namespace:System.Xml.Xsl;assembly=System.Xml"
+ xmlns:sxx1="clr-namespace:System.Xml.XPath;assembly=System.Xml"
+ xmlns:sxx2="clr-namespace:System.Xml.XmlConfiguration;assembly=System.Xml"
+ xmlns:wf="clr-namespace:Windows.Foundation;assembly=System.Runtime.WindowsRuntime"
+ xmlns:wu="clr-namespace:Windows.UI;assembly=System.Runtime.WindowsRuntime"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>OpenRPA</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>OpenRPA.NM</x:String>
+      <x:String>OpenRPA.Interfaces</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>OpenRPA</AssemblyReference>
+      <AssemblyReference>OpenRPA.Interfaces</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>OpenRPA.NM</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Net.WebSockets.Client.Managed</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.Globalization.Extensions</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="sd4:DataTable" Name="dtpo" />
+      <Variable x:TypeArguments="sd4:DataTable" Name="dtAgents" />
+    </Flowchart.Variables>
+    <Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+        <Sequence DisplayName="Load StateAssignments" sap2010:WorkflowViewState.IdRef="Sequence_13">
+          <ou:DownloadFile Password="{x:Null}" Username="{x:Null}" sap2010:WorkflowViewState.IdRef="DownloadFile_3" IgnoreSecurity="False" LocalPath="[&quot;%USERPROFILE%\Downloads\StateAssignments.xlsx&quot;]" Overwrite="False" URL="https://s3-us-west-2.amazonaws.com/aai-devportal-media/wp-content/uploads/2021/07/09220646/StateAssignments.xlsx" />
+          <ooa:ReadRange Application="{x:Null}" Cells="{x:Null}" ReadPassword="{x:Null}" SheetPassword="{x:Null}" Workbook="{x:Null}" Worksheet="{x:Null}" WritePassword="{x:Null}" lastUsedColumn="{x:Null}" lastUsedRow="{x:Null}" ClearFormats="False" DataTable="[dtAgents]" Filename="[&quot;%USERPROFILE%\Downloads\StateAssignments.xlsx&quot;]" sap2010:WorkflowViewState.IdRef="ReadRange_3" IgnoreEmptyRows="False" UseHeaderRow="True" Visible="True" />
+        </Sequence>
+        <FlowStep.Next>
+          <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+            <Sequence DisplayName="Login To PO site and get data" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="po" />
+                <Variable x:TypeArguments="x:String" Name="state" />
+                <Variable x:TypeArguments="x:String" Name="shipedate" />
+                <Variable x:TypeArguments="x:String" Name="ordertotal" />
+                <Variable x:TypeArguments="x:Int32" Default="1" Name="page" />
+              </Sequence.Variables>
+              <on:OpenURL NewTab="{x:Null}" UserDataFolderMode="{x:Null}" UserDataFolderPath="{x:Null}" Browser="chrome" sap2010:WorkflowViewState.IdRef="OpenURL_2" Url="https://developer.automationanywhere.com/challenges/AutomationAnywhereLabs-POtrackingLookup.html" />
+              <on:GetElement Elements="{x:Null}" From="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" DisplayName="  dtBasicExample_length" sap2010:WorkflowViewState.IdRef="GetElement_41" Image="/9j/4AAQSkZJRgABAQEAYABgAAD/4QBaRXhpZgAATU0AKgAAAAgABQMBAAUAAAABAAAASgMDAAEAAAABAAAAAFEQAAEAAAABAQAAAFERAAQAAAABAAAOw1ESAAQAAAABAAAOwwAAAAAAAYagAACxj//bAEMACAYGBwYFCAcHBwkJCAoMFA0MCwsMGRITDxQdGh8eHRocHCAkLicgIiwjHBwoNyksMDE0NDQfJzk9ODI8LjM0Mv/bAEMBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/AABEIAB8AOgMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/APcNTvPsNk04TzHMiRRruxl3cIuTzgbmGTg4GeD0qv8AaPEP/QL0v/wYyf8Axis6e8m1DwxZ3k4QGa+tXQICB5Zuo9nU9duM+9N8e/aYvBuq3lrqF3ay2tpNKn2dwu5guRk4zwR2I9807a2Gldmn9o8Q/wDQL0v/AMGMn/xij7R4h/6Bel/+DGT/AOMVn6rHLqXiHT9KkubmG0a0muJBbXDwu7K0arl0IbA3scA88Zq34XuJ7rQImuZWmljlmgMjfecRysgJ9yFGaLaXJTTJftHiH/oF6X/4MZP/AIxR9o8Q/wDQL0v/AMGMn/xitKUyCJjEqtIAdqs2AT2BODj8q82/4WtP9n/sn+wbj/hNPO+zf2Rzt3dfN8zp5WOc/wBPmpDO0j1DUIr61g1GytokupDFE9vdNKd4Rn5DRrgbUbkE8445yNqsTUjIb7w+ZVVZDetuVWyAfs0+QDgZ/Ktui4GHrUEdtolrBGu2OK8skQegFxEBVvWNKh1rR7zTLh5Egu4WhkaMgMFYYOMgjP4VblijuYXhmRZInBR0YZVgeCCD1FZ3/CLeHv8AoA6X/wCAcf8AhRd3BabBqWiR6hLBcR3lzZXluGSO5ttm8K2NykOrKQdq9R2GMVa06xg0uxhsrYMsUQwNxySSckk9ySSSfU1V/wCEW8Pf9AHS/wDwDj/wo/4Rbw9/0AdL/wDAOP8AwoA16q/YbX+0Pt/2aH7Z5flefsG/ZnO3d1xnnFUv+EW8Pf8AQB0v/wAA4/8ACj/hFvD3/QB0v/wDj/woANX/AOQpoP8A1/t/6TT1r1nWmjaXp05mstOs7WVhsLwQKjEdcZA6cD8q0aAP/9k=" MaxResults="1" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;-1&quot;,&#xA;    &quot;url&quot;: &quot;https://developer.automationanywhere.com/challenges/AutomationAnywhereLabs-POtrackingLookup.html&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//div[@id=\&quot;dtBasicExample_length\&quot;]/label/select&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(3)]">
+                <on:GetElement.Variables>
+                  <Variable x:TypeArguments="x:Int32" Default="0" Name="Index" />
+                  <Variable x:TypeArguments="x:Int32" Default="0" Name="Total" />
+                </on:GetElement.Variables>
+                <ActivityAction x:TypeArguments="on:NMElement">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+                  </ActivityAction.Argument>
+                  <Assign x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Assign`1_12" To="[item.value]" Value="100" />
+                </ActivityAction>
+              </on:GetElement>
+              <on:GetElement Elements="{x:Null}" From="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" DisplayName="inputEmail email " sap2010:WorkflowViewState.IdRef="GetElement_4" Image="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a9FAGR/ZWof9Buf/AL8x/wCFH9lah/0G5/8AvzH/AIVr0UAZH9lah/0G5/8AvzH/AIUf2VqH/Qbn/wC/Mf8AhWvRQByuueDj4i01tP1HWLt7dmDkJHGpyOnO2geG7uw0RLWx1BpzaQbLaOaCJs4HygkgdeOeK6qko3VgsZUWlW0NwbiLT7aOdhzIkahj+NWfKk/55j/P41copcq7AtDPjs1illljt4keZg0jKoBcgYBJ7nHFSeVJ/wA8x/n8auUUcsewXZT8qT/nmP8AP40eVJ/zzH+fxq5RRyx7BdlPypP+eY/z+NHlSf8APMf5/GrlFHLHsF2U/Kk/55j/AD+NHlSf88x/n8auUUcsewXZT8qT/nmP8/jR5Un/ADzH+fxq5RRyx7BdlPypP+eY/wA/jR5Un/PMf5/GrlFHLHsF2LRRRTAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP//Z" MaxResults="1" MinResults="0" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;-1&quot;,&#xA;    &quot;url&quot;: &quot;https://developer.automationanywhere.com/challenges/AutomationAnywhereLabs-POTrackingLogin.html&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//input[@id=\&quot;inputEmail\&quot;]&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromMilliseconds(250)]">
+                <on:GetElement.Variables>
+                  <Variable x:TypeArguments="x:Int32" Default="0" Name="Index" />
+                  <Variable x:TypeArguments="x:Int32" Default="0" Name="Total" />
+                </on:GetElement.Variables>
+                <ActivityAction x:TypeArguments="on:NMElement">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+                  </ActivityAction.Argument>
+                  <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[item.Value]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">admin@procurementanywhere.com</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </ActivityAction>
+              </on:GetElement>
+              <on:GetElement Elements="{x:Null}" From="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" DisplayName="inputPassword password " sap2010:WorkflowViewState.IdRef="GetElement_5" Image="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" MaxResults="1" MinResults="0" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;-1&quot;,&#xA;    &quot;url&quot;: &quot;https://developer.automationanywhere.com/challenges/AutomationAnywhereLabs-POTrackingLogin.html&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//input[@id=\&quot;inputPassword\&quot;]&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(0)]">
+                <on:GetElement.Variables>
+                  <Variable x:TypeArguments="x:Int32" Default="0" Name="Index" />
+                  <Variable x:TypeArguments="x:Int32" Default="0" Name="Total" />
+                </on:GetElement.Variables>
+                <ActivityAction x:TypeArguments="on:NMElement">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+                  </ActivityAction.Argument>
+                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
+                    <Assign x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Assign`1_2" To="[item.value]" Value="paypacksh!p" />
+                    <on:GetElement Elements="{x:Null}" From="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" DisplayName=" button " sap2010:WorkflowViewState.IdRef="GetElement_10" Image="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/wC/3/1q7nH+c0Y/zmj67iP5394fVKH8iOG/4VR4b/6ff+/3/wBaj/hVHhv/AKff+/3/ANau5x/nNGKPruI/nf3h9UofyI4X/hVHhw9Def8Af7/61eWeMvA+oWPiW5t9H0jU7iyCoUlWB5QSVGfmAx1r6M/Gl61MsVWlpKTaHHDUou8Y2OE0XxMmn6LY2s2heIfNgt44326VKRkKAccVnaLHd6l8UdT1VdN1C2s59OESSXdo8PzDAx8wr0yisXO99NzZK1jmbbRbua2hW4MKW7IrTW0ibz5qps+8DjbwCRjPHWrWkaEdMjYvIjTSg+a4DMc4AGGdi2AFHUmt2ioaurD63MCbQ55bmwImt/KtI9u4xHzGOMEZ3Y2njIxUI0K8mkminvIo7V4ViVreIxyxABflTJKqpIORt5zjtXS0UwWisc5/YF1Horacl5Hdozlib+LfnLlv4CvTjFQ32h67JMn2TWoooUjVAJEk3Egck7XA5PtXUUUBd3FooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/Z" MaxResults="1" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;-1&quot;,&#xA;    &quot;url&quot;: &quot;https://developer.automationanywhere.com/challenges/AutomationAnywhereLabs-POTrackingLogin.html&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;/html/body/div[1]/div/div/div/div/form/button[1]&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(3)]">
+                      <on:GetElement.Variables>
+                        <Variable x:TypeArguments="x:Int32" Default="0" Name="Index" />
+                        <Variable x:TypeArguments="x:Int32" Default="0" Name="Total" />
+                      </on:GetElement.Variables>
+                      <ActivityAction x:TypeArguments="on:NMElement">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+                        </ActivityAction.Argument>
+                        <oa:ClickElement KeyModifiers="{x:Null}" AnimateMouse="False" Button="1" DoubleClick="False" Element="[item]" sap2010:WorkflowViewState.IdRef="ClickElement_3" OffsetX="180" OffsetY="23" PostWait="00:00:00" VirtualClick="True" />
+                      </ActivityAction>
+                    </on:GetElement>
+                  </Sequence>
+                </ActivityAction>
+              </on:GetElement>
+              <ou:CreateDataTable ColumnNames="[{&quot;po&quot;, &quot;state&quot;, &quot;shipedate&quot;, &quot;ordertotal&quot;}]" DataTable="[dtpo]" sap2010:WorkflowViewState.IdRef="CreateDataTable_1" />
+              <on:GetElement Elements="{x:Null}" From="{x:Null}" WaitForReady="{x:Null}" DisplayName="  " sap2010:WorkflowViewState.IdRef="GetElement_36" Image="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" MaxResults="50000" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;-1&quot;,&#xA;    &quot;url&quot;: &quot;https://developer.automationanywhere.com/challenges/AutomationAnywhereLabs-POtrackingLookup.html&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//table[@id=\&quot;dtBasicExample\&quot;]/tbody/tr&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(3)]">
+                <on:GetElement.LoopAction>
+                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_10">
+                    <Assign sap2010:WorkflowViewState.IdRef="Assign_28">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[page]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[page + 1]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <on:GetElement Elements="{x:Null}" From="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" DisplayName="  " sap2010:WorkflowViewState.IdRef="GetElement_40" Image="/9j/4AAQSkZJRgABAQEAYABgAAD/4QBaRXhpZgAATU0AKgAAAAgABQMBAAUAAAABAAAASgMDAAEAAAABAAAAAFEQAAEAAAABAQAAAFERAAQAAAABAAAOw1ESAAQAAAABAAAOwwAAAAAAAYagAACxj//bAEMACAYGBwYFCAcHBwkJCAoMFA0MCwsMGRITDxQdGh8eHRocHCAkLicgIiwjHBwoNyksMDE0NDQfJzk9ODI8LjM0Mv/bAEMBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/AABEIAC8ALwMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/APWdf8TP4e0TUL+7slkktRERFFNkP5j+WvzFRj5uvB49a4j/AIXTef8AQs2//gzb/wCM1s/FBv8Aij9dPolh/wClVeHedQB6x/wum8/6Fm3/APBm3/xmj/hdN5/0LNv/AODNv/jNeT+dR51AHrH/AAum8/6Fm3/8Gbf/ABmur8EeN28Yfb4305bOez8tmUT+arK+7BztXn5Dxj0r5886vU/ge26/8RH/AKZWn856ANn4nt/xRPiA+kdh/wClVeB+d717v8Tm/wCKD8Rn0isf/SmvnjzvegDc0rUbax1OC6vLJb2CJtzW7PtD8cZODxnBx36V0fimRI/D+mfb7KytNZmkeYx2sCwlbcgbN6qAMk5x3x1ri9L1Y6Vqlvfrb29y0D71iuFLRse2QCM+vXtVzW/Ei63NJcS6XZwXUsnmSXEUk7Ox9DvkYY+g7UPawLcg873r1z4ENvuvEh/2LT+c1eJ+d717P+z62+bxIf8AZtf5zUAbfxNOfh74mI5xFZf+lFfNnne9fbR02wa1ltDZWxt5BiSExLsce4xg1mf8IT4S/wChY0X/AMF8X/xNAHxx53vR53vX2P8A8IT4S/6FjRf/AAXxf/E0f8IT4S/6FjRf/BfF/wDE0AfHHne9e4/s6tubxK3/AF6j/wBHV6t/whPhL/oWNF/8F8X/AMTWhp2kabpELR6bp9pZROdzLbQrGGPqQoFAH//Z" MaxResults="1" MinResults="[0]" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;-1&quot;,&#xA;    &quot;url&quot;: &quot;https://developer.automationanywhere.com/challenges/AutomationAnywhereLabs-POtrackingLookup.html&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//div[@id=\&quot;dtBasicExample_paginate\&quot;]/span/a[text() = '{{page}}']&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(0)]">
+                      <on:GetElement.Variables>
+                        <Variable x:TypeArguments="x:Int32" Default="0" Name="Index" />
+                        <Variable x:TypeArguments="x:Int32" Default="0" Name="Total" />
+                      </on:GetElement.Variables>
+                      <ActivityAction x:TypeArguments="on:NMElement">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+                        </ActivityAction.Argument>
+                        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_11">
+                          <oa:HighlightElement Blocking="False" Duration="[TimeSpan.FromMilliseconds(2000)]" Element="[item]" sap2010:WorkflowViewState.IdRef="HighlightElement_1" />
+                          <oa:ClickElement KeyModifiers="{x:Null}" AnimateMouse="False" Button="1" DoubleClick="False" Element="[item]" sap2010:WorkflowViewState.IdRef="ClickElement_5" OffsetX="19" OffsetY="18" PostWait="00:00:00" VirtualClick="True" />
+                        </Sequence>
+                      </ActivityAction>
+                    </on:GetElement>
+                  </Sequence>
+                </on:GetElement.LoopAction>
+                <on:GetElement.Variables>
+                  <Variable x:TypeArguments="x:Int32" Default="0" Name="Index" />
+                  <Variable x:TypeArguments="x:Int32" Default="0" Name="Total" />
+                </on:GetElement.Variables>
+                <ActivityAction x:TypeArguments="on:NMElement">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+                  </ActivityAction.Argument>
+                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_9">
+                    <on:GetElement Elements="{x:Null}" Image="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" From="[item]" sap2010:WorkflowViewState.IdRef="GetElement_35" MaxResults="1" MinResults="[0]" Selector="%[&#xA;  {&#xA;    &quot;xpath&quot;: &quot;/td&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(0)]">
+                      <on:GetElement.Variables>
+                        <Variable x:TypeArguments="x:Int32" Default="0" Name="Index" />
+                        <Variable x:TypeArguments="x:Int32" Default="0" Name="Total" />
+                      </on:GetElement.Variables>
+                      <ActivityAction x:TypeArguments="on:NMElement">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+                        </ActivityAction.Argument>
+                        <Assign sap2010:WorkflowViewState.IdRef="Assign_24">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[po]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[item.value]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </ActivityAction>
+                    </on:GetElement>
+                    <on:GetElement Elements="{x:Null}" Image="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" From="[item]" sap2010:WorkflowViewState.IdRef="GetElement_37" MaxResults="1" MinResults="[0]" Selector="%[&#xA;  {&#xA;    &quot;xpath&quot;: &quot;/td[5]&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(0)]">
+                      <on:GetElement.Variables>
+                        <Variable x:TypeArguments="x:Int32" Default="0" Name="Index" />
+                        <Variable x:TypeArguments="x:Int32" Default="0" Name="Total" />
+                      </on:GetElement.Variables>
+                      <ActivityAction x:TypeArguments="on:NMElement">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+                        </ActivityAction.Argument>
+                        <Assign sap2010:WorkflowViewState.IdRef="Assign_25">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[state]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[item.value]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </ActivityAction>
+                    </on:GetElement>
+                    <on:GetElement Elements="{x:Null}" Image="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" From="[item]" sap2010:WorkflowViewState.IdRef="GetElement_38" MaxResults="1" MinResults="[0]" Selector="%[&#xA;  {&#xA;    &quot;xpath&quot;: &quot;/td[7]&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(0)]">
+                      <on:GetElement.Variables>
+                        <Variable x:TypeArguments="x:Int32" Default="0" Name="Index" />
+                        <Variable x:TypeArguments="x:Int32" Default="0" Name="Total" />
+                      </on:GetElement.Variables>
+                      <ActivityAction x:TypeArguments="on:NMElement">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+                        </ActivityAction.Argument>
+                        <Assign sap2010:WorkflowViewState.IdRef="Assign_26">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[shipedate]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[item.value]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </ActivityAction>
+                    </on:GetElement>
+                    <on:GetElement Elements="{x:Null}" Image="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" From="[item]" sap2010:WorkflowViewState.IdRef="GetElement_39" MaxResults="1" MinResults="[0]" Selector="%[&#xA;  {&#xA;    &quot;xpath&quot;: &quot;/td[8]&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(0)]">
+                      <on:GetElement.Variables>
+                        <Variable x:TypeArguments="x:Int32" Default="0" Name="Index" />
+                        <Variable x:TypeArguments="x:Int32" Default="0" Name="Total" />
+                      </on:GetElement.Variables>
+                      <ActivityAction x:TypeArguments="on:NMElement">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+                        </ActivityAction.Argument>
+                        <Assign sap2010:WorkflowViewState.IdRef="Assign_27">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[ordertotal]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[item.value.Replace("$", "")]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </ActivityAction>
+                    </on:GetElement>
+                    <ou:AddDataRow DataTable="[dtpo]" sap2010:WorkflowViewState.IdRef="AddDataRow_1" RowData="[{po, state, shipedate, ordertotal}]" />
+                  </Sequence>
+                </ActivityAction>
+              </on:GetElement>
+              <ooa:WriteRange Application="{x:Null}" ReadPassword="{x:Null}" SheetPassword="{x:Null}" Workbook="{x:Null}" Worksheet="{x:Null}" WritePassword="{x:Null}" Cells="a1" DataTable="[dtpo]" Filename="[&quot;%USERPROFILE%\Downloads\pos.xlsx&quot;]" sap2010:WorkflowViewState.IdRef="WriteRange_1" UseHeaderRow="True" Visible="True" />
+            </Sequence>
+            <FlowStep.Next>
+              <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:String" Name="po" />
+                    <Variable x:TypeArguments="x:String" Name="state" />
+                    <Variable x:TypeArguments="s:DateTime" Name="shipedate" />
+                    <Variable x:TypeArguments="x:String" Name="ordertotal" />
+                    <Variable x:TypeArguments="x:Int32" Default="1" Name="ponum" />
+                    <Variable x:TypeArguments="sd4:DataView" Name="dw" />
+                    <Variable x:TypeArguments="x:String" Name="script" />
+                  </Sequence.Variables>
+                  <on:OpenURL NewTab="{x:Null}" UserDataFolderMode="{x:Null}" UserDataFolderPath="{x:Null}" Browser="chrome" sap2010:WorkflowViewState.IdRef="OpenURL_4" Url="https://www.google.com/" />
+                  <on:OpenURL NewTab="{x:Null}" UserDataFolderMode="{x:Null}" UserDataFolderPath="{x:Null}" Browser="chrome" sap2010:WorkflowViewState.IdRef="OpenURL_3" Url="https://developer.automationanywhere.com/challenges/automationanywherelabs-supplychainmanagement.html" />
+                  <Assign sap2010:WorkflowViewState.IdRef="Assign_22">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="sd4:DataView">[dw]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="sd4:DataView">[New DataView(dtAgents)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap2010:WorkflowViewState.IdRef="Assign_33">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[script]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">
+                        <Literal x:TypeArguments="x:String" Value="" />
+                      </InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <oa:BreakableDoWhile Condition="[ponum &lt;= 7]" sap2010:WorkflowViewState.IdRef="BreakableDoWhile_1">
+                    <oa:BreakableDoWhile.Variables>
+                      <Variable x:TypeArguments="x:Int32" Default="0" Name="Index" />
+                      <Variable x:TypeArguments="x:Int32" Default="0" Name="Total" />
+                    </oa:BreakableDoWhile.Variables>
+                    <Sequence DisplayName="PO1" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:String" Name="agent" />
+                      </Sequence.Variables>
+                      <on:GetElement Elements="{x:Null}" From="{x:Null}" LoopAction="{x:Null}" WaitForReady="{x:Null}" DisplayName="PONumber1 text " sap2010:WorkflowViewState.IdRef="GetElement_26" Image="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" MaxResults="1" MinResults="1" Selector="%[&#xA;  {&#xA;    &quot;Selector&quot;: &quot;NM&quot;,&#xA;    &quot;browser&quot;: &quot;chrome&quot;,&#xA;    &quot;frame&quot;: &quot;-1&quot;,&#xA;    &quot;url&quot;: &quot;https://developer.automationanywhere.com/challenges/automationanywherelabs-supplychainmanagement.html&quot;&#xA;  },&#xA;  {&#xA;    &quot;xpath&quot;: &quot;//input[@id=\&quot;PONumber{{ponum}}\&quot;]&quot;&#xA;  }&#xA;]" Timeout="[TimeSpan.FromSeconds(3)]">
+                        <on:GetElement.Variables>
+                          <Variable x:TypeArguments="x:Int32" Default="0" Name="Index" />
+                          <Variable x:TypeArguments="x:Int32" Default="0" Name="Total" />
+                        </on:GetElement.Variables>
+                        <ActivityAction x:TypeArguments="on:NMElement">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="on:NMElement" Name="item" />
+                          </ActivityAction.Argument>
+                          <Assign sap2010:WorkflowViewState.IdRef="Assign_15">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[po]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[item.value]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </ActivityAction>
+                      </on:GetElement>
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_29">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[dtpo.DefaultView.RowFilter]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">["po = '" &amp; po &amp; "'"]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <oa:ForEachDataRow DataView="{x:Null}" DataTable="[dtpo]" sap2010:WorkflowViewState.IdRef="ForEachDataRow_2">
+                        <oa:ForEachDataRow.Variables>
+                          <Variable x:TypeArguments="x:Int32" Default="0" Name="Index" />
+                          <Variable x:TypeArguments="x:Int32" Default="0" Name="Total" />
+                        </oa:ForEachDataRow.Variables>
+                        <ActivityAction x:TypeArguments="sd4:DataRowView">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="sd4:DataRowView" Name="row" />
+                          </ActivityAction.Argument>
+                          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_12">
+                            <Assign sap2010:WorkflowViewState.IdRef="Assign_30">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="s:DateTime">[shipedate]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="s:DateTime">[CDate(row("shipedate"))]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Assign sap2010:WorkflowViewState.IdRef="Assign_31">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[ordertotal]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[CDbl(row("ordertotal")).ToString("F2").Replace(",", ".")]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Assign sap2010:WorkflowViewState.IdRef="Assign_32">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[state]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[row("state").ToString]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </Sequence>
+                        </ActivityAction>
+                      </oa:ForEachDataRow>
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_38">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[dw.RowFilter]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">["State = '" &amp; state &amp; "'"]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <oa:ForEachDataRow DataTable="{x:Null}" DataView="[dw]" sap2010:WorkflowViewState.IdRef="ForEachDataRow_4">
+                        <oa:ForEachDataRow.Variables>
+                          <Variable x:TypeArguments="x:Int32" Default="0" Name="Index" />
+                          <Variable x:TypeArguments="x:Int32" Default="0" Name="Total" />
+                        </oa:ForEachDataRow.Variables>
+                        <ActivityAction x:TypeArguments="sd4:DataRowView">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="sd4:DataRowView" Name="row" />
+                          </ActivityAction.Argument>
+                          <Assign sap2010:WorkflowViewState.IdRef="Assign_39">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[agent]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[row(1).ToString]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </ActivityAction>
+                      </oa:ForEachDataRow>
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_35">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[script]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String" xml:space="preserve">[script + "var ele = document.getElementById('shipDate" &amp; ponum &amp; "')" &amp; VbCrLf &amp; _
+"ele.value = '" + shipedate.ToString("M/d/yyyy") + "';" &amp; VbCrLf &amp; _
+"var ele = document.getElementById('orderTotal" &amp; ponum &amp; "')" &amp; VbCrLf &amp; _
+"ele.value = '" + ordertotal + "';" &amp; VbCrLf &amp; _
+"var ele = document.getElementById('agent" &amp; ponum &amp; "')" &amp; VbCrLf &amp; _
+"ele.value = '" + agent + "';" &amp; VbCrLf]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_21">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Int32">[ponum]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Int32">[ponum + 1]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </oa:BreakableDoWhile>
+                  <Assign sap2010:WorkflowViewState.IdRef="Assign_36">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[script]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String" xml:space="preserve">[script &amp; "ele = document.getElementById('submitbutton')" &amp; VbCrLf &amp; _
+"ele.click()" &amp; VbCrLf]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <on:ExecuteScript Browser="{x:Null}" FrameId="{x:Null}" Result="{x:Null}" Results="{x:Null}" sap2010:WorkflowViewState.IdRef="ExecuteScript_1" Script="[script]" />
+                </Sequence>
+              </FlowStep>
+            </FlowStep.Next>
+          </FlowStep>
+        </FlowStep.Next>
+      </FlowStep>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <FlowStep sap2010:WorkflowViewState.IdRef="FlowStep_4">
+      <Sequence DisplayName="Load POs" sap2010:WorkflowViewState.IdRef="Sequence_14">
+        <ooa:ReadRange Application="{x:Null}" Cells="{x:Null}" ReadPassword="{x:Null}" SheetPassword="{x:Null}" Workbook="{x:Null}" Worksheet="{x:Null}" WritePassword="{x:Null}" lastUsedColumn="{x:Null}" lastUsedRow="{x:Null}" ClearFormats="False" DataTable="[dtpo]" Filename="[&quot;%USERPROFILE%\Downloads\pos.xlsx&quot;]" sap2010:WorkflowViewState.IdRef="ReadRange_4" IgnoreEmptyRows="False" UseHeaderRow="True" Visible="True" />
+      </Sequence>
+      <FlowStep.Next>
+        <x:Reference>__ReferenceID1</x:Reference>
+      </FlowStep.Next>
+    </FlowStep>
+    <sads:DebugSymbol.Symbol>dw1DOlxFbXB0eS54YW1sAA==</sads:DebugSymbol.Symbol>
+  </Flowchart>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="DownloadFile_3" sap:VirtualizedContainerService.HintSize="282,70" />
+      <sap2010:ViewStateData Id="ReadRange_3" sap:VirtualizedContainerService.HintSize="282,70" />
+      <sap2010:ViewStateData Id="Sequence_13" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="OpenURL_2" sap:VirtualizedContainerService.HintSize="314,55" />
+      <sap2010:ViewStateData Id="Assign`1_12" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="GetElement_41" sap:VirtualizedContainerService.HintSize="314,183" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="GetElement_4" sap:VirtualizedContainerService.HintSize="314,136">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign`1_2" sap:VirtualizedContainerService.HintSize="314,22" />
+      <sap2010:ViewStateData Id="ClickElement_3" sap:VirtualizedContainerService.HintSize="200,36" />
+      <sap2010:ViewStateData Id="GetElement_10" sap:VirtualizedContainerService.HintSize="314,266" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="336,452">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="GetElement_5" sap:VirtualizedContainerService.HintSize="314,136">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CreateDataTable_1" sap:VirtualizedContainerService.HintSize="314,104" />
+      <sap2010:ViewStateData Id="Assign_28" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="HighlightElement_1" sap:VirtualizedContainerService.HintSize="200,36" />
+      <sap2010:ViewStateData Id="ClickElement_5" sap:VirtualizedContainerService.HintSize="200,36" />
+      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="222,236">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="GetElement_40" sap:VirtualizedContainerService.HintSize="242,83">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_10" sap:VirtualizedContainerService.HintSize="264,307">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_24" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="GetElement_35" sap:VirtualizedContainerService.HintSize="256,190" />
+      <sap2010:ViewStateData Id="Assign_25" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="GetElement_37" sap:VirtualizedContainerService.HintSize="256,190" />
+      <sap2010:ViewStateData Id="Assign_26" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="GetElement_38" sap:VirtualizedContainerService.HintSize="256,190" />
+      <sap2010:ViewStateData Id="Assign_27" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="GetElement_39" sap:VirtualizedContainerService.HintSize="256,190" />
+      <sap2010:ViewStateData Id="AddDataRow_1" sap:VirtualizedContainerService.HintSize="256,104" />
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="278,1148">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="GetElement_36" sap:VirtualizedContainerService.HintSize="314,85">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteRange_1" sap:VirtualizedContainerService.HintSize="314,70" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="OpenURL_4" sap:VirtualizedContainerService.HintSize="500,55" />
+      <sap2010:ViewStateData Id="OpenURL_3" sap:VirtualizedContainerService.HintSize="500,55" />
+      <sap2010:ViewStateData Id="Assign_22" sap:VirtualizedContainerService.HintSize="500,60" />
+      <sap2010:ViewStateData Id="Assign_33" sap:VirtualizedContainerService.HintSize="500,60" />
+      <sap2010:ViewStateData Id="Assign_15" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="GetElement_26" sap:VirtualizedContainerService.HintSize="278,234" />
+      <sap2010:ViewStateData Id="Assign_29" sap:VirtualizedContainerService.HintSize="278,60" />
+      <sap2010:ViewStateData Id="Assign_30" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_31" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_32" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Sequence_12" sap:VirtualizedContainerService.HintSize="264,384">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachDataRow_2" sap:VirtualizedContainerService.HintSize="278,484" />
+      <sap2010:ViewStateData Id="Assign_38" sap:VirtualizedContainerService.HintSize="278,60" />
+      <sap2010:ViewStateData Id="Assign_39" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="ForEachDataRow_4" sap:VirtualizedContainerService.HintSize="278,160" />
+      <sap2010:ViewStateData Id="Assign_35" sap:VirtualizedContainerService.HintSize="278,64" />
+      <sap2010:ViewStateData Id="Assign_21" sap:VirtualizedContainerService.HintSize="278,60" />
+      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="300,1486">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="BreakableDoWhile_1" sap:VirtualizedContainerService.HintSize="500,1586" />
+      <sap2010:ViewStateData Id="Assign_36" sap:VirtualizedContainerService.HintSize="500,64" />
+      <sap2010:ViewStateData Id="ExecuteScript_1" sap:VirtualizedContainerService.HintSize="500,55" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">40,234.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">40,154.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">140,205.5 140,234.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">40,63.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">140,114.5 140,154.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ReadRange_4" sap:VirtualizedContainerService.HintSize="282,70" />
+      <sap2010:ViewStateData Id="Sequence_14" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">300,104.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">400,155.5 400,260 240,260</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="614,636">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">270,40 140,40 140,63.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="New_Workflow_1" sap:VirtualizedContainerService.HintSize="654,716" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

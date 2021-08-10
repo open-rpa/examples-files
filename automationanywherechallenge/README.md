@@ -10,6 +10,12 @@ I then made a scripted version to see if I could speed it up, but turn out with 
 
 **botwars week2**
 
+Scripted
+
+![BotWars2b](BotWars2b.png)
+
+Normal
+
 ![automationanywhere2](BotWars2.png)
 
 
