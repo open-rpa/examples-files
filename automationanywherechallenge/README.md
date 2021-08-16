@@ -6,7 +6,11 @@ I made a normal recording filling out the form.
 
 I then made a scripted version to see if I could speed it up, but turn out with my hardware, its about the same either way.
 
+**botwars week3**
 
+Normal
+
+![BotWars3a](BotWars3a.png)
 
 **botwars week2**
 
