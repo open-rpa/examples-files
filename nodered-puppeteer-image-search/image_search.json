@@ -2,19 +2,19 @@
     {
         "id": "75a499be.03ee18",
         "type": "comment",
-        "z": "1d07f154.be2ecf",
+        "z": "23d69f099555c4c1",
         "name": "puppeteer version",
         "info": "This requires the functionExternalModules to be set to true \n\nIn vanilla Nodered, your ~/.nodered/settings.json \nIn OpenFlow Nodered\nAdd function_external_modules=true in your .env file or docker-compose file.\nIf using openflow provisioning Nodereds, Check the functionExternalModules on the Nodered tab.",
-        "x": 150,
-        "y": 220,
+        "x": 190,
+        "y": 140,
         "wires": []
     },
     {
         "id": "1efe4805.785608",
         "type": "function",
-        "z": "1d07f154.be2ecf",
+        "z": "23d69f099555c4c1",
         "name": "",
-        "func": "(async () => {\n    var hasError = false;\n    var browser\n    try {\n        \n  node.warn(\"puppeteer.launch\");\n  // const headless = process.env.NODE_ENV === \"dev\";\n  const headless = true;\n  browser = await puppeteer.launch({\n    headless: headless,\n    defaultViewport: null\n });\n  const page = await browser.newPage();\n  node.warn(\"go to google.com\");\n  await page.goto('https://www.google.dk/imghp?hl=en&ogbl');\n  await page.waitForSelector('input[name=q]', { timeout: 5000 });\n  await page.type('input[name=q]', msg.payload, { delay: 100 });\n  page.keyboard.press('Enter');\n  const el = await page.waitForXPath('//div[@data-ri=\\\"0\\\"]', { timeout: 5000, visible: true });\n  await page.evaluate(el => el.id = 'findme', el);\n  \n  await new Promise(r => setTimeout(r, 1000));\n  \n  const element2 = await page.$('#findme');\n  await element2.screenshot({path: 'kitten3.png'})\n\n  // msg.payload = result;\n  \n    } catch (error ) {\n        hasError = true;\n        node.error(error, msg);\n    }\n    if(hasError) {\n        // node.warn(\"Wait 5 seconds\");\n        // await new Promise(r => setTimeout(r, 5000));\n    }\n\n    try {\n        if(browser!=null) await browser.close();\n    } catch (error ) {\n        hasError = true;\n        node.error(error, msg);\n    }\n  if(!hasError) node.send(msg);\n  node.done();\n})();\nreturn;",
+        "func": "(async () => {\n    try {\n    var hasError = false;\n    var browser\n    var page\n    try {\n        \n  node.warn(\"puppeteer.launch\");\n  // const headless = process.env.NODE_ENV === \"dev\";\n  const headless = true;\n  browser = await puppeteer.launch({\n    headless: headless,\n    defaultViewport: null\n });\n  page = await browser.newPage();\n  node.warn(\"go to google.com\");\n  await page.goto('https://www.google.dk/imghp?hl=en&ogbl');\n  await page.waitForSelector('input[name=q]', { timeout: 5000 });\n  var elements = await page.$x('//div[contains(text(),\"Jeg accepterer\")]')\n  if(!elements || elements.length == 0) { elements = await page.$x('//div[contains(text(),\"I agree\")]') }\n  if(elements && elements.length > 0) { \n      node.warn(\"Click accept cookies\");\n      await elements[0].click() \n  }\n\n  node.warn(\"Type \" + msg.payload + \" and press enter\");\n  await page.type('input[name=q]', msg.payload, { delay: 100 });\n  page.keyboard.press('Enter');\n  node.warn(\"wait for image\");\n  const el = await page.waitForXPath('//div[@data-ri=\\\"0\\\"]', { timeout: 5000, visible: true });\n  await page.evaluate(el => el.id = 'findme', el);\n  \n  await new Promise(r => setTimeout(r, 1000));\n  \n  const element2 = await page.$('#findme');\n  await element2.screenshot({path: 'kitten3.png'})\n\n  // msg.payload = result;\n  \n    } catch (error ) {\n        hasError = true;\n        node.error(error, msg);\n    }\n    if(hasError) {\n        if(page!=null) {\n            node.warn(\"Take screenshot of browser\");\n            await page.screenshot({path: 'kitten3.png'});\n            node.warn(\"done\");\n        }\n        // node.warn(\"Wait 5 seconds\");\n        // await new Promise(r => setTimeout(r, 5000));\n    }\n\n    try {\n        if(browser!=null) await browser.close();\n    } catch (error ) {\n        hasError = true;\n        node.error(error, msg);\n    }\n  if(!hasError) node.send(msg);\n  node.done();\n    } catch (error ) {\n        hasError = true;\n        node.error(error, msg);\n    }\n})();\nreturn;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -25,8 +25,8 @@
                 "module": "puppeteer"
             }
         ],
-        "x": 320,
-        "y": 280,
+        "x": 360,
+        "y": 200,
         "wires": [
             [
                 "e2ceb8bd.c63158"
@@ -36,7 +36,7 @@
     {
         "id": "da30ab5d.1807b8",
         "type": "inject",
-        "z": "1d07f154.be2ecf",
+        "z": "23d69f099555c4c1",
         "name": "",
         "props": [
             {
@@ -54,8 +54,8 @@
         "topic": "",
         "payload": "cute kitten",
         "payloadType": "str",
-        "x": 160,
-        "y": 260,
+        "x": 200,
+        "y": 180,
         "wires": [
             [
                 "1efe4805.785608"
@@ -65,7 +65,7 @@
     {
         "id": "60272725.47d1c8",
         "type": "inject",
-        "z": "1d07f154.be2ecf",
+        "z": "23d69f099555c4c1",
         "name": "",
         "props": [
             {
@@ -83,8 +83,8 @@
         "topic": "",
         "payload": "2 cute puppies",
         "payloadType": "str",
-        "x": 140,
-        "y": 300,
+        "x": 180,
+        "y": 220,
         "wires": [
             [
                 "1efe4805.785608"
@@ -94,15 +94,15 @@
     {
         "id": "e2ceb8bd.c63158",
         "type": "file in",
-        "z": "1d07f154.be2ecf",
+        "z": "23d69f099555c4c1",
         "name": "",
         "filename": "kitten3.png",
         "format": "",
         "chunk": false,
         "sendError": false,
         "encoding": "none",
-        "x": 470,
-        "y": 280,
+        "x": 510,
+        "y": 200,
         "wires": [
             [
                 "c6efa884.6a4548"
@@ -112,7 +112,7 @@
     {
         "id": "c6efa884.6a4548",
         "type": "image",
-        "z": "1d07f154.be2ecf",
+        "z": "23d69f099555c4c1",
         "name": "",
         "width": "360",
         "data": "payload",
@@ -121,8 +121,37 @@
         "active": true,
         "pass": false,
         "outputs": 0,
-        "x": 640,
-        "y": 280,
+        "x": 680,
+        "y": 200,
         "wires": []
+    },
+    {
+        "id": "819b9763e2ace7b8",
+        "type": "inject",
+        "z": "23d69f099555c4c1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "cute kitten",
+        "payloadType": "str",
+        "x": 380,
+        "y": 100,
+        "wires": [
+            [
+                "e2ceb8bd.c63158"
+            ]
+        ]
     }
 ]
