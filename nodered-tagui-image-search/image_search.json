@@ -2,7 +2,7 @@
     {
         "id": "f3af1605.ec32f8",
         "type": "inject",
-        "z": "ab369aa2.7b9b88",
+        "z": "d241027e27d4c302",
         "name": "",
         "props": [
             {
@@ -20,8 +20,8 @@
         "topic": "",
         "payload": "kitten",
         "payloadType": "str",
-        "x": 150,
-        "y": 100,
+        "x": 230,
+        "y": 120,
         "wires": [
             [
                 "7dd22cb.07c64d4"
@@ -29,29 +29,9 @@
         ]
     },
     {
-        "id": "7dd22cb.07c64d4",
-        "type": "tagui tagui",
-        "z": "ab369aa2.7b9b88",
-        "name": "",
-        "headless": true,
-        "nobrowser": false,
-        "param": true,
-        "quiet": false,
-        "script": "https://www.google.dk/imghp?hl=en&ogbl\ntype q as `p1`[enter]\nwait 2 sec\nif present('//div[@data-ri=\"0\"]')\n    snap //div[@data-ri=\"0\"] to data/kitten.png\nelse if present('//table//img')\n    snap //table//img to data/kitten.png",
-        "x": 310,
-        "y": 120,
-        "wires": [
-            [
-                "b70aac26.17577"
-            ],
-            [],
-            []
-        ]
-    },
-    {
         "id": "db71650e.26fae8",
         "type": "image",
-        "z": "ab369aa2.7b9b88",
+        "z": "d241027e27d4c302",
         "name": "",
         "width": "160",
         "data": "payload",
@@ -60,22 +40,22 @@
         "active": true,
         "pass": false,
         "outputs": 0,
-        "x": 480,
-        "y": 140,
+        "x": 800,
+        "y": 120,
         "wires": []
     },
     {
         "id": "b70aac26.17577",
         "type": "file in",
-        "z": "ab369aa2.7b9b88",
+        "z": "d241027e27d4c302",
         "name": "",
         "filename": "data/kitten.png",
         "format": "",
         "chunk": false,
         "sendError": false,
         "encoding": "none",
-        "x": 480,
-        "y": 100,
+        "x": 600,
+        "y": 120,
         "wires": [
             [
                 "db71650e.26fae8"
@@ -85,7 +65,7 @@
     {
         "id": "8f0c45bc.efe9e8",
         "type": "inject",
-        "z": "ab369aa2.7b9b88",
+        "z": "d241027e27d4c302",
         "name": "",
         "props": [
             {
@@ -103,8 +83,8 @@
         "topic": "",
         "payload": "puppies",
         "payloadType": "str",
-        "x": 150,
-        "y": 140,
+        "x": 230,
+        "y": 160,
         "wires": [
             [
                 "7dd22cb.07c64d4"
@@ -114,144 +94,70 @@
     {
         "id": "da8f73d9.56c67",
         "type": "comment",
-        "z": "ab369aa2.7b9b88",
+        "z": "d241027e27d4c302",
         "name": "TagUI version",
         "info": "requires chrome to be preinstalled.",
-        "x": 130,
-        "y": 60,
+        "x": 210,
+        "y": 80,
         "wires": []
     },
     {
-        "id": "272efbd5.3be1f4",
-        "type": "inject",
-        "z": "ab369aa2.7b9b88",
+        "id": "7dd22cb.07c64d4",
+        "type": "tagui tagui",
+        "z": "d241027e27d4c302",
         "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 140,
-        "y": 420,
+        "headless": true,
+        "nobrowser": false,
+        "param": true,
+        "quiet": true,
+        "updatecheck": true,
+        "script": "https://www.google.dk/imghp?hl=en&ogbl\nif present('//button[.=\"I agree\"]')\n    click //button[.=\"I agree\"]\ntype q as `p1`[enter]\nwait 2 sec\nif present('//div[@data-ri=\"0\"]')\n    snap //div[@data-ri=\"0\"] to data/kitten.png\nelse if present('//table//img')\n    snap //table//img to data/kitten.png\nelse\n    snap page to data/kitten.png",
+        "x": 390,
+        "y": 140,
         "wires": [
             [
-                "2298c3b.d6a6e3c"
+                "b70aac26.17577"
+            ],
+            [
+                "06471aaa3953cdd3"
+            ],
+            [
+                "3519761bb38fbf79"
             ]
         ]
     },
     {
-        "id": "4428b894.5f4198",
-        "type": "function",
-        "z": "ab369aa2.7b9b88",
-        "name": "",
-        "func": "PythonShell.PythonShell.runString(msg.payload, null, function (err, output) {\n    if (err) { node.error(err, msg); return; }\n    msg.payload = output;\n    node.send(msg);\n    node.done();\n});\nreturn;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "PythonShell",
-                "module": "python-shell"
-            }
-        ],
-        "x": 440,
-        "y": 420,
-        "wires": [
-            [
-                "95aaeded.c3938",
-                "8407c716.59faa8"
-            ]
-        ]
-    },
-    {
-        "id": "95aaeded.c3938",
+        "id": "06471aaa3953cdd3",
         "type": "debug",
-        "z": "ab369aa2.7b9b88",
+        "z": "d241027e27d4c302",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "3519761bb38fbf79",
+        "type": "debug",
+        "z": "d241027e27d4c302",
         "name": "",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 610,
-        "y": 420,
-        "wires": []
-    },
-    {
-        "id": "9b422c95.e4dfe",
-        "type": "image",
-        "z": "ab369aa2.7b9b88",
-        "name": "",
-        "width": "160",
-        "data": "payload",
-        "dataType": "msg",
-        "thumbnail": false,
-        "active": true,
-        "pass": false,
-        "outputs": 0,
-        "x": 360,
-        "y": 460,
-        "wires": []
-    },
-    {
-        "id": "8407c716.59faa8",
-        "type": "file in",
-        "z": "ab369aa2.7b9b88",
-        "name": "",
-        "filename": "kitten2.png",
-        "format": "",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "none",
-        "x": 150,
-        "y": 460,
-        "wires": [
-            [
-                "9b422c95.e4dfe"
-            ]
-        ]
-    },
-    {
-        "id": "2298c3b.d6a6e3c",
-        "type": "template",
-        "z": "ab369aa2.7b9b88",
-        "name": "Python code",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "python",
-        "syntax": "plain",
-        "template": "import rpa as r\nr.init()\nr.url('https://www.google.dk/imghp?hl=en&ogbl')\nr.type('//*[@name=\"q\"]', 'cute kitten[enter]')\nr.wait(2)\nr.snap('//div[@data-ri=\"0\"]', ' kitten2.png')\nr.close()",
-        "output": "str",
-        "x": 290,
-        "y": 420,
-        "wires": [
-            [
-                "4428b894.5f4198"
-            ]
-        ]
-    },
-    {
-        "id": "cbb29e9b.6d7aa",
-        "type": "comment",
-        "z": "ab369aa2.7b9b88",
-        "name": "TagUI Python version",
-        "info": "This requires the functionExternalModules to be set to true \n\nIn vanilla Nodered, your ~/.nodered/settings.json \nIn OpenFlow Nodered\nAdd function_external_modules=true in your .env file or docker-compose file.\nIf using openflow provisioning Nodereds, Check the functionExternalModules on the Nodered tab.",
-        "x": 180,
-        "y": 380,
+        "x": 570,
+        "y": 220,
         "wires": []
     }
 ]
