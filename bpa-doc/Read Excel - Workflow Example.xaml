@@ -1,0 +1,245 @@
+<Activity mc:Ignorable="sap sap2010 sads" x:Class="Read_Excel_-_Workflow_Example" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="New Workflow3_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:oa="clr-namespace:OpenRPA.Activities;assembly=OpenRPA"
+ xmlns:ooa="clr-namespace:OpenRPA.Office.Activities;assembly=OpenRPA.Office"
+ xmlns:ou="clr-namespace:OpenRPA.Utilities;assembly=OpenRPA.Utilities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>OpenRPA</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>OpenRPA.IE</x:String>
+      <x:String>OpenRPA.Image</x:String>
+      <x:String>OpenRPA.NM</x:String>
+      <x:String>OpenRPA.Office</x:String>
+      <x:String>OpenRPA.Script</x:String>
+      <x:String>OpenRPA.Windows</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>OpenRPA</AssemblyReference>
+      <AssemblyReference>OpenRPA.Interfaces</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>OpenRPA.IE</AssemblyReference>
+      <AssemblyReference>OpenRPA.Image</AssemblyReference>
+      <AssemblyReference>OpenRPA.NM</AssemblyReference>
+      <AssemblyReference>OpenRPA.Office</AssemblyReference>
+      <AssemblyReference>OpenRPA.Script</AssemblyReference>
+      <AssemblyReference>OpenRPA.Windows</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Net.WebSockets.Client.Managed</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Main Sequence" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="path" />
+      <Variable x:TypeArguments="sd:DataTable" Name="invoicesDataTable" />
+      <Variable x:TypeArguments="x:String" Name="invoiceNumber" />
+      <Variable x:TypeArguments="sd:DataTable" Name="items" />
+      <Variable x:TypeArguments="sd:DataTable" Name="itemsDataTable" />
+      <Variable x:TypeArguments="x:String" Name="companyName" />
+      <Variable x:TypeArguments="x:String" Name="shippingAddress" />
+      <Variable x:TypeArguments="x:String" Name="shippingTelephoneNumber" />
+      <Variable x:TypeArguments="x:String" Name="dueDate" />
+      <Variable x:TypeArguments="x:Decimal" Name="quantity" />
+      <Variable x:TypeArguments="x:Decimal" Name="total" />
+    </Sequence.Variables>
+    <ou:CreateDataTable ColumnNames="[{&quot;Invoice Number&quot;, &quot;Company Name&quot;, &quot;Shipping Address&quot;, &quot;Shipping Tel. Number&quot;, &quot;Due Date&quot;, &quot;Qty. of Items&quot;, &quot;Due Balance&quot;}]" DataTable="[invoicesDataTable]" DisplayName="Create Empty DataTable" sap2010:WorkflowViewState.IdRef="CreateDataTable_1" />
+    <Assign DisplayName="Assign Directory Path" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[path]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">C:\Users\viere\OneDrive\Documents\BPA\bpa-doc\workflow_example_files\invoices</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ForEach x:TypeArguments="x:String" DisplayName="For each Invoice" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[System.IO.Directory.GetFiles(path)]">
+      <ActivityAction x:TypeArguments="x:String">
+        <ActivityAction.Argument>
+          <DelegateInArgument x:TypeArguments="x:String" Name="filePath" />
+        </ActivityAction.Argument>
+        <Sequence DisplayName="Invoice Processing Logic" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <ooa:ReadCell x:TypeArguments="x:String" Application="{x:Null}" Formula="{x:Null}" Range="{x:Null}" Workbook="{x:Null}" Worksheet="{x:Null}" Cell="H3" DisplayName="Read Invoice Number" Filename="[filePath]" sap2010:WorkflowViewState.IdRef="ReadCell`1_1" Result="[invoiceNumber]" Visible="True" />
+          <ooa:ReadCell x:TypeArguments="x:String" Application="{x:Null}" Formula="{x:Null}" Range="{x:Null}" Workbook="{x:Null}" Worksheet="{x:Null}" Cell="A1" DisplayName="Read Company Name" Filename="[filePath]" sap2010:WorkflowViewState.IdRef="ReadCell`1_2" Result="[companyName]" Visible="True" />
+          <ooa:ReadCell x:TypeArguments="x:String" Application="{x:Null}" Formula="{x:Null}" Range="{x:Null}" Workbook="{x:Null}" Worksheet="{x:Null}" Cell="C9" DisplayName="Read Shipping Address" Filename="[filePath]" sap2010:WorkflowViewState.IdRef="ReadCell`1_3" Result="[shippingAddress]" Visible="True" />
+          <ooa:ReadCell x:TypeArguments="x:String" Application="{x:Null}" Formula="{x:Null}" Range="{x:Null}" Workbook="{x:Null}" Worksheet="{x:Null}" Cell="C10" DisplayName="Read Shipping Telephone Number" Filename="[filePath]" sap2010:WorkflowViewState.IdRef="ReadCell`1_4" Result="[shippingTelephoneNumber]" Visible="True" />
+          <ooa:ReadCell x:TypeArguments="x:String" Application="{x:Null}" Formula="{x:Null}" Range="{x:Null}" Workbook="{x:Null}" Worksheet="{x:Null}" Cell="H6" DisplayName="Read Due Date" Filename="[filePath]" sap2010:WorkflowViewState.IdRef="ReadCell`1_5" Result="[dueDate]" Visible="True" />
+          <Sequence DisplayName="Items Processing Logic" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <ou:CreateDataTable ColumnNames="[{&quot;itemName&quot;, &quot;quantity&quot;, &quot;rate&quot;, &quot;subTotal&quot;}]" DataTable="[itemsDataTable]" sap2010:WorkflowViewState.IdRef="CreateDataTable_2" />
+            <ooa:ReadRange Application="{x:Null}" ReadPassword="{x:Null}" Workbook="{x:Null}" Worksheet="{x:Null}" WritePassword="{x:Null}" lastUsedColumn="{x:Null}" lastUsedRow="{x:Null}" Cells="A14:H18" ClearFormats="False" DataTable="[items]" Filename="[filePath]" sap2010:WorkflowViewState.IdRef="ReadRange_1" IgnoreEmptyRows="True" UseHeaderRow="False" Visible="True" />
+            <oa:ForEachDataRow DataView="{x:Null}" DataTable="[items]" sap2010:WorkflowViewState.IdRef="ForEachDataRow_1">
+              <ActivityAction x:TypeArguments="sd:DataRowView">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:DataRowView" Name="row" />
+                </ActivityAction.Argument>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_5">
+                    <Sequence DisplayName="Items Logic" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Decimal" Name="currentQuantity" />
+                        <Variable x:TypeArguments="x:Decimal" Name="currentRate" />
+                        <Variable x:TypeArguments="x:Decimal" Name="subTotal" />
+                        <Variable x:TypeArguments="x:Decimal" Name="dueBalance" />
+                      </Sequence.Variables>
+                      <ou:AddDataRow DataTable="[itemsDataTable]" sap2010:WorkflowViewState.IdRef="AddDataRow_1" RowData="[{row(0).ToString, row(3).ToString, row(5).ToString, row(7).ToString}]" />
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Decimal">[quantity]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Decimal">[quantity + Convert.ToDecimal(row(3).ToString)]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_3">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Decimal">[currentQuantity]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Decimal">[Convert.ToDecimal(row(3).ToString)]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_4">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Decimal">[currentRate]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Decimal">[Convert.ToDecimal(row(5).ToString)]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_5">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Decimal">[subTotal]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Decimal">[currentQuantity*currentRate]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_6">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Decimal">[dueBalance]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Decimal">[dueBalance + currentQuantity*currentRate]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                    <ou:AddDataRow DataTable="[invoicesDataTable]" DisplayName="Add File Iteration" RowData="[{invoiceNumber, companyName, shippingAddress, shippingTelephoneNumber, dueDate, quantity, total}]" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
+                  </Sequence>
+                </Sequence>
+              </ActivityAction>
+            </oa:ForEachDataRow>
+          </Sequence>
+        </Sequence>
+      </ActivityAction>
+    </ForEach>
+    <ou:WriteExcel DataSet="{x:Null}" DataTable="[invoicesDataTable]" Filename="[&quot;%USERPROFILE%\OneDrive\Documents\BPA\bpa-doc\workflow_example_files\invoices_final.xlsx&quot;]" sap2010:WorkflowViewState.IdRef="WriteExcel_2" Theme="TableStyleMedium16" includeHeader="True" />
+    <sads:DebugSymbol.Symbol>dw1DOlxFbXB0eS54YW1sAA==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="CreateDataTable_1" sap:VirtualizedContainerService.HintSize="396,104" />
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="396,60" />
+      <sap2010:ViewStateData Id="ReadCell`1_1" sap:VirtualizedContainerService.HintSize="344,90" />
+      <sap2010:ViewStateData Id="ReadCell`1_2" sap:VirtualizedContainerService.HintSize="344,90" />
+      <sap2010:ViewStateData Id="ReadCell`1_3" sap:VirtualizedContainerService.HintSize="344,90" />
+      <sap2010:ViewStateData Id="ReadCell`1_4" sap:VirtualizedContainerService.HintSize="344,90" />
+      <sap2010:ViewStateData Id="ReadCell`1_5" sap:VirtualizedContainerService.HintSize="344,90" />
+      <sap2010:ViewStateData Id="CreateDataTable_2" sap:VirtualizedContainerService.HintSize="322,104" />
+      <sap2010:ViewStateData Id="ReadRange_1" sap:VirtualizedContainerService.HintSize="322,70" />
+      <sap2010:ViewStateData Id="AddDataRow_1" sap:VirtualizedContainerService.HintSize="242,104" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_6" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="264,728">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="AddDataRow_3" sap:VirtualizedContainerService.HintSize="264,104" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="286,996">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="308,1120">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachDataRow_1" sap:VirtualizedContainerService.HintSize="322,1220" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="344,1598">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="366,2372">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_1" sap:VirtualizedContainerService.HintSize="396,2521">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteExcel_2" sap:VirtualizedContainerService.HintSize="396,70" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="418,2999">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="New Workflow3_1" sap:VirtualizedContainerService.HintSize="458,3319">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
