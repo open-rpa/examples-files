@@ -28,7 +28,7 @@ Normal
 
 Enjoy
 
-[![Exposing a robot workflow as a rest service](https://img.youtube.com/vi/CC-lmOpRpzs/2.jpg)](https://youtu.be/CC-lmOpRpzs)
+[![Exposing a robot workflow as a rest service](https://img.youtube.com/vi/CC-lmOpRpzs/0.jpg)](https://youtu.be/CC-lmOpRpzs)
 
 Scripted
 
