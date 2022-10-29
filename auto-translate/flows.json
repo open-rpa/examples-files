@@ -7,8 +7,8 @@
         "rpa": true,
         "web": false,
         "name": "translation service",
-        "x": 190,
-        "y": 760,
+        "x": 290,
+        "y": 840,
         "wires": [
             [
                 "24e41c6a.6d87e4",
@@ -26,8 +26,9 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 380,
-        "y": 760,
+        "libs": [],
+        "x": 480,
+        "y": 840,
         "wires": [
             [
                 "99d6844a.4bc108"
@@ -44,8 +45,9 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 570,
-        "y": 760,
+        "libs": [],
+        "x": 670,
+        "y": 840,
         "wires": [
             [
                 "6d42c3bf.f8677c"
@@ -64,8 +66,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 180,
-        "y": 820,
+        "x": 280,
+        "y": 900,
         "wires": [
             [
                 "807c3c53.67d09"
@@ -80,8 +82,8 @@
         "func": "msg.text = \"Hvad skal vi have at spise idag?\"\nmsg.payload = msg.text\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 340,
-        "y": 820,
+        "x": 440,
+        "y": 900,
         "wires": [
             [
                 "99d6844a.4bc108"
@@ -97,9 +99,12 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
-        "x": 390,
-        "y": 720,
+        "complete": "payload.text",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 800,
         "wires": []
     },
     {
@@ -115,8 +120,8 @@
         "persist": false,
         "proxy": "",
         "authType": "",
-        "x": 770,
-        "y": 760,
+        "x": 870,
+        "y": 840,
         "wires": [
             [
                 "9c0d2e6a.b88cb"
@@ -133,8 +138,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 600,
-        "y": 840,
+        "x": 700,
+        "y": 920,
         "wires": [
             [
                 "6f1585df.244c4c",
@@ -151,9 +156,12 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
-        "x": 770,
-        "y": 860,
+        "complete": "payload.result",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 940,
         "wires": []
     },
     {
@@ -163,8 +171,8 @@
         "name": "",
         "form": "",
         "state": "completed",
-        "x": 770,
-        "y": 820,
+        "x": 870,
+        "y": 900,
         "wires": [
             []
         ]

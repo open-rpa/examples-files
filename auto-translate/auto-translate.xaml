@@ -1,4 +1,16 @@
-<Activity mc:Ignorable="sap sap2010 sads" x:Class="auto-translation" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="New Workflow4_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:oa="clr-namespace:OpenRPA.Activities;assembly=OpenRPA" xmlns:ooa="clr-namespace:OpenRPA.Office.Activities;assembly=OpenRPA.Office" xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010 sads" x:Class="auto-translate" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="New Workflow4_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:oa="clr-namespace:OpenRPA.Activities;assembly=OpenRPA"
+ xmlns:ooa="clr-namespace:OpenRPA.Office.Activities;assembly=OpenRPA.Office"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System</x:String>
@@ -48,8 +60,11 @@
       <Variable x:TypeArguments="sd:DataTable" Name="dt" />
       <Variable x:TypeArguments="x:Int32" Default="2" Name="index" />
     </Sequence.Variables>
-    <ooa:ReadRange Application="{x:Null}" Cells="{x:Null}" ReadPassword="{x:Null}" SheetPassword="{x:Null}" Workbook="{x:Null}" Worksheet="{x:Null}" WritePassword="{x:Null}" lastUsedColumn="{x:Null}" lastUsedRow="{x:Null}" ClearFormats="False" DataTable="[dt]" Filename="[&quot;%USERPROFILE%\Documents\auto-translation.xlsx&quot;]" sap2010:WorkflowViewState.IdRef="ReadRange_1" IgnoreEmptyRows="False" UseHeaderRow="True" Visible="True" />
+    <ooa:ReadRange Application="{x:Null}" Cells="{x:Null}" GuessColumnType="{x:Null}" ReadPassword="{x:Null}" SheetPassword="{x:Null}" Workbook="{x:Null}" Worksheet="{x:Null}" WritePassword="{x:Null}" lastUsedColumn="{x:Null}" lastUsedRow="{x:Null}" ClearFormats="False" DataTable="[dt]" Filename="[&quot;%USERPROFILE%\Downloads\auto-translate\auto-translate.xlsx&quot;]" sap2010:WorkflowViewState.IdRef="ReadRange_1" IgnoreEmptyRows="False" UseHeaderRow="True" Visible="True" />
     <oa:ForEachDataRow DataView="{x:Null}" DataTable="[dt]" sap2010:WorkflowViewState.IdRef="ForEachDataRow_1">
+      <oa:ForEachDataRow.Variables>
+        <sco:Collection x:TypeArguments="Variable" />
+      </oa:ForEachDataRow.Variables>
       <ActivityAction x:TypeArguments="sd:DataRowView">
         <ActivityAction.Argument>
           <DelegateInArgument x:TypeArguments="sd:DataRowView" Name="row" />
@@ -70,12 +85,14 @@
             </Assign.Value>
           </Assign>
           <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[text]" />
-          <oa:InvokeOpenFlow sap2010:WorkflowViewState.IdRef="InvokeOpenFlow_1" WaitForCompleted="True" workflow="allan5translationservice">
+          <oa:InvokeOpenFlow Expiration="{x:Null}" sap2010:WorkflowViewState.IdRef="InvokeOpenFlow_1" WaitForCompleted="True" workflow="translationservice">
             <oa:InvokeOpenFlow.Arguments>
-              <scg:Dictionary x:TypeArguments="x:String, Argument" />
+              <InArgument x:TypeArguments="x:String" x:Key="text">[text]</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="result">[result]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="language">[language]</OutArgument>
             </oa:InvokeOpenFlow.Arguments>
           </oa:InvokeOpenFlow>
-          <WriteLine Text="[result]" sap2010:WorkflowViewState.IdRef="WriteLine_2" />
+          <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[result]" />
           <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Object">[row(1)]</OutArgument>
@@ -92,8 +109,8 @@
               <InArgument x:TypeArguments="x:Object">[result]</InArgument>
             </Assign.Value>
           </Assign>
-          <ooa:WriteCell x:TypeArguments="x:String" Application="{x:Null}" Formula="{x:Null}" ReadPassword="{x:Null}" SheetPassword="{x:Null}" Workbook="{x:Null}" Worksheet="{x:Null}" WritePassword="{x:Null}" Cell="[&quot;B&quot; &amp; index.tostring]" Filename="[&quot;%USERPROFILE%\Documents\auto-translation.xlsx&quot;]" sap2010:WorkflowViewState.IdRef="WriteCell`1_1" Value="[language]" Visible="True" />
-          <ooa:WriteCell x:TypeArguments="x:String" Application="{x:Null}" Formula="{x:Null}" ReadPassword="{x:Null}" SheetPassword="{x:Null}" Workbook="{x:Null}" Worksheet="{x:Null}" WritePassword="{x:Null}" Cell="[&quot;C&quot; &amp; index.tostring]" Filename="[&quot;%USERPROFILE%\Documents\auto-translation.xlsx&quot;]" sap2010:WorkflowViewState.IdRef="WriteCell`1_2" Value="[result]" Visible="True" />
+          <ooa:WriteCell x:TypeArguments="x:String" Application="{x:Null}" Formula="{x:Null}" ReadPassword="{x:Null}" SheetPassword="{x:Null}" Workbook="{x:Null}" Worksheet="{x:Null}" WritePassword="{x:Null}" Cell="[&quot;B&quot; &amp; index.tostring]" Filename="%USERPROFILE%\Downloads\auto-translate\auto-translate.xlsx" sap2010:WorkflowViewState.IdRef="WriteCell`1_1" Value="[language]" Visible="True" />
+          <ooa:WriteCell x:TypeArguments="x:String" Application="{x:Null}" Formula="{x:Null}" ReadPassword="{x:Null}" SheetPassword="{x:Null}" Workbook="{x:Null}" Worksheet="{x:Null}" WritePassword="{x:Null}" Cell="[&quot;C&quot; &amp; index.tostring]" Filename="%USERPROFILE%\Downloads\auto-translate\auto-translate.xlsx" sap2010:WorkflowViewState.IdRef="WriteCell`1_2" Value="[result]" Visible="True" />
           <Assign sap2010:WorkflowViewState.IdRef="Assign_4">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[index]</OutArgument>
@@ -105,7 +122,7 @@
         </Sequence>
       </ActivityAction>
     </oa:ForEachDataRow>
-    <ooa:WriteRange Application="{x:Null}" ReadPassword="{x:Null}" SheetPassword="{x:Null}" Workbook="{x:Null}" Worksheet="{x:Null}" WritePassword="{x:Null}" Cells="A1" DataTable="[dt]" Filename="[&quot;%USERPROFILE%\Documents\auto-translation.xlsx&quot;]" sap2010:WorkflowViewState.IdRef="WriteRange_1" UseHeaderRow="True" Visible="True" />
+    <ooa:WriteRange Application="{x:Null}" ReadPassword="{x:Null}" SheetPassword="{x:Null}" Workbook="{x:Null}" Worksheet="{x:Null}" WritePassword="{x:Null}" Cells="A1" DataTable="[dt]" Filename="%USERPROFILE%\Downloads\auto-translate\auto-translate.xlsx" sap2010:WorkflowViewState.IdRef="WriteRange_1" UseHeaderRow="True" Visible="True" />
     <sads:DebugSymbol.Symbol>dw1DOlxFbXB0eS54YW1sAA==</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
