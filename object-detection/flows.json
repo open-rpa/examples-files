@@ -1,0 +1,170 @@
+[
+    {
+        "id": "adb0cbd0.2a92b8",
+        "type": "workflow in",
+        "z": "f014cdcd.e11d7",
+        "queue": "google-vision",
+        "rpa": true,
+        "web": false,
+        "name": "google-vision",
+        "x": 250,
+        "y": 100,
+        "wires": [
+            [
+                "98ae4327.51d76"
+            ]
+        ]
+    },
+    {
+        "id": "9ec89850.144898",
+        "type": "workflow out",
+        "z": "f014cdcd.e11d7",
+        "name": "",
+        "form": "",
+        "state": "completed",
+        "x": 690,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "98ae4327.51d76",
+        "type": "function",
+        "z": "f014cdcd.e11d7",
+        "name": "",
+        "func": "msg.filename = msg.payload.filename;\nmsg.fileid = msg.payload.fileid;\nmsg.query = { \"_id\": msg.fileid}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 100,
+        "wires": [
+            [
+                "3ef000ee.3fb61"
+            ]
+        ]
+    },
+    {
+        "id": "3ef000ee.3fb61",
+        "type": "api download file",
+        "z": "f014cdcd.e11d7",
+        "fileid": "fileid",
+        "fileidtype": "msg",
+        "filename": "filename",
+        "filenametype": "msg",
+        "result": "payload",
+        "resulttype": "msg",
+        "asbuffer": true,
+        "name": "",
+        "x": 630,
+        "y": 100,
+        "wires": [
+            [
+                "15b513ca.3bf0cc",
+                "d0bf86ec.c0ee48",
+                "09526ab00b6a55a6"
+            ]
+        ]
+    },
+    {
+        "id": "15b513ca.3bf0cc",
+        "type": "image",
+        "z": "f014cdcd.e11d7",
+        "name": "",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "x": 260,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "d0bf86ec.c0ee48",
+        "type": "function",
+        "z": "f014cdcd.e11d7",
+        "name": "config",
+        "func": "if(msg.type===null || msg.type===undefined)\n{\n    msg.type = 'LABEL_DETECTION';\n    msg.type = 'OBJECT_LOCALIZATION';\n}\nmsg.maxresults = 5;\nif(msg.payload.maxresults !== null &&msg.payload.maxresults !== undefined)\n{\n    msg.maxresults = msg.payload.maxresults;\n}\n\nvar image = {content: msg.payload.toString('base64')};\nvar features = {type: msg.type, maxResults: msg.maxresults};\nvar imageContext = {languageHints: 'ja'};\nvar request = {image: image, features: features, imageContext: imageContext};\nvar requests = {requests: request};\nmsg.payload = requests;\n\nmsg.method = \"POST\";\nmsg.url = \"https://vision.googleapis.com/v1/images:annotate\"\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 450,
+        "y": 160,
+        "wires": [
+            [
+                "86b376d2.5e0248"
+            ]
+        ]
+    },
+    {
+        "id": "86b376d2.5e0248",
+        "type": "googleauth request",
+        "z": "f014cdcd.e11d7",
+        "config": "2d26aab8.0092f6",
+        "method": "",
+        "url": "",
+        "name": "",
+        "x": 580,
+        "y": 160,
+        "wires": [
+            [
+                "e41aff64.482df"
+            ]
+        ]
+    },
+    {
+        "id": "e41aff64.482df",
+        "type": "function",
+        "z": "f014cdcd.e11d7",
+        "name": "Report found labels",
+        "func": "// To skip messages like { \"responses\": [ {} ] }\nif (Object.keys(msg.payload.responses[0]).length < 1) {\n    msg.payload = { labels: [], labelarray: [] };\n    return msg;\n}\n\nvar labelarray = [];\nvar labels = 'labels: ';\nvar labelAnnotations = [];\nif(msg.type == 'LABEL_DETECTION') {\n    labelAnnotations = msg.payload.responses[0].labelAnnotations;\n    for (var i = 0; i < labelAnnotations.length; i++) {\n        labels += labelAnnotations[i].description;\n        labels +=' (' + labelAnnotations[i].score + '), ';\n        labelarray.push({name: labelAnnotations[i].description, score: labelAnnotations[i].score});\n    }\n} else if (msg.type == 'OBJECT_LOCALIZATION')\n{\n    labelAnnotations = msg.payload.responses[0].localizedObjectAnnotations;\n    for (var i = 0; i < labelAnnotations.length; i++) {\n        labels += labelAnnotations[i].name;\n        labels +=' (' + labelAnnotations[i].score + '), ';\n        labelarray.push({name: labelAnnotations[i].name, score: labelAnnotations[i].score});\n    }\n    \n}\n\n\nmsg.payload = {labels: labels.slice(0, labels.length - 2), labelarray: labelarray};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 220,
+        "wires": [
+            [
+                "b660efa9.dc4df",
+                "9ec89850.144898"
+            ]
+        ]
+    },
+    {
+        "id": "b660efa9.dc4df",
+        "type": "debug",
+        "z": "f014cdcd.e11d7",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 690,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "09526ab00b6a55a6",
+        "type": "api delete many",
+        "z": "f014cdcd.e11d7",
+        "name": "",
+        "query": "query",
+        "querytype": "msg",
+        "collection": "fs.files",
+        "collectiontype": "str",
+        "x": 850,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2d26aab8.0092f6",
+        "type": "googleauth credentials",
+        "name": "serviceAccount",
+        "authtype": "serviceaccount"
+    }
+]

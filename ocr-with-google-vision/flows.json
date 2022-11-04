@@ -1,0 +1,183 @@
+[
+    {
+        "id": "9b532f924ad1aaaf",
+        "type": "api download file",
+        "z": "426642c35100a2fb",
+        "fileid": "fileid",
+        "fileidtype": "msg",
+        "filename": "filename",
+        "filenametype": "msg",
+        "result": "payload",
+        "resulttype": "msg",
+        "asbuffer": true,
+        "name": "",
+        "x": 470,
+        "y": 180,
+        "wires": [
+            [
+                "f69ad64341b36573",
+                "09526ab00b6a55a6"
+            ]
+        ]
+    },
+    {
+        "id": "f69ad64341b36573",
+        "type": "function",
+        "z": "426642c35100a2fb",
+        "name": "config",
+        "func": "if(msg.type===null || msg.type===undefined)\n{\n    // msg.type = 'DOCUMENT_TEXT_DETECTION';\n    msg.type = 'TEXT_DETECTION';\n}\nmsg.maxresults = 5;\nif(msg.payload.maxresults !== null &&msg.payload.maxresults !== undefined)\n{\n    msg.maxresults = msg.payload.maxresults;\n}\n\nvar image = {content: msg.payload.toString('base64')};\nvar features = {type: msg.type, maxResults: msg.maxresults};\nvar imageContext = {languageHints: 'ja'};\nvar request = {image: image, features: features, imageContext: imageContext};\nvar requests = {requests: request};\nmsg.payload = requests;\n\nmsg.method = \"POST\";\nmsg.url = \"https://vision.googleapis.com/v1/images:annotate\"\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 180,
+        "wires": [
+            [
+                "1cc4410ace4bb8bb"
+            ]
+        ]
+    },
+    {
+        "id": "1cc4410ace4bb8bb",
+        "type": "googleauth request",
+        "z": "426642c35100a2fb",
+        "config": "2d26aab8.0092f6",
+        "ignoretls": false,
+        "asjson": false,
+        "method": "",
+        "url": "",
+        "name": "",
+        "x": 260,
+        "y": 260,
+        "wires": [
+            [
+                "ce3e195e8ec00201",
+                "c101a58096980fe8"
+            ]
+        ]
+    },
+    {
+        "id": "a3c068cd1acdd91b",
+        "type": "workflow out",
+        "z": "426642c35100a2fb",
+        "name": "",
+        "form": "",
+        "state": "completed",
+        "x": 630,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ce3e195e8ec00201",
+        "type": "function",
+        "z": "426642c35100a2fb",
+        "name": "Report found labels",
+        "func": "if (msg.payload.responses && msg.payload.responses.length > 0) {\n    msg.payload = { text: msg.payload.responses[0].fullTextAnnotation.text };\n} else {\n    msg.payload = { text: \"\" }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 260,
+        "wires": [
+            [
+                "e8b56877b8d10559",
+                "a3c068cd1acdd91b"
+            ]
+        ]
+    },
+    {
+        "id": "e8b56877b8d10559",
+        "type": "debug",
+        "z": "426642c35100a2fb",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "738b87be1adfb40e",
+        "type": "workflow in",
+        "z": "426642c35100a2fb",
+        "queue": "google-ocr",
+        "rpa": true,
+        "web": false,
+        "exchange": false,
+        "name": "google-ocr",
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "886acb4e6d07e390"
+            ]
+        ]
+    },
+    {
+        "id": "886acb4e6d07e390",
+        "type": "function",
+        "z": "426642c35100a2fb",
+        "name": "",
+        "func": "msg.filename = msg.payload.filename;\nmsg.fileid = msg.payload.fileid;\nmsg.query = { \"_id\": msg.fileid}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 180,
+        "wires": [
+            [
+                "9b532f924ad1aaaf"
+            ]
+        ]
+    },
+    {
+        "id": "c101a58096980fe8",
+        "type": "debug",
+        "z": "426642c35100a2fb",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.responses",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "09526ab00b6a55a6",
+        "type": "api delete many",
+        "z": "426642c35100a2fb",
+        "name": "",
+        "query": "query",
+        "querytype": "msg",
+        "collection": "fs.files",
+        "collectiontype": "str",
+        "x": 650,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2d26aab8.0092f6",
+        "type": "googleauth credentials",
+        "name": "serviceAccount",
+        "authtype": "serviceaccount"
+    }
+]
