@@ -1,0 +1,163 @@
+[
+    {
+        "id": "15d494b4cb926e14",
+        "type": "workflow in",
+        "z": "d5e94731626bcbdd",
+        "queue": "rpaform",
+        "rpa": false,
+        "web": true,
+        "exchange": false,
+        "name": "",
+        "x": 220,
+        "y": 420,
+        "wires": [
+            [
+                "c9e6c451084c653d"
+            ]
+        ]
+    },
+    {
+        "id": "09a94d2f0f0c4b5c",
+        "type": "workflow out",
+        "z": "d5e94731626bcbdd",
+        "name": "",
+        "form": "636a12d7ba81c6e80a0a1e8c",
+        "state": "completed",
+        "removestate": false,
+        "x": 870,
+        "y": 400,
+        "wires": [
+            [
+                "92a2ae64df31a13e"
+            ]
+        ]
+    },
+    {
+        "id": "660ae5f521f76b3a",
+        "type": "rpa workflow",
+        "z": "d5e94731626bcbdd",
+        "queue": "5ce94386320b9ce0bc2c3d07",
+        "workflow": "f3fc89fc-0b35-4814-921c-af8903eee0e0",
+        "killexisting": false,
+        "killallexisting": false,
+        "queuename": "",
+        "name": "",
+        "x": 530,
+        "y": 420,
+        "wires": [
+            [
+                "91043bfad43e40d4"
+            ],
+            [
+                "2977282b9a5af8ea"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "92a2ae64df31a13e",
+        "type": "debug",
+        "z": "d5e94731626bcbdd",
+        "name": "debug 10",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1060,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "5d5eb787faca8b98",
+        "type": "debug",
+        "z": "d5e94731626bcbdd",
+        "name": "debug 11",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1060,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "91043bfad43e40d4",
+        "type": "function",
+        "z": "d5e94731626bcbdd",
+        "name": "function 22",
+        "func": "msg.payload = { text: flow.get(\"output\") }\nmsg.payload.text += \"\\rworkflow completed\"\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 400,
+        "wires": [
+            [
+                "09a94d2f0f0c4b5c"
+            ]
+        ]
+    },
+    {
+        "id": "d4793401b29a07a3",
+        "type": "workflow out",
+        "z": "d5e94731626bcbdd",
+        "name": "",
+        "form": "636a12d7ba81c6e80a0a1e8c",
+        "state": "processing",
+        "removestate": false,
+        "x": 870,
+        "y": 440,
+        "wires": [
+            [
+                "5d5eb787faca8b98"
+            ]
+        ]
+    },
+    {
+        "id": "2977282b9a5af8ea",
+        "type": "function",
+        "z": "d5e94731626bcbdd",
+        "name": "function 23",
+        "func": "var text = msg.payload;\nif (msg.command == \"success\") flow.set(\"output\", \"\");\nif (msg.command == \"output\") {\n    if (flow.get(\"output\") != \"\") {\n        text = flow.get(\"output\") + \"\\r\" + text;\n    }    \n    msg.payload = { text: text }\n    flow.set(\"output\", text)\n    return msg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 440,
+        "wires": [
+            [
+                "d4793401b29a07a3"
+            ]
+        ]
+    },
+    {
+        "id": "c9e6c451084c653d",
+        "type": "function",
+        "z": "d5e94731626bcbdd",
+        "name": "function 24",
+        "func": "if (!msg.output) msg.output = \"\";\nif (!msg.payload) msg.payload = { text: \"\" }\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 420,
+        "wires": [
+            [
+                "660ae5f521f76b3a"
+            ]
+        ]
+    }
+]
